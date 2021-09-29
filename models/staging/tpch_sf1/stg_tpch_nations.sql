@@ -9,8 +9,8 @@ renamed as (
     select
 
         -- ids
-        n_nationkey as nation_key,
-        n_regionkey as region_key,
+        n_nationkey as nation_id,
+        n_regionkey as region_id,
 
         -- descriptions
         n_name as name,

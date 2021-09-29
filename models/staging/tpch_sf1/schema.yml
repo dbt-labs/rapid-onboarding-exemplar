@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_tpch_customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_tpch_line_items
+
+  - name: stg_tpch_nations
+    columns:
+      - name: nation_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_tpch_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+          
+  - name: stg_tpch_part_suppliers
+
+  - name: stg_tpch_parts
+    columns:
+      - name: part_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_tpch_regions
+    columns:
+      - name: region_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_tpch_suppliers
+    columns:
+      - name: supplier_id
+        tests:
+          - unique
+          - not_null  

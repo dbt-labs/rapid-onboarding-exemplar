@@ -21,7 +21,7 @@ renamed as (
         
         -- numbers
         l_quantity as quantity,
-        l_extendedprice as price,
+        l_extendedprice as extended_price,
         l_discount as discount,
         l_tax as tax,
         
