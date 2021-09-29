@@ -7,13 +7,19 @@ with source as (
 renamed as (
 
     select
-        s_suppkey,
-        s_name,
-        s_address,
-        s_nationkey,
-        s_phone,
-        s_acctbal,
-        s_comment
+
+        -- ids
+        s_suppkey as supplier_id,
+        s_nationkey as nation_id,
+
+        -- descriptions
+        s_name as name,
+        s_address as address,
+        s_phone as phone,
+        s_comment as comment,
+
+        -- amounts
+        s_acctbal as account_balance
 
     from source
 
