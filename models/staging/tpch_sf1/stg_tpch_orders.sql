@@ -7,15 +7,25 @@ with source as (
 renamed as (
 
     select
-        o_orderkey,
-        o_custkey,
-        o_orderstatus,
-        o_totalprice,
-        o_orderdate,
-        o_orderpriority,
+
+        -- ids
+        o_orderkey as order_id,
+        o_custkey as customer_id,
+        
+        -- descriptions
+        o_comment,
         o_clerk,
+
+        -- numbers
+        o_totalprice,
+
+        -- statuses
+        o_orderstatus,
+        o_orderpriority,
         o_shippriority,
-        o_comment
+
+        -- dates
+        o_orderdate
 
     from source
 
