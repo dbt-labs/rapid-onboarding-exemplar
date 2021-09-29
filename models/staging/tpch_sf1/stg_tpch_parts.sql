@@ -7,15 +7,22 @@ with source as (
 renamed as (
 
     select
-        p_partkey,
-        p_name,
-        p_mfgr,
-        p_brand,
-        p_type,
-        p_size,
-        p_container,
-        p_retailprice,
-        p_comment
+
+        -- ids
+        p_partkey as part_id,
+        
+        -- descriptions
+        p_name as name,
+        p_type as part_type,
+        p_size as part_size,
+        p_mfgr as manufacturer,
+        p_brand as brand,
+        p_comment as comment,
+        p_container as container,
+
+        -- amounts
+        p_retailprice as price
+        
 
     from source
 
