@@ -1,3 +1,6 @@
+{# parameterize the following variables #}
+{% set delta = 90 %}
+
 select
       l_returnflag,
       l_linestatus,
@@ -12,8 +15,7 @@ select
 from
       snowflake_sample_data.tpch_sf1.lineitem
 where
-      -- l_shipdate <= date '1998-12-01' - interval '[DELTA]' day (3)
-      l_shipdate <= dateadd(day, -90, to_date('1998-12-01')) 
+      l_shipdate <= dateadd(day, {{ delta }}, to_date('1998-12-01')) 
 group by
       l_returnflag,
       l_linestatus
