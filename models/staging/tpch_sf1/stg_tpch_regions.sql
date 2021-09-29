@@ -11,7 +11,7 @@ renamed as (
         -- ids
         r_regionkey as region_id,
 
-        -- description
+        -- descriptions
         r_name as region_name,
         r_comment as comment
 

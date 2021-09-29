@@ -13,7 +13,7 @@ renamed as (
         l_partkey as part_id,
         l_suppkey as part_supplies_id,
 
-        -- description
+        -- descriptions
         l_linenumber as line_numbers,
         l_comment as comment,
         l_shipmode as ship_mode,
