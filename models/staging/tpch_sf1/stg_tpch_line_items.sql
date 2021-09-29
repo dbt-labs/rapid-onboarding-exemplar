@@ -11,7 +11,7 @@ renamed as (
         -- ids
         l_orderkey as order_id,
         l_partkey as part_id,
-        l_suppkey as part_supplies_id,
+        l_suppkey as supplier_id,
 
         -- descriptions
         l_linenumber as line_numbers,

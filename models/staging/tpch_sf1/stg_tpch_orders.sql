@@ -13,19 +13,19 @@ renamed as (
         o_custkey as customer_id,
         
         -- descriptions
-        o_comment,
-        o_clerk,
+        o_comment as comment,
+        o_clerk as clerk,
 
         -- numbers
-        o_totalprice,
+        o_totalprice as total_price,
 
         -- statuses
-        o_orderstatus,
-        o_orderpriority,
-        o_shippriority,
+        o_orderstatus as order_status,
+        o_orderpriority as order_priority,
+        o_shippriority as ship_priority,
 
         -- dates
-        o_orderdate
+        o_orderdate as order_date
 
     from source
 
