@@ -7,22 +7,32 @@ with source as (
 renamed as (
 
     select
-        l_orderkey,
-        l_partkey,
-        l_suppkey,
-        l_linenumber,
-        l_quantity,
-        l_extendedprice,
-        l_discount,
-        l_tax,
-        l_returnflag,
-        l_linestatus,
-        l_shipdate,
-        l_commitdate,
-        l_receiptdate,
-        l_shipinstruct,
-        l_shipmode,
-        l_comment
+
+        -- ids
+        l_orderkey as order_id,
+        l_partkey as part_id,
+        l_suppkey as part_supplies_id,
+
+        -- description
+        l_linenumber as line_numbers,
+        l_comment as comment,
+        l_shipmode as ship_mode,
+        l_shipinstruct as ship_instructions,
+        
+        -- numbers
+        l_quantity as quantity,
+        l_extendedprice as price,
+        l_discount as discount,
+        l_tax as tax,
+        
+        -- status
+        l_linestatus as line_status,
+        l_returnflag as return_flag,
+        
+        -- dates
+        l_shipdate as ship_date,
+        l_commitdate as commit_date,
+        l_receiptdate as receipt_date
 
     from source
 
