@@ -2,7 +2,6 @@
 {% set segment = 'BUILDING' %}
 {% set date = '1995-03-15' %}
 
-
 select
     l_orderkey,
     sum(l_extendedprice*(1-l_discount)) as revenue,
