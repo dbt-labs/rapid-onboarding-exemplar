@@ -7,10 +7,14 @@ with source as (
 renamed as (
 
     select
-        n_nationkey,
-        n_name,
-        n_regionkey,
-        n_comment
+
+        -- ids
+        n_nationkey as nation_key,
+        n_regionkey as region_key,
+
+        -- descriptions
+        n_name as name,
+        n_comment as comment
 
     from source
 
