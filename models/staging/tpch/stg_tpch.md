@@ -2,7 +2,7 @@
 
 # the below are descriptions from stg_tpch_line_items
 
-{% docs order_item_key %} surrogate key for the model -- combo of order_key + line_number {% enddocs %}
+{% docs order_item_id %} surrogate key for the model -- combo of order_id + line_number {% enddocs %}
 
 {% docs line_number %} sequence of the order items within the order {% enddocs %}
 

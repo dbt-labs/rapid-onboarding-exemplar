@@ -9,6 +9,10 @@ renamed as (
     select
 
         -- ids
+        {{ dbt_utils.surrogate_key(
+            ['ps_partkey', 
+            'ps_suppkey']) }} 
+                as part_supplier_id,
         ps_partkey as part_id,
         ps_suppkey as supplier_id,
 
@@ -17,7 +21,7 @@ renamed as (
 
         -- amounts
         ps_availqty as available_quantity,
-        ps_supplycost as supply_cost
+        ps_supplycost as cost
         
     from source
 

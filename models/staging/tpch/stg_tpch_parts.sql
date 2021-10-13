@@ -13,15 +13,15 @@ renamed as (
         
         -- descriptions
         p_name as name,
-        p_type as part_type,
-        p_size as part_size,
+        p_type as type,
+        p_size as size,
         p_mfgr as manufacturer,
         p_brand as brand,
         p_comment as comment,
         p_container as container,
 
         -- amounts
-        p_retailprice as price
+        p_retailprice as retail_price
         
 
     from source

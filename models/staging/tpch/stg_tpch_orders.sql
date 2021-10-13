@@ -14,14 +14,14 @@ renamed as (
         
         -- descriptions
         o_comment as comment,
-        o_clerk as clerk,
+        o_clerk as clerk_name,
 
         -- numbers
         o_totalprice as total_price,
 
         -- statuses
-        o_orderstatus as order_status,
-        o_orderpriority as order_priority,
+        o_orderstatus as status_code,
+        o_orderpriority as priority_code,
         o_shippriority as ship_priority,
 
         -- dates

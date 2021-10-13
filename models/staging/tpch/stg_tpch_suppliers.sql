@@ -13,9 +13,9 @@ renamed as (
         s_nationkey as nation_id,
 
         -- descriptions
-        s_name as name,
-        s_address as address,
-        s_phone as phone,
+        s_name as supplier_name,
+        s_address as supplier_address,
+        s_phone as phone_number,
         s_comment as comment,
 
         -- amounts

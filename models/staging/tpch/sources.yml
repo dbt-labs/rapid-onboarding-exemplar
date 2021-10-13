@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: tpch
-    description: Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
-    database: raw
+    description: Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-gukeye/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
+    database: snowflake_sample_data
     schema: tpch_sf1
     tables:
       - name: orders
@@ -21,7 +21,7 @@ sources:
               - not_null
                   
           - name: o_custkey
-            description: Foreign Key to C_CUSTKEY
+            description: Foreign key to C_custkey
             tests:
               - relationships:
                   to: source('tpch', 'customer')
@@ -35,7 +35,7 @@ sources:
           - name: o_orderpriority
             description: code associated with the order
           - name: o_clerk
-            description: id of the clerk
+            description: key of the clerk
           - name: o_shippriority
             description: numeric representation of the shipping priority, zero being the default
           - name: o_comment
@@ -52,7 +52,7 @@ sources:
               - not_null:
                   severity: warn
           - name: c_name
-            description: customer id
+            description: customer key
           - name: c_address
             description: address of the customer
           - name: c_nationkey
@@ -70,19 +70,19 @@ sources:
         description: main lineitem table
         columns:
           - name: l_orderkey
-            description: Foreign Key to O_ORDERKEY
+            description: Foreign key to O_ORDERkey
             tests:
               - relationships:
                   to: source('tpch', 'orders')
                   field: o_orderkey
           - name: l_partkey
-            description:  Foreign key to P_PARTKEY, first part of the compound Foreign Key to (PS_PARTKEY,PS_SUPPKEY) with L_SUPPKEY
+            description:  Foreign key to P_PARTkey, first part of the compound Foreign key to (PS_PARTkey,PS_SUPPkey) with L_SUPPkey
             tests:
               - relationships:
                   to: source('tpch', 'part')
                   field: p_partkey
           - name: l_suppkey
-            description: Foreign key to S_SUPPKEY, second part of the compound Foreign Key to (PS_PARTKEY, PS_SUPPKEY) with L_PARTKEY
+            description: Foreign key to S_SUPPkey, second part of the compound Foreign key to (PS_PARTkey, PS_SUPPkey) with L_PARTkey
             tests:
               - relationships:
                   to: source('tpch', 'supplier')
@@ -127,7 +127,7 @@ sources:
           - name: n_name
             description: nation name
           - name: n_regionkey
-            description: Foreign Key to R_REGIONKEY
+            description: Foreign key to R_REGIONkey
             tests:
               - relationships:
                   to: source('tpch', 'region')
@@ -166,13 +166,13 @@ sources:
         description: main part supplier table
         columns:
           - name: ps_partkey
-            description: Foreign Key to P_PARTKEY
+            description: Foreign key to P_PARTkey
             tests:
               - relationships:
                   to: source('tpch', 'part')
                   field: p_partkey
           - name: ps_suppkey
-            description: Foreign Key to S_SUPPKEY
+            description: Foreign key to S_SUPPkey
             tests:
               - relationships:
                   to: source('tpch', 'supplier')
@@ -210,11 +210,11 @@ sources:
               - not_null:
                   severity: warn
           - name: s_name
-            description: id of the supplier
+            description: key of the supplier
           - name: s_address
             description: address of the supplier
           - name: s_nationkey
-            description: Foreign Key to N_NATIONKEY
+            description: Foreign key to N_NATIONkey
             tests:
               - relationships:
                   to: source('tpch', 'nation')
