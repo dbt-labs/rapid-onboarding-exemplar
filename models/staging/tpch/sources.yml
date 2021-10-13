@@ -2,14 +2,226 @@ version: 2
 
 sources:
   - name: tpch
-    database: snowflake_sample_data
+    description: Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
+    database: raw
     schema: tpch_sf1
     tables:
-      - name: customer
-      - name: lineitem
-      - name: nation
       - name: orders
+        description: main order tracking table
+        freshness: # make this a warning as this is static data
+          warn_after: {count: 6, period: hour}
+          # error_after: {count: 12, period: hour}
+        loaded_at_field: o_orderdate::timestamp
+        
+        columns:
+          - name: o_orderkey
+            description: SF*1,500,000 are sparsely populated
+            tests: 
+              - unique
+              - not_null
+                  
+          - name: o_custkey
+            description: Foreign Key to C_CUSTKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'customer')
+                  field: c_custkey
+          - name: o_orderstatus
+            description: status code of the order
+          - name: o_totalprice
+            description: raw price
+          - name: o_orderdate
+            description: date the order was made
+          - name: o_orderpriority
+            description: code associated with the order
+          - name: o_clerk
+            description: id of the clerk
+          - name: o_shippriority
+            description: numeric representation of the shipping priority, zero being the default
+          - name: o_comment
+            description: '{{ doc("comment") }}'
+          
+      - name: customer
+        description: main customer table
+        columns:
+          - name: c_custkey
+            description: unique customer key
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: c_name
+            description: customer id
+          - name: c_address
+            description: address of the customer
+          - name: c_nationkey
+            description: foreign key to stg_tpch_nations
+          - name: c_phone
+            description: phone number of the customer
+          - name: c_acctbal
+            description: raw account balance 
+          - name: c_mktsegment
+            description: market segment of the customer
+          - name: c_comment
+            description: '{{ doc("comment") }}'
+
+      - name: lineitem
+        description: main lineitem table
+        columns:
+          - name: l_orderkey
+            description: Foreign Key to O_ORDERKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'orders')
+                  field: o_orderkey
+          - name: l_partkey
+            description:  Foreign key to P_PARTKEY, first part of the compound Foreign Key to (PS_PARTKEY,PS_SUPPKEY) with L_SUPPKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'part')
+                  field: p_partkey
+          - name: l_suppkey
+            description: Foreign key to S_SUPPKEY, second part of the compound Foreign Key to (PS_PARTKEY, PS_SUPPKEY) with L_PARTKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'supplier')
+                  field: s_suppkey
+          - name: l_linenumber
+            description: sequence of the order items within the order
+          - name: l_quantity
+            description: total units
+          - name: l_extendedprice
+            description: line item price
+          - name: l_discount
+            description: percentage of the discount
+          - name: l_tax
+            description: tax rate of the order item
+          - name: l_returnflag
+            description: letter determining the status of the return
+          - name: l_linestatus
+            description: status code of the order item
+          - name: l_shipdate
+            description: the date the order item is being shipped
+          - name: l_commitdate
+            description: the date the order item is being commited
+          - name: l_receiptdate
+            description: the receipt date of the order item
+          - name: l_shipinstruct
+            description: additional instructions on the shipment
+          - name: l_shipmode
+            description: method of shipping
+          - name: l_comment
+            description: '{{ doc("comment") }}'
+
+      - name: nation
+        description: nation mapping
+        columns:
+          - name: n_nationkey
+            description: 25 nations are populated
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: n_name
+            description: nation name
+          - name: n_regionkey
+            description: Foreign Key to R_REGIONKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'region')
+                  field: r_regionkey
+          - name: n_comment
+            description: '{{ doc("comment") }}'
+
       - name: part
+        description: main part table
+        columns:
+          - name: p_partkey
+            description: SF*200,000 are populated
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: p_name
+            description: name of the part
+          - name: p_mfgr
+            description: manufacturer of the part
+          - name: p_brand
+            description: brand of the part
+          - name: p_type
+            description: type of part including material
+          - name: p_size
+            description: size of the part
+          - name: p_container
+            description: container of the part
+          - name: p_retailprice
+            description: raw retail price
+          - name: p_comment
+            description: '{{ doc("comment") }}'
+
       - name: partsupp
+        description: main part supplier table
+        columns:
+          - name: ps_partkey
+            description: Foreign Key to P_PARTKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'part')
+                  field: p_partkey
+          - name: ps_suppkey
+            description: Foreign Key to S_SUPPKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'supplier')
+                  field: s_suppkey
+          - name: ps_availqty
+            description: raw available quantity
+          - name: ps_supplycost
+            description: raw cost 
+          - name: ps_comment
+            description: '{{ doc("comment") }}'
+
       - name: region
+        description: region mapping
+        columns:
+          - name: r_regionkey
+            description: 5 regions are populated
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: r_name
+            description: region name
+          - name: r_comment
+            description: '{{ doc("comment") }}'
+
       - name: supplier
+        description: main supplier table
+        columns:
+          - name: s_suppkey
+            description: SF*10,000 are populated
+            tests:
+              - unique:
+                  severity: warn
+              - not_null:
+                  severity: warn
+          - name: s_name
+            description: id of the supplier
+          - name: s_address
+            description: address of the supplier
+          - name: s_nationkey
+            description: Foreign Key to N_NATIONKEY
+            tests:
+              - relationships:
+                  to: source('tpch', 'nation')
+                  field: n_nationkey
+          - name: s_phone
+            description: phone number of the supplier
+          - name: s_acctbal
+            description: raw account balance
+          - name: s_comment
+            description: '{{ doc("comment") }}'
