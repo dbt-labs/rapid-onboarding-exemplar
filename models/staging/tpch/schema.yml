@@ -1,0 +1,184 @@
+version: 2
+
+models:
+  - name: stg_tpch_customers
+    description: staging layer for customers data
+    columns:
+      - name: customer_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: customer id
+      - name: address
+        description: address of the customer
+      - name: nation_id
+        description: foreign id to stg_tpch_nations
+      - name: phone_number
+        description: phone number of the customer
+      - name: account_balance
+        description: total account balance from the customer
+      - name: market_segment
+        description: market segment of the customer
+      - name: comment
+        description: '{{ doc("comment") }}'
+
+  - name: stg_tpch_line_items
+    description: staging layer for line items data
+    columns:
+      - name: order_item_id
+        description: '{{ doc("order_item_id") }}'
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: foreign id to stg_tpch_orders
+      - name: part_id
+        description: foreign id to stg_tpch_part_suppliers
+      - name: supplier_id
+        description: foreign id to stg_tpch_suppliers
+      - name: line_number
+        description: '{{ doc("line_number") }}'
+      - name: quantity
+        description: total units
+      - name: extended_price
+        description: '{{ doc("extended_price") }}'
+      - name: discount_percentage
+        description: '{{ doc("discount_percentage") }}'
+      - name: tax_rate
+        description: tax rate of the order item
+      - name: return_flag
+        description: '{{ doc("return_flag") }}'
+      - name: status_code
+        description: status code of the order item
+      - name: ship_date
+        description: '{{ doc("ship_date") }}'
+      - name: commit_date
+        description: '{{ doc("commit_date") }}'
+      - name: receipt_date
+        description: '{{ doc("receipt_date") }}'
+      - name: ship_instructions
+        description: additional instructions on the shipment
+      - name: ship_mode
+        description: '{{ doc("ship_mode") }}'
+      - name: comment
+        description: '{{ doc("comment") }}'
+
+  - name: stg_tpch_nations
+    description: staging layer for nations data
+    columns:
+      - name: nation_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: nation name
+      - name: region_id
+        description: foreign id to stg_tpch_regions
+      - name: comment
+        description: additional commentary             
+ 
+  - name: stg_tpch_orders
+    description: staging layer for orders data
+    columns:
+      - name: order_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: foreign id to stg_tpch_customers
+      - name: status_code
+        description: status of the order
+      - name: total_price
+        description: raw price
+      - name: order_date
+        description: date the order was made
+      - name: priority_code
+        description: code associated with the order
+      - name: clerk_name
+        description: id of the clerk
+      - name: ship_priority
+        description: numeric representation of the shipping priority, zero being the default
+      - name: comment
+        description: '{{ doc("comment") }}'
+
+  - name: stg_tpch_part_suppliers
+    description: staging layer for suppliers data
+    columns:
+      - name: part_supplier_id
+        description: surrogate id for the model -- combo of ps_partid + ps_suppid
+        tests:
+          - unique
+          - not_null
+      - name: part_id
+        description: foreign id to stg_tpch_parts
+      - name: supplier_id
+        description: foreign id to stg_tpch_suppliers
+      - name: available_quantity
+        description: '{{ doc("available_quantity") }}'
+      - name: cost
+        description: '{{ doc("cost") }}'
+      - name: comment
+        description: '{{ doc("comment") }}'
+            
+  - name: stg_tpch_parts
+    description: staging layer for parts data
+    columns:
+      - name: part_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: name of the part
+      - name: manufacturer
+        description: manufacturer of the part
+      - name: brand
+        description: brand of the part
+      - name: type
+        description: type of part including material
+      - name: size
+        description: size of the part
+      - name: container
+        description: container of the part
+      - name: retail_price
+        description: '{{ doc("retail_price") }}'
+      - name: comment
+        description: '{{ doc("comment") }}'
+
+  - name: stg_tpch_regions
+    description: staging layer for regions data
+    columns:
+      - name: region_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: region name
+      - name: comment
+        description: '{{ doc("comment") }}'
+
+  - name: stg_tpch_suppliers
+    description: staging layer for suppliers data
+    columns:
+      - name: supplier_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: supplier_name
+        description: '{{ doc("supplier_name") }}'
+      - name: supplier_address
+        description: '{{ doc("supplier_address") }}'
+      - name: nation_id
+        description: foreign id to stg_tpch_nations
+      - name: phone_number
+        description: '{{ doc("phone_number") }}'
+      - name: account_balance
+        description: '{{ doc("account_balance") }}'
+      - name: comment
+        description: '{{ doc("comment") }}'
