@@ -165,3 +165,14 @@ models:
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
+
+  - name: agg_customer_orders
+    description: Aggregated orders data by customer
+    columns:
+      - name: customer_id
+        description: Primary key for customers
+        tests:
+          - unique
+          - not_null
+      - name: total_sales
+        description: Sum of gross items sales amount by customer
