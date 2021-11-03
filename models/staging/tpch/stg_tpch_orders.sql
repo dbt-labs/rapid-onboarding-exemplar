@@ -13,6 +13,7 @@ renamed as (
         o_custkey as customer_id,
         
         -- descriptions
+        'tpch' as order_source,
         o_comment as comment,
         o_clerk as clerk_name,
 
