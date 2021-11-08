@@ -13,3 +13,19 @@ models:
     columns:
       - name: order_year
         description: year of the order
+
+  - name: agg_regions_segments
+    columns:
+      - name: region
+        tests:
+          - accepted_values:
+              values: ['MIDDLE EAST','AFRICA','EUROPE','ASIA','AMERICA']
+
+      - name: market_segment
+        tests:
+          - accepted_values:
+              values: ['HOUSEHOLD','AUTOMOBILE','FURNITURE','BUILDING','MACHINERY']
+
+      - name: total_sales
+        tests:
+          - not_null
