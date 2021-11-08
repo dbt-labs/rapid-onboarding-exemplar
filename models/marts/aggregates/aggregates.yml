@@ -15,17 +15,21 @@ models:
         description: year of the order
 
   - name: agg_regions_segments
+    description: Aggregated model by region and segment.
     columns:
       - name: region
+        description: One of the five global regions.
         tests:
           - accepted_values:
               values: ['MIDDLE EAST','AFRICA','EUROPE','ASIA','AMERICA']
 
       - name: market_segment
+        description: One of the five market segments.
         tests:
           - accepted_values:
               values: ['HOUSEHOLD','AUTOMOBILE','FURNITURE','BUILDING','MACHINERY']
 
       - name: total_sales
+        description: Total sales for the region and market segment.
         tests:
           - not_null
