@@ -1,0 +1,1 @@
+select * from {{ source('quickbooks_inc', 'invoices') }}

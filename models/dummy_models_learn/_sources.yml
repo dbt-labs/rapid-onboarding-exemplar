@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+    - name: cloud_postgres
+      database: snowflake_sample_data
+      schema: tpch_sf1
+      tables:
+        - name: database_account
+          identifier: orders
+    - name: trello
+      database: snowflake_sample_data
+      schema: tpch_sf1
+      tables:
+        - name: boards
+          identifier: orders
+        - name: cards
+          identifier: orders
+        - name: users
+          identifier: orders
+    - name: stripe
+      database: snowflake_sample_data
+      schema: tpch_sf1
+      tables:
+        - name: charges
+          identifier: orders
+        - name: customers
+          identifier: orders
+        - name: invoices
+          identifier: orders
+        - name: subscriptions
+          identifier: orders
+    - name: quickbooks
+      database: snowflake_sample_data
+      schema: tpch_sf1
+      tables:
+        - name: invoices
+          identifier: orders
+        - name: customers
+          identifier: orders
+    - name: quickbooks_inc
+      database: snowflake_sample_data
+      schema: tpch_sf1
+      tables:
+        - name: invoices
+          identifier: orders
+        - name: customers
+          identifier: orders

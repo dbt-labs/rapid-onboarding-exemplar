@@ -1,0 +1,1 @@
+{{ ref('int_quickbooks_invoices') }}

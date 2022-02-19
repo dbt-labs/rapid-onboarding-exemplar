@@ -1,0 +1,1 @@
+select * from {{ ref('stg_cloud_postgres__database_accounts') }}

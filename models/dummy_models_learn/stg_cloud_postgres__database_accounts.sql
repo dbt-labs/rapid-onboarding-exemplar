@@ -1,0 +1,1 @@
+select * from {{ source('cloud_postgres', 'database_account') }}
