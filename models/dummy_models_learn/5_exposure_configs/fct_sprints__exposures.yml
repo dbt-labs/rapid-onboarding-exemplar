@@ -1,0 +1,45 @@
+version: 2
+
+exposures:
+  
+  - name: sprints_by_label
+    type: dashboard
+    maturity: high
+    url: https://bi.tool/dashboards/1
+    description: >
+      Sprints by label
+    
+    depends_on:
+      - ref('fct_sprints')
+      
+    owner:
+      name: Christine in Data
+      email: data@jaffleshop.com
+
+  - name: sprints_by_owner
+    type: dashboard
+    maturity: high
+    url: https://bi.tool/dashboards/1
+    description: >
+      Sprints by owner
+    
+    depends_on:
+      - ref('fct_sprints')
+      
+    owner:
+      name: Christine in Data
+      email: data@jaffleshop.com
+
+  - name: tasks_by_sprint
+    type: dashboard
+    maturity: high
+    url: https://bi.tool/dashboards/1
+    description: >
+      Sprints by owner
+    
+    depends_on:
+      - ref('fct_sprints')
+      
+    owner:
+      name: Christine in Data
+      email: data@jaffleshop.com

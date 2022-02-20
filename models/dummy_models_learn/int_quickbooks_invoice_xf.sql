@@ -1,1 +1,0 @@
-select * from {{ ref('int_quickbooks_invoices') }}
