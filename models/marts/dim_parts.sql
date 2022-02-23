@@ -6,6 +6,7 @@
 with part as (
 
     select * from {{ref('stg_tpch_parts')}}
+    where 1=1
 
 ),
 
