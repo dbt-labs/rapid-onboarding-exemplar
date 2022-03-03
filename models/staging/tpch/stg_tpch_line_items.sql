@@ -9,6 +9,7 @@ renamed as (
     select
 
         -- ids
+        
         {{ dbt_utils.surrogate_key(
             ['l_orderkey', 
             'l_linenumber']) }}
