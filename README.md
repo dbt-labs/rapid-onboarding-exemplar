@@ -1,17 +1,16 @@
-# {{ organization_name }} Analytics
+# dbt Training - Rapid Onboarding Exemplar
 
-This is a [dbt](https://www.getdbt.com) project for managing {{ organization_name }}'s analytics project.
+This is a [dbt](https://www.getdbt.com) project for dbt Lab's Rapid Onboarding training.
 
 Our analytics stack:
-- Loader: {{ your_data_loading_tools }}
-- Warehouse: {{ your_warehouse }}
+- Loader: Snowflake's TPCH sample data
+- Warehouse: Snowflake
 - Transformation: dbt
-- Business Intelligence: {{ your_bi_tool }}
 
 ## Permissions
 
-Access to the {{ warehouse }} warehouse is managed on a per-user basis by {{ person_or_team_name }}. 
-If you need access, open a request in {{ tool_or_location }} by {{ best_way_to_write_request }}.
+Access to the Snowflake warehouse is managed on a per-user basis by the training team. 
+If you need access, open a request in the #training-rapid-onboarding Slack channel.
 
 ## Using This Project
 
@@ -20,8 +19,8 @@ If you need access, open a request in {{ tool_or_location }} by {{ best_way_to_w
   <summary>Developing in the Cloud IDE</summary>
   <p></p>
   
-  The easiest way to contribute to this project is by developing in dbt Cloud. Contact {{ person_or_team_name }}. 
-  If you need access, open a request in {{ tool_or_location }} by {{ best_way_to_write_request }}.
+  The easiest way to contribute to this project is by developing in dbt Cloud. If you need access, contact the training team
+  in the #training-rapid-onboarding Slack channel.
   
   Once you have access, navigate to the develop tab in the menu and fill out any required information to get connected.
   
@@ -73,7 +72,7 @@ If you need access, open a request in {{ tool_or_location }} by {{ best_way_to_w
       | target: dev                   | This is the default environment that will be used during our runs.                                               |
       | outputs:                      | This is a prompt to start defining targets and their configurations. You likely won't need more than `dev`, but this and any other targets you define can be used to accomplish certain functionalities throughout dbt.|
       | dev:                          | This is defining a target named `dev`.                                                                           |
-      | type: [warehous_name]         | This is the type of target connection we are using, based on our warehouse.                                      |
+      | type: [warehouse_name]        | This is the type of target connection we are using, based on our warehouse.                                      |
       | threads: 8                    | This is the amount of concurrent models that can run against our warehouse, for this user, at one time when conducting a `dbt run` |
       | account: [abc12345.us-west-1] | Change this out to the warehouse's account.                                                                      |
       | user: [your_username]         | Change this to use your own username that you use to log in to the warehouse                                     |
