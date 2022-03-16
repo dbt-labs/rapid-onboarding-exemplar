@@ -4,12 +4,7 @@
     )
 }}
 
-with orders as (
-    
-    select * from {{ ref('stg_tpch_orders') }} 
-
-),
-order_item as (
+with order_item as (
     
     select * from {{ ref('order_items') }}
 
@@ -30,13 +25,13 @@ final as (
 
     select 
 
-        orders.order_id, 
-        orders.order_date,
-        orders.customer_id,
-        orders.status_code,
-        orders.priority_code,
-        orders.clerk_name,
-        orders.ship_priority,
+        order_item.order_id, 
+        order_item.order_date,
+        order_item.customer_id,
+        order_item.order_status_code,
+        order_item.priority_code,
+        order_item.clerk_name,
+        order_item.ship_priority,
                 
         1 as order_count,                
         order_item_summary.gross_item_sales_amount,
@@ -44,9 +39,9 @@ final as (
         order_item_summary.item_tax_amount,
         order_item_summary.net_item_sales_amount
     from
-        orders
-        inner join order_item_summary
-            on orders.order_id = order_item_summary.order_id
+        order_item
+    inner join order_item_summary
+            on order_item.order_id = order_item_summary.order_id
 )
 select 
     *
