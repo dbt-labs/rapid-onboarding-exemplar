@@ -6,12 +6,12 @@
 
 with order_item as (
     
-    select * from {{ ref('order_items') }}
+    select * from {{ ref('order_items_joined') }}
 
 ),
 part_supplier as (
     
-    select * from {{ ref('part_suppliers') }}
+    select * from {{ ref('part_suppliers_joined') }}
 
 ),
 final as (
