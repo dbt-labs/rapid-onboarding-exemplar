@@ -1,9 +1,3 @@
-{{
-    config(
-        materialized = 'table'
-    )
-}}
-
 with supplier as (
 
     select * from {{ ref('stg_tpch_suppliers') }}

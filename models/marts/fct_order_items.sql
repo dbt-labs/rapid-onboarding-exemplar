@@ -1,6 +1,5 @@
 {{
     config(
-        materialized = 'table',
         tags = ['finance']
     )
 }}
