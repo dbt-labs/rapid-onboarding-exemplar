@@ -1,6 +1,17 @@
 version: 2
 
 models:
+  - name: agg_customer_orders
+    description: Aggregated orders data by customer
+    columns:
+      - name: customer_id
+        description: Primary key for customers
+        tests:
+          - unique
+          - not_null
+      - name: total_sales
+        description: Sum of gross items sales amount by customer
+
   # These two models are just different ways of doing the same thing (pivot over categories) using jinja and the PIVOT operation in Snowflake
   - name: agg_ship_modes_hardcoded_pivot
     description: Example of creating a pivot table with dynamic columns based on the ship modes that are in the system
