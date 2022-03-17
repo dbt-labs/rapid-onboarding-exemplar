@@ -12,19 +12,6 @@ models:
       - name: total_sales
         description: Sum of gross items sales amount by customer
 
-  # These two models are just different ways of doing the same thing (pivot over categories) using jinja and the PIVOT operation in Snowflake
-  - name: agg_ship_modes_hardcoded_pivot
-    description: Example of creating a pivot table with dynamic columns based on the ship modes that are in the system
-    columns:
-      - name: order_year
-        description: year of the order
-
-  - name: agg_ship_modes_dynamic_pivot
-    description: Example of creating a pivot table with hard-coded columns based on a query of the ship modes that are in the system
-    columns:
-      - name: order_year
-        description: year of the order
-
   - name: agg_regions_segments
     description: Aggregated model by region and segment.
     columns:
@@ -44,3 +31,16 @@ models:
         description: Total sales for the region and market segment.
         tests:
           - not_null
+
+  # These two models are just different ways of doing the same thing (pivot over categories) using jinja and the PIVOT operation in Snowflake
+  - name: agg_ship_modes_dynamic_pivot
+    description: Example of creating a pivot table with hard-coded columns based on a query of the ship modes that are in the system
+    columns:
+      - name: order_year
+        description: year of the order
+
+  - name: agg_ship_modes_hardcoded_pivot
+    description: Example of creating a pivot table with dynamic columns based on the ship modes that are in the system
+    columns:
+      - name: order_year
+        description: year of the order
