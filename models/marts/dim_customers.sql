@@ -1,6 +1,6 @@
 {{
     config(
-        materialized = 'table',
+        materialized = 'view',
         transient=false
     )
 }}
@@ -8,7 +8,7 @@
 with customer as (
 
     select * from {{ ref('stg_tpch_customers') }}
-
+-- changes
 ),
 nation as (
 
