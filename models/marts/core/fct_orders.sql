@@ -6,7 +6,7 @@
 
 with order_item as (
     
-    select * from {{ ref('order_items_joined') }}
+    select * from {{ ref('int_order_items_joined') }}
 
 ),
 

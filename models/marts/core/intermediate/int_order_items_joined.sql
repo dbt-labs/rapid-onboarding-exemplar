@@ -6,7 +6,7 @@ with orders as (
 
 line_item as (
 
-    select * from {{ ref('line_items_amounts_calculated') }}
+    select * from {{ ref('int_line_items_amounts_calculated') }}
 
 )
 select 

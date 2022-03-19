@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: line_items_amounts_calculated
+  - name: int_line_items_amounts_calculated
     description: Intermediate model where we calculate item price, discounts and tax. This model is at the order item level.
     columns:
       - name: order_item_id
@@ -52,7 +52,7 @@ models:
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
 
-  - name: order_items_joined
+  - name: int_order_items_joined
     description: Intermediate model joining orders and line items. This model is at the order item level.
     tags:
       - output_table_type|orders
@@ -117,7 +117,7 @@ models:
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
   
-  - name: part_suppliers_joined
+  - name: int_part_suppliers_joined
     description: Intermediate model where we join part, supplier and part_supplier. This model is at the part supplier level.
     columns:
       - name: part_supplier_id
