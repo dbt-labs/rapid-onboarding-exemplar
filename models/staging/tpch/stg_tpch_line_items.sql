@@ -9,10 +9,10 @@ renamed as (
     select
 
         -- ids
-        {{ dbt_utils.surrogate_key(
-            ['l_orderkey', 
-            'l_linenumber']) }}
-                as order_item_id,
+        {{ dbt_utils.surrogate_key([
+            'l_orderkey', 
+            'l_linenumber'
+        ]) }} as order_item_id,
         l_orderkey as order_id,
         l_partkey as part_id,
         l_suppkey as supplier_id,
@@ -30,7 +30,7 @@ renamed as (
         l_tax as tax_rate,
         
         -- status
-        l_linestatus as status_code,
+        l_linestatus as order_item_status_code,
         l_returnflag as return_flag,
         
         -- dates

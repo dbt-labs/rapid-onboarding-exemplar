@@ -20,7 +20,7 @@ renamed as (
         o_totalprice as total_price,
 
         -- statuses
-        o_orderstatus as status_code,
+        o_orderstatus as order_status_code,
         o_orderpriority as priority_code,
         o_shippriority as ship_priority,
 
