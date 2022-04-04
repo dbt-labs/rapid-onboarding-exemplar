@@ -1,12 +1,15 @@
-with source as (
+with
+
+source as (
 
     select * from {{ source('tpch', 'customer') }}
 
 ),
 
-renamed as (
+transformed as (
 
     select
+
         -- ids
         c_custkey as customer_id,
         c_nationkey as nation_id,
@@ -19,8 +22,9 @@ renamed as (
         c_mktsegment as market_segment,
         c_comment as comment
 
+
     from source
 
 )
 
-select * from renamed
+select * from transformed
