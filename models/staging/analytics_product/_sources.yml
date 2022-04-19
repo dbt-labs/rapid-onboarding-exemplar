@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: analytics_product
+    schema: analytics_product
+    tables:
+      - name: zip_to_region_mappings_credibility
+      - name: master_agency_code

@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: ppa
+    schema: edw_dm_ppa_v
+    tables:
+      - name: coverage_earned_premium_fact_v
+      - name: policy_trx_v
+      
+  - name: ba
+    schema: edw_dm_ba_v
+    tables:
+      - name: coverage_earned_premium_fact_v
+      - name: policy_trx_v
+      
+  - name: ho
+    schema: edw_dm_ho_v
+    tables:
+      - name: coverage_earned_premium_fact_v
+      - name: policy_trx_v
+      
+  - name: ll
+    schema: edw_dm_ll_v
+    tables:
+      - name: coverage_earned_premium_fact_v
+      - name: policy_trx_v
+      
+  - name: cmp
+    schema: edw_dm_cmp_v
+    tables:
+      - name: coverage_earned_premium_fact_v
+      - name: policy_trx_v
+      
+  - name: cmp_phx
+    schema: dwhub_cmp_df_v
+    tables:
+      - name: policy_premium_monthly_fact_view
+      - name: policy_transaction_view

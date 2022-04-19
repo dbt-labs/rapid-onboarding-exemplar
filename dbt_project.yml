@@ -1,7 +1,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'rapid_onboarding_exemplar'
+name: 'mi_rapid_onboarding'
 version: '1.0.0'
 config-version: 2
 require-dbt-version: '>=1.0.0'
@@ -24,14 +24,46 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "target"
     - "dbt_modules"
 
+vars:
+    start_date: "cast('2019-01-01' as date)"
+    end_date: "cast('2021-12-31' as date)"
+    end_trans_date: "cast('2022-03-31' as date)"
+    min_year: 1930
+    max_year: 2900
+    min_loss: 10.0
+    lrr_green_auto_6mo_mod1: 0.8000
+    lrr_green_auto_6mo_mod2: 0.8500
+    lrr_green_auto_6mo_mod3: 0.8800
+    lrr_green_auto_6mo_mod4: 0.9100
+    lrr_green_auto_6mo_mod5: 0.9300
+    lrr_green_auto_6mo_mod6: 0.9450
+    lrr_green_auto_6mo_mod7: 0.9600
+    lrr_green_auto_6mo_mod8: 0.9725
+    lrr_green_auto_6mo_mod9: 0.9850
+    lrr_green_auto_6mo_mod10: 0.9950
+    lrr_green_auto_1yr_mod1: 0.9350
+    lrr_green_auto_1yr_mod2: 0.9850
+    lrr_green_prop_1yr_mod1: 0.8850
+    lrr_green_prop_1yr_mod2: 0.9450
+    lrr_green_prop_1yr_mod3: 0.9800
+    loss_cap_ppa: 50000   # phu caps each coverage at $25k in ppa cube
+    loss_cap_ba: 100000   # originally had $75k, but too many large losses
+    loss_cap_ho: 150000   # originally had $100k, but phu caps at $150k in ho cube
+    loss_cap_df: 150000
+    loss_cap_ll: 200000
+    loss_cap_cmp: 250000
+    
+    # Previous Five Year Range
+    last_5yr_start: "(year(current_date) - 5) || '01'"
+    last_5yr_end: "(year(current_date) - 1) || '12'"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 models:
-  rapid_onboarding_exemplar:
+  mi_rapid_onboarding:
+    reports:
+      +materialized: table
     marts:
       +materialized: table
-      intermediate:
-        +materialized: view
     staging:
       +materialized: view
