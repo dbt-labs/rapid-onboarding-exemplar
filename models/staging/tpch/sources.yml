@@ -6,6 +6,7 @@ sources:
     database: snowflake_sample_data
     schema: tpch_sf1
     tables:
+      - name: grace_table
       - name: orders
         description: main order tracking table
         freshness: # make this a warning as this is static data
