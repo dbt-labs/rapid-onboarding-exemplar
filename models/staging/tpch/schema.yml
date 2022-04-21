@@ -85,10 +85,10 @@ models:
     columns:
       - name: order_id
         description: primary id of the model
+      - name: customer_id
         tests:
           - unique
           - not_null
-      - name: customer_id
         description: foreign id to stg_tpch_customers
       - name: order_status_code
         description: status of the order
