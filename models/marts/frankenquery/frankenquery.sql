@@ -27,7 +27,7 @@ joined as (
   from customers_orders
     left outer join payments
       on customers_orders.order_id = payments.orderid
-      where cusomters_orders.order_status NOT IN ('pending') and payments.status != 'fail'
+      where customers_orders.order_status NOT IN ('pending') and payments.status != 'fail'
       group by customers_orders.customer_id, customers_orders.name, customers_orders.last_name, customers_orders.first_name
 )
 
