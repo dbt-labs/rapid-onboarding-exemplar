@@ -29,8 +29,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 models:
   rapid_onboarding_exemplar:
+    +materialized: table
     marts:
       +materialized: table
+      
       intermediate:
         +materialized: view
     staging:
