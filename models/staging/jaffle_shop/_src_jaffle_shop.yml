@@ -6,9 +6,4 @@ sources:
     schema: jaffle_shop
     tables:
       - name: orders
-        columns: 
-          - name: id
-            tests:
-              - unique
       - name: customers
-
