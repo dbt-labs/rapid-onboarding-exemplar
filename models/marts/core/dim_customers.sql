@@ -1,6 +1,6 @@
 {{
     config(
-        transient = false
+        transient = true
     )
 }}
 
