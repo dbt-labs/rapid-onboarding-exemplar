@@ -18,6 +18,7 @@ renamed as (
 
         -- numbers
         o_totalprice as total_price,
+        'elize' as analytics_engineer,
 
         -- statuses
         o_orderstatus as order_status_code,
