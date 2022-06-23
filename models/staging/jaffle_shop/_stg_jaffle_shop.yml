@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_jaffle_shop_customers
+    description: '{{ doc("jaffle_shop_customers") }}'
+    columns:
+      - name: id
+        description: Primary key, customer id
+        tests:
+          - not_null
+          - unique
+  - name: stg_jaffle_shop_orders
+    description: '{{ doc("jaffle_shop_orders") }}'
