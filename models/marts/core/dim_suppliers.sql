@@ -21,7 +21,8 @@ final as (
         nation.name as nation,
         region.name as region,
         supplier.phone_number,
-        supplier.account_balance
+        supplier.account_balance,
+        null as example
     from
         supplier
     inner join nation
