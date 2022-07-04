@@ -17,7 +17,7 @@ models:
               severity: warn
       - name: name
         description: customer id
-      - name: address
+       - name: address
         description: address of the customer
       - name: nation
         description: nation name
