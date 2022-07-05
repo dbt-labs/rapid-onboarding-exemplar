@@ -1,3 +1,5 @@
+{{config(materialized='view')}}
+
 with
 
 customers_orders as (
