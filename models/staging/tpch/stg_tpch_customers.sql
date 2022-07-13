@@ -18,7 +18,7 @@ renamed as (
         c_acctbal as account_balance,
         c_mktsegment as market_segment,
         c_comment as comment,
-        false as is_false
+        false as is_false2
 
     from source
 
