@@ -24,6 +24,7 @@ models:
       - name: comment
         description: '{{ doc("comment") }}'
 
+
   - name: stg_tpch_line_items
     description: staging layer for line items data
     columns:
