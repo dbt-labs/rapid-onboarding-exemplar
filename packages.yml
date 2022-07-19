@@ -2,4 +2,6 @@ packages:
   - package: dbt-labs/codegen
     version: 0.5.0
   - package: dbt-labs/dbt_utils
-    version: 0.8.2
+    version: 0.8.6
+  - git: "https://github.com/dbt-labs/dbt-information-schema.git"
+    revision: add_run_results_json
