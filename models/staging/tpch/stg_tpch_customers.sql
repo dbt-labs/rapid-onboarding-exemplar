@@ -11,6 +11,7 @@ renamed as (
         c_custkey as customer_id,
         c_nationkey as nation_id,
 
+
         -- descriptions
         c_name as name,
         c_address as address,
