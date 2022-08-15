@@ -23,9 +23,9 @@ final as (
         customer.customer_id,
         customer.name,
         customer.address,
-        {# nation.nation_id as nation_id, #}
+        nation.nation_id as nation_id,
         nation.name as nation,
-        {# region.region_id as region_id, #}
+        region.region_id as region_id,
         region.name as region,
         customer.phone_number,
         customer.account_balance,
