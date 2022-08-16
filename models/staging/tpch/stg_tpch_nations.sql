@@ -11,6 +11,7 @@ renamed as (
         -- ids
         n_nationkey as nation_id,
         n_regionkey as region_id,
+        'this is a nation' as new_col,
 
         -- descriptions
         n_name as name,
