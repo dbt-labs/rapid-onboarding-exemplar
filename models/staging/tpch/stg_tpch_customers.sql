@@ -8,7 +8,7 @@ renamed as (
 
     select
         -- ids
-        c_custkey as customer_id,
+        c_custkey as customer_id ,
         c_nationkey as nation_id,
 
         -- descriptions
