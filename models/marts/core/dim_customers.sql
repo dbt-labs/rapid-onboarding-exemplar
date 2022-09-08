@@ -30,7 +30,7 @@ final as (
         customer.phone_number,
         customer.account_balance,
         customer.market_segment,
-        false as is_carol
+        true as is_carol
     from
         customer
         inner join nation
