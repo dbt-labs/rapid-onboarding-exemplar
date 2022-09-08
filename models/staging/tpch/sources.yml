@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: tpch
     description: Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs.snowflake.com/en/user-gukeye/sample-data-tpch.html) to create a sample project to emulate what a production project might look like!
-    database: snowflake_sample_data
+    database: sample_data
     schema: tpch_sf1
     tables:
       - name: orders
