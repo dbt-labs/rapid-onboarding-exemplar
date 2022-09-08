@@ -182,3 +182,22 @@ models:
         description: '{{ doc("account_balance") }}'
       - name: comment
         description: '{{ doc("comment") }}'
+
+  - name: stg_tpch_suppliers_test
+    description: staging layer for suppliers data 2
+    columns:
+      - name: supplier_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: supplier_name
+        description: '{{ doc("supplier_name") }}'
+      - name: supplier_address
+        description: '{{ doc("supplier_address") }}'
+      - name: nation_id
+        description: foreign id to stg_tpch_nations
+      - name: phone_number
+        description: '{{ doc("phone_number") }}'
+      - name: account_balance
+        description: '{{ doc("account_balance") }}'      
