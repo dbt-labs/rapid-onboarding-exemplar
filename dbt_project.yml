@@ -30,7 +30,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   rapid_onboarding_exemplar:
     marts:
-      +materialized: table
+      +materialized: view
       intermediate:
         +materialized: view
     staging:
