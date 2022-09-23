@@ -1,6 +1,6 @@
 with orders as (
-    
-    select * from {{ ref('stg_tpch_orders') }}
+
+    select * from {{ ref('stg_tpch__orders') }}
 
 ),
 
@@ -9,7 +9,7 @@ line_item as (
     select * from {{ ref('int_line_items_amounts_calculated') }}
 
 )
-select 
+select
 
     line_item.order_item_id,
     orders.order_id,
@@ -22,7 +22,7 @@ select
     orders.priority_code,
     orders.clerk_name,
     orders.ship_priority,
-    
+
     line_item.return_flag,
     line_item.line_number,
     line_item.order_item_status_code,
@@ -32,7 +32,7 @@ select
     line_item.ship_mode,
     line_item.extended_price,
     line_item.quantity,
-    
+
     line_item.base_price,
     line_item.discount_percentage,
     line_item.discounted_price,
