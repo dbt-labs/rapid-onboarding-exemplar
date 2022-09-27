@@ -1,3 +1,7 @@
+{{ config(
+    schema='marketing'
+)}}
+
 with source as (
 
     select * from {{ source('tpch', 'supplier') }}

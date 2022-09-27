@@ -41,30 +41,6 @@ sources:
           - name: o_comment
             description: '{{ doc("comment") }}'
           
-      - name: customer
-        description: main customer table
-        columns:
-          - name: c_custkey
-            description: unique customer key
-            tests:
-              - unique:
-                  severity: warn
-              - not_null:
-                  severity: warn
-          - name: c_name
-            description: customer key
-          - name: c_address
-            description: address of the customer
-          - name: c_nationkey
-            description: foreign key to stg_tpch_nations
-          - name: c_phone
-            description: phone number of the customer
-          - name: c_acctbal
-            description: raw account balance 
-          - name: c_mktsegment
-            description: market segment of the customer
-          - name: c_comment
-            description: '{{ doc("comment") }}'
 
       - name: lineitem
         description: main lineitem table
