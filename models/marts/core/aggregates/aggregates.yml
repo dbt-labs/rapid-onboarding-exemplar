@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: agg_customer_orders
+    description: Aggregated orders data by customer
+    columns:
+      - name: customer_id
+        description: Primary key for customers
+        tests:
+          - unique
+          - not_null
+      - name: total_sales
+        description: Sum of gross items sales amount by customer
+
+  - name: agg_regions_segments
+    description: Aggregated model by region and segment.
+    columns:
+      - name: region
+        description: One of the five global regions.
+        tests:
+          - accepted_values:
+              values: ['MIDDLE EAST','AFRICA','EUROPE','ASIA','AMERICA']
+
+      - name: market_segment
+        description: One of the five market segments.
+        tests:
+          - accepted_values:
+              values: ['HOUSEHOLD','AUTOMOBILE','FURNITURE','BUILDING','MACHINERY']
+
+      - name: total_sales
+        description: Total sales for the region and market segment.
+        tests:
+          - not_null
+
+  # These two models are just different ways of doing the same thing (pivot over categories) using jinja and the PIVOT operation in Snowflake
+  - name: agg_ship_modes_dynamic_pivot
+    description: Example of creating a pivot table with hard-coded columns based on a query of the ship modes that are in the system
+    columns:
+      - name: order_year
+        description: year of the order
+
+  - name: agg_ship_modes_hardcoded_pivot
+    description: Example of creating a pivot table with dynamic columns based on the ship modes that are in the system
+    columns:
+      - name: order_year
+        description: year of the order

@@ -50,7 +50,7 @@ models:
         description: tax rate of the order item
       - name: return_flag
         description: '{{ doc("return_flag") }}'
-      - name: status_code
+      - name: order_item_status_code
         description: status code of the order item
       - name: ship_date
         description: '{{ doc("ship_date") }}'
@@ -90,7 +90,7 @@ models:
           - not_null
       - name: customer_id
         description: foreign id to stg_tpch_customers
-      - name: status_code
+      - name: order_status_code
         description: status of the order
       - name: total_price
         description: raw price
