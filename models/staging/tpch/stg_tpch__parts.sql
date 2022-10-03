@@ -19,6 +19,7 @@ renamed as (
         p_brand as brand,
         p_comment as comment,
         p_container as container,
+        true as new_col,
 
         -- amounts
         p_retailprice as retail_price
