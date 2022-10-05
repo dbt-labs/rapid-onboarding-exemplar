@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Customer dimensions table
+    columns:
+      - name: customer_id
+        description: Primary id on the customers table
+        tests:
+          - unique
+          - not_null
+      - name: region
+        description: region name
+        tests:
+          - accepted_values:
+              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
+              severity: warn
+      - name: name
+        description: customer id
+      - name: address
+        description: address of the customer
+      - name: nation
+        description: nation name
+      - name: phone_number
+        description: phone number of the customer
+      - name: account_balance
+        description: '{{ doc("account_balance") }}'
+      - name: market_segment
+        description: market segment of the customer

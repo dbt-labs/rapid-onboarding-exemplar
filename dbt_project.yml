@@ -31,7 +31,7 @@ models:
   rapid_onboarding_exemplar:
     marts:
       +materialized: table
-      intermediate:
-        +materialized: view
+    intermediate:
+      +materialized: view
     staging:
       +materialized: view
