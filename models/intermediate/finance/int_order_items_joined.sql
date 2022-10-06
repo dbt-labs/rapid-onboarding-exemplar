@@ -22,11 +22,6 @@ select
     orders.priority_code,
     orders.clerk_name,
     orders.ship_priority,
-<<<<<<< HEAD:models/marts/core/intermediate/int_order_items_joined.sql
-    false as is_carol,
-=======
-
->>>>>>> d02a0445644793ec0edd73c2b3e95260f9620e48:models/intermediate/finance/int_order_items_joined.sql
     line_item.return_flag,
     line_item.line_number,
     line_item.order_item_status_code,
