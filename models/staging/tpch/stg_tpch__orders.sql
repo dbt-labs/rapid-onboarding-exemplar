@@ -25,7 +25,11 @@ renamed as (
         o_shippriority as ship_priority,
 
         -- dates
-        o_orderdate as order_date
+        o_orderdate as order_date,
+
+        sum(total_price) over (partition by customer_id order by order_date rows between unbounded preceding and current row) as running_customer_lifetime_value,
+        count(order_id) over (partition by customer_id) as total_customer_order_count,
+        row_number() over (partition by customer_id order by order_date) as customer_order_sequence
 
     from source
 
