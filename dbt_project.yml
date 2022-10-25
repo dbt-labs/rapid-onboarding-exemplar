@@ -32,9 +32,8 @@ models:
     +materialized: table
     marts:
       +materialized: table
-      
-      intermediate:
-        +materialized: view
+    intermediate:
+      +materialized: view
     staging:
       +materialized: view
 

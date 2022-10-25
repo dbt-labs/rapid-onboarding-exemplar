@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: dim_parts
+    description: Parts dimensions table
+    columns:
+      - name: part_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: manufacturer
+        description: manufacturer of the part
+      - name: name
+        description: name of the part
+      - name: brand
+        description: brand of the part
+      - name: type
+        description: type of part including material
+      - name: size
+        description: size of the part
+      - name: container
+        description: container of the part
+      - name: retail_price
+        description: '{{ doc("retail_price") }}'
+
+  - name: dim_suppliers
+    description: Suppliers dimensions table
+    columns:
+      - name: supplier_id
+        description: primary id of the model
+        tests:
+          - unique
+          - not_null
+      - name: supplier_name
+        description: '{{ doc("supplier_name") }}'
+      - name: supplier_address
+        description: '{{ doc("supplier_address") }}'
+      - name: nation
+        description: nation name
+      - name: region
+        description: region name
+      - name: phone_number
+        description: '{{ doc("phone_number") }}'
+      - name: account_balance
+        description: '{{ doc("account_balance") }}'
