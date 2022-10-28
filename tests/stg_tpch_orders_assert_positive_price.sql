@@ -6,8 +6,10 @@
     )
 }}
 
-with orders as ( select * from {{ ref('stg_tpch_orders') }} )
+with orders as (
+    select * from {{ ref('stg_tpch__orders') }}
+)
 
 select *
-from   orders 
-where  total_price < 0
+from orders
+where total_price < 0
