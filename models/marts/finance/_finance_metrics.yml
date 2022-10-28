@@ -1,0 +1,17 @@
+version: 2
+
+metrics:
+  - name: total_sales
+    label: Total Sales
+    model: ref('fct_orders')
+    description: "The total gross_item_sales_amount from all orders"
+
+    type: sum
+    sql: gross_item_sales_amount 
+
+    timestamp: order_date
+    time_grains: [day, week, month, quarter, year]
+
+    dimensions:
+      - ship_priority
+      - customer_id
