@@ -1,8 +1,15 @@
 {{
     config(
-        tags = ['finance']
+        tags = ['finance'],
+        materialized='incremental',
+        unique_key='order_item_id',
+        incremental_strategy='delete+insert'
+
+
+        
     )
 }}
+
 
 with order_item as (
     
@@ -49,6 +56,12 @@ final as (
         inner join part_supplier
             on order_item.part_id = part_supplier.part_id and
                 order_item.supplier_id = part_supplier.supplier_id
+    -- adding for incremental testing
+    where
+    1=1
+    {% if is_incremental() %}
+    and receipt_date > (select max(receipt_date) from {{ this }})
+    {% endif %}
 )
 select 
     *
