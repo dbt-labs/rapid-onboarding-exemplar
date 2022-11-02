@@ -1,81 +1,6 @@
 version: 2
 
 models:
-  - name: dim_customers
-    description: Customer dimensions table
-    columns:
-      - name: customer_id
-        description: Primary id on the customers table
-        tests:
-          - unique
-          - not_null
-      - name: region
-        description: region name
-        tests:
-          - accepted_values:
-              values: [
-                'AFRICA',
-                'MIDDLE EAST',
-                'ASIA','EUROPE','AMERICA']
-              severity: warn
-      - name: name
-        description: customer id
-      - name: address
-        description: address of the customer
-      - name: nation
-        description: nation name
-      - name: phone_number
-        description: phone number of the customer
-      - name: account_balance
-        description: '{{ doc("account_balance") }}'
-      - name: market_segment
-        description: market segment of the customer
-
-
-  - name: dim_parts
-    description: Parts dimensions table
-    columns:
-      - name: part_id
-        description: primary id of the model
-        tests:
-          - unique
-          - not_null
-      - name: manufacturer
-        description: manufacturer of the part
-      - name: name
-        description: name of the part
-      - name: brand
-        description: brand of the part
-      - name: type
-        description: type of part including material
-      - name: size
-        description: size of the part
-      - name: container
-        description: container of the part
-      - name: retail_price
-        description: '{{ doc("retail_price") }}'
-
-  - name: dim_suppliers
-    description: Suppliers dimensions table
-    columns:
-      - name: supplier_id
-        description: primary id of the model
-        tests:
-          - unique
-          - not_null
-      - name: supplier_name
-        description: '{{ doc("supplier_name") }}'
-      - name: supplier_address
-        description: '{{ doc("supplier_address") }}'
-      - name: nation
-        description: nation name
-      - name: region
-        description: region name
-      - name: phone_number
-        description: '{{ doc("phone_number") }}'
-      - name: account_balance
-        description: '{{ doc("account_balance") }}'
- 
   - name: fct_order_items
     description: order items fact table
     columns:
@@ -132,7 +57,7 @@ models:
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
-  
+
   - name: fct_orders
     description: orders fact table
     columns:

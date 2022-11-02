@@ -25,6 +25,6 @@ environment aware target_schema
     )
 }}
 
-select * from {{ ref('stg_tpch_orders') }}
+select * from {{ ref('stg_tpch__orders') }}
 
 {% endsnapshot %}

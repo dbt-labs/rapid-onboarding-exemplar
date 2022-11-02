@@ -37,5 +37,7 @@ models:
       +tags: ['tag']
       intermediate:
         +materialized: view
+    intermediate:
+      +materialized: view
     staging:
       +materialized: view

@@ -6,15 +6,16 @@
 
 with customer as (
 
-    select * from {{ ref('stg_tpch_customers') }}
+    select * from {{ ref('stg_tpch__customers') }}
 
 ),
 nation as (
-    select * from {{ ref('stg_tpch_nations') }}
+
+    select * from {{ ref('stg_tpch__nations') }}
 ),
 region as (
 
-    select * from {{ ref('stg_tpch_regions') }}
+    select * from {{ ref('stg_tpch__regions') }}
 
 ),
 final as (
@@ -25,8 +26,7 @@ final as (
         {# nation.nation_id as nation_id, #}
         nation.name as nation,
         {# region.region_id as region_id, #}
-        -- region.name as region,
-        case when region.name = 'AFRICA' then 'AFRICA!' else region.name end as region,
+        region.name as region,
         customer.phone_number,
         customer.account_balance,
         customer.market_segment
