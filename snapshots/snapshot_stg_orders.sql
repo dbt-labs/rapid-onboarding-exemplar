@@ -8,12 +8,16 @@ environment aware target_schema
     -- local in the sql file
       -- ex: 
         {% set target_snapshot_schema=target.schema if target.name == 'dev' else 'prod_snapshot' %}
+        config: target_schema=target_snapshot_schema
     -- globally in dbt_project.yml
       -- ex: 
           vars:
-            customer: customer_a
             target_snapshot_schema: "{{ target.schema if target.name == 'dev' else 'prod_snapshot' }}"
+          config: target_schema=var('target_snapshot_schema')
+
 #}
+
+{% set target_snapshot_schema=target.schema if target.name == 'dev' else 'prod_snapshot' %}
 
 {{
     config(
