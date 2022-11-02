@@ -26,7 +26,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 vars:
   customer: customer_a
-
+  target_snapshot_schema: "{{ target.schema if target.name == 'dev' else 'prod_snapshot' }}"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -34,6 +34,7 @@ models:
   rapid_onboarding_exemplar:
     marts:
       +materialized: table
+      +tags: ['tag']
       intermediate:
         +materialized: view
     staging:
