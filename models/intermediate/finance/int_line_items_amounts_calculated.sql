@@ -10,6 +10,7 @@ select
     part_id,
     supplier_id,
 
+
     return_flag,
     line_number,
     order_item_status_code,

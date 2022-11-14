@@ -12,6 +12,7 @@ models:
       - name: total_sales
         description: Sum of gross items sales amount by customer
 
+
   - name: agg_regions_segments
     description: Aggregated model by region and segment.
     columns:
