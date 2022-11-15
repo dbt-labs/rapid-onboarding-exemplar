@@ -12,7 +12,6 @@ Use cases covered:
 ====================
 */
 
-
 -- 1. using python builtin functions, like `.describe()`
 select * from {{ ref('py01__python_builtins__describe') }} ;
 
