@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: agg_customer_orders
+  - name: agg_customer_orders__all_time
     description: Aggregated orders data by customer
     columns:
       - name: customer_id
