@@ -18,6 +18,11 @@ region as (
     select * from {{ ref('stg_tpch__regions') }}
 
 ),
+country_code as (
+
+    select * from {{ ref('country_codes') }}
+
+),
 final as (
     select
         customer.customer_id,
@@ -29,13 +34,16 @@ final as (
         region.name as region,
         customer.phone_number,
         customer.account_balance,
-        customer.market_segment
+        customer.market_segment,
+        country_code.iso_code
     from
         customer
         inner join nation
             on customer.nation_id = nation.nation_id
         inner join region
             on nation.region_id = region.region_id
+        left join country_code
+            on nation.name = upper(country_code.country)
 )
 select
     *
