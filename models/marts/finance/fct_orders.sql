@@ -1,7 +1,6 @@
 {{
     config(
-        tags = ['finance'],
-        materialized='view'
+        tags = ['finance']
     )
 }}
 

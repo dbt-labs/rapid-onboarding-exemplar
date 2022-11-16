@@ -25,8 +25,8 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 vars:
-  customer: customer_a
-  target_snapshot_schema: "{{ target.schema if target.name == 'dev' else 'prod_snapshot' }}"
+  example_variable: foo
+  example_target_snapshot_schema: "{{ target.schema if target.name == 'dev' else 'prod_snapshot' }}"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models

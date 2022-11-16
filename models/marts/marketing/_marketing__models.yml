@@ -39,5 +39,5 @@ models:
         description: region name
         tests:
           - accepted_values:
-              values: ['AFRICA!','MIDDLE EAST','ASIA','EUROPE','AMERICA']  #to show success
+              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']  # extra "!" from model will throw a warning
               severity: warn

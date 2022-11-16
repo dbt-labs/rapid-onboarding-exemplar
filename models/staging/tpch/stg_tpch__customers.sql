@@ -1,11 +1,3 @@
-{{
-    config(
-        materialized='table',
-        schema='staging'
-    )
-}}
-
-
 with source as (
 
     select * from {{ source('tpch', 'customer') }}

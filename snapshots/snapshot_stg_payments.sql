@@ -11,6 +11,6 @@
     )
 }}
 
-select * from {{ ref('stg_payments') }}
+select * from {{ source('stripe', 'payment') }}
 
 {% endsnapshot %}
