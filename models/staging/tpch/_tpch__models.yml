@@ -1,5 +1,7 @@
 version: 2
 
+
+
 models:
   - name: stg_tpch__customers
     description: staging layer for customers data

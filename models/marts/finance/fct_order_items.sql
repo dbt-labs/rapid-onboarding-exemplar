@@ -7,6 +7,7 @@
 with order_item as (
     
     select * from {{ ref('int_order_items_joined') }}
+    limit 100
 
 ),
 part_supplier as (
@@ -14,7 +15,7 @@ part_supplier as (
     select * from {{ ref('int_part_suppliers_joined') }}
 
 ),
-final as (
+final as ( 
     select 
         order_item.order_item_id,
         order_item.order_id,
