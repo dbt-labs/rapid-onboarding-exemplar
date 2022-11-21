@@ -49,3 +49,18 @@ metrics:
       - customer_id
       - priority_code
       - clerk_name
+
+  - name: total_order_item_cost
+    label: Total Cost of all Order Items by Ship Date
+    description: sum of supplier_cost from fct_order_items
+
+    model: ref('fct_order_items')
+    calculation_method: sum
+    expression: supplier_cost
+
+    timestamp: ship_date
+    time_grains: [day, week, month, quarter, year, all_time]
+
+    dimensions:
+      - customer_id
+      - ship_mode
