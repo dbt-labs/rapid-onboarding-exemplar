@@ -1,8 +1,4 @@
-{{
-    config(
-        transient = false
-    )
-}}
+
 
 with customer as (
 
