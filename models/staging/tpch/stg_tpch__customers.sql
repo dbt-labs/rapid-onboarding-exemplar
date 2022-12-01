@@ -10,6 +10,7 @@ renamed as (
         -- ids
         c_custkey as customer_id,
         c_nationkey as nation_id,
+        '' as new_col,
 
         -- descriptions
         c_name as name,
