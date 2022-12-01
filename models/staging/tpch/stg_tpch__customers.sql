@@ -7,6 +7,10 @@ with source as (
 renamed as (
 
     select
+        
+        -- dan testing surrogate key
+        {{ dbt_utils.surrogate_key(['c_custkey', 'c_nationkey' ])}} as combo_key,
+
         -- ids
         c_custkey as customer_id,
         c_nationkey as nation_id,
