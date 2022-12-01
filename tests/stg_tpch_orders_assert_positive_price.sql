@@ -13,3 +13,4 @@ with orders as (
 select *
 from orders
 where total_price < 0
+
