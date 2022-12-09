@@ -18,6 +18,22 @@ metrics:
       - clerk_name
 
 
+  - name: total_order_item_cost
+    label: Total Order Item Cost
+    description: total cost of all parts sold
+    model: ref('fct_order_items')
+
+    calculation_method: sum
+    expression: supplier_cost
+
+    timestamp: ship_date
+    time_grains: [day, week, month, year]
+
+    dimensions:
+      - customer_id
+      - ship_mode
+
+
   - name: total_orders
     label: Total Jaffle Orders Placed
     description: count of orders placed at the Jaffle Shop
