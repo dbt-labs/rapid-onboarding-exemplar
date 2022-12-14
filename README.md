@@ -93,8 +93,6 @@ If you need access, open a request in the #training-rapid-onboarding Slack chann
 
 <details>
 
-<summary>Local Development</summary>
-<p></p>
 
 ### What to do when a dbt Cloud job fails
 
@@ -106,4 +104,3 @@ If you need access, open a request in the #training-rapid-onboarding Slack chann
     - Measures we've taken to ensure this doesn't happen again (e.g. Adding new tests, updating processes, etc.)
     - Actual TTD and TTR
 
-</details>
