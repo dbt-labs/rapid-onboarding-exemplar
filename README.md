@@ -92,7 +92,7 @@ If you need access, open a request in the #training-rapid-onboarding Slack chann
 </details>
 
 
-### What to do when a dbt Cloud job fails
+## What to do when a dbt Cloud job fails
 
   - dbt Cloud is set up to notify us of job failures via the #analytics-status-updates Slack channel. In case of a failure, Erica will notify the greater company via the #analytics Slack channel. 
   - The Analytics Engineer from the relevant department will troubleshoot the failure within 24 hours and continue to update stakeholders via #analytics
