@@ -92,9 +92,9 @@ If you need access, open a request in the #training-rapid-onboarding Slack chann
 </details>
 
 <details>
-  
-  <summary>Local Development</summary>
-  <p></p>
+
+<summary>Local Development</summary>
+<p></p>
 
 ### What to do when a dbt Cloud job fails
 
@@ -105,3 +105,5 @@ If you need access, open a request in the #training-rapid-onboarding Slack chann
     - The cause of the outage and how we came to a resolution (e.g. ELT issue with Fivetran)
     - Measures we've taken to ensure this doesn't happen again (e.g. Adding new tests, updating processes, etc.)
     - Actual TTD and TTR
+
+</details>
