@@ -91,8 +91,6 @@ If you need access, open a request in the #training-rapid-onboarding Slack chann
   
 </details>
 
-<details>
-
 
 ### What to do when a dbt Cloud job fails
 
