@@ -42,3 +42,8 @@
 {% docs available_quantity %} raw available quantity {% enddocs %}
 
 {% docs cost %} raw cost {% enddocs %}
+
+
+
+
+-- random test
