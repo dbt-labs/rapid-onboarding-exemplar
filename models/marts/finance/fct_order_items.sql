@@ -1,9 +1,7 @@
 {{
     config(
         tags = ['finance'],
-        materialized='incremental',
-        unique_key='order_item_id',
-        incremental_strategy='merge'      
+        materialized='incremental'     
     )
 }}
 
