@@ -8,7 +8,7 @@ select
     order_item_id,
     order_id,
     part_id,
-    supplier_id,
+    supplier_ids,
 
     return_flag,
     line_number,
