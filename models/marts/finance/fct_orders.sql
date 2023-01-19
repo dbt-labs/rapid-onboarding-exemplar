@@ -2,6 +2,8 @@
     config(
         tags = ['finance']
     )
+
+    
 }}
 
 with order_item as (
