@@ -12,7 +12,6 @@ with customer as (
 nation as (
 
     select * from {{ ref('stg_tpch__nations') }}
-
 ),
 region as (
 
@@ -20,14 +19,15 @@ region as (
 
 ),
 final as (
-    select
+    select 
         customer.customer_id,
         customer.name,
         customer.address,
         {# nation.nation_id as nation_id, #}
         nation.name as nation,
         {# region.region_id as region_id, #}
-        region.name as region,
+        -- region.name as region,
+        case when region.name = 'AFRICA' then 'AFRICA!' else region.name end as region, -- Notice the extra "!", this will throw a warning in our tests
         customer.phone_number,
         customer.account_balance,
         customer.market_segment
@@ -38,7 +38,7 @@ final as (
         inner join region
             on nation.region_id = region.region_id
 )
-select
+select 
     *
 from
     final
