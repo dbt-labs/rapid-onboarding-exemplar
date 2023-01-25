@@ -20,7 +20,13 @@ final as (
         order_status_code,
         priority_code,
         clerk_name,
-        ship_priority
+        ship_priority,
+                
+        1 as order_count,                
+        sum(gross_item_sales_amount) as gross_item_sales_amount,
+        sum(item_discount_amount) as item_discount_amount,
+        sum(item_tax_amount) as item_tax_amount,
+        sum(net_item_sales_amount) as net_item_sales_amount
 
     from order_item
     {{ dbt_utils.group_by(n = 8) }}
