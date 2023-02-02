@@ -35,8 +35,6 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
-      intermediate:
-        +materialized: view
     intermediate:
       +materialized: view
     staging:

@@ -19,3 +19,6 @@ sources:
             tests:
               - accepted_values:
                   values: ['success', 'fail']
+          - name: amount
+            tests:
+              - is_positive_and_not_zero
