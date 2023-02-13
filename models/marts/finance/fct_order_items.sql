@@ -15,6 +15,8 @@ part_supplier as (
 
 ),
 final as (
+
+    
     select 
         order_item.order_item_id,
         order_item.order_id,
