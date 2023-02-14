@@ -15,6 +15,11 @@ models:
         description: date of the order
       - name: customer_id
         description: foreign id for customers
+        tests:
+          - relationship_generic:
+              key_field: customer_id
+              parent_model: ref('dim_customers')
+            
       - name: part_id
         description: foreign id for part
       - name: supplier_id
