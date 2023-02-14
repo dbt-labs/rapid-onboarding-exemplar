@@ -4,7 +4,7 @@ with source as (
 
 ),
 
-renamed as (
+renamed_ro as (
 
     select
         -- ids
