@@ -1,6 +1,7 @@
 {{
     config(
-        transient = false
+        transient = false,
+        materalized = 'view'
     )
 }}
 

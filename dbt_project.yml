@@ -35,8 +35,10 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
-      intermediate:
-        +materialized: view
+      operations:
+        +database: operations
+      clinical:
+        +database: clinical
     intermediate:
       +materialized: view
     staging:
