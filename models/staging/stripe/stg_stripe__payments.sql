@@ -1,6 +1,8 @@
 -- example showing staging model after snapshot
 
 select
+
+
     -- ids
     id as payment_id,
     orderid as order_id,
