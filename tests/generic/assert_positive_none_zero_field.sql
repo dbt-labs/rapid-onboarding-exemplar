@@ -12,6 +12,7 @@
     with validation as (
         select {{ column_name }} as positive_value
         from {{ model }}
+        
     )
 
     select *
