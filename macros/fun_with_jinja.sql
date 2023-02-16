@@ -39,6 +39,13 @@ The humble {{ food }} is my favorite {{ food_type }}
 
 {% endfor %}  
 
+{% set grocery_list = ['chocolate', 'ice cream'] %}
+{% do grocery_list.append('cookies') %}
+{% for food_item in grocery_list %}
+    {{ food_item }}
+{% endfor %}
+{{ grocery_list | length }}
+
 {# dictionaries in jinja #}
 
 {% set websters_dict = {
@@ -53,3 +60,29 @@ The humble {{ food }} is my favorite {{ food_type }}
 
 {# can extend this to a list of dictionaries too #}
 
+{% set us = [
+{
+    'name': 'me',
+    'number': 3,
+    'details': 'bar'
+  },
+  {
+    'name': 'you',
+    'number': 100,
+    'details': 'foo'
+}
+] %}
+
+{{ us[1]['details'] }}
+
+{{ us[0].number }}
+
+-- how about a macro?
+
+{% macro hoyquiero(flavor, dessert = 'ice cream') %}
+Today I want {{ flavor }} {{ dessert }}!
+{% endmacro %}
+
+{{ hoyquiero(flavor = 'chocolate') }}
+
+{{ hoyquiero('mango', 'sorbet') }}
