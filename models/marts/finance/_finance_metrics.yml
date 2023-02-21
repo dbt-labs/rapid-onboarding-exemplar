@@ -1,0 +1,51 @@
+version: 2
+
+metrics:
+  - name: total_revenue
+    label: Total Jaffle Shop Gross Revenue
+    description: sum of gross revenue at the Jaffle Shop
+    model: ref('fct_orders')
+
+    calculation_method: sum
+    expression: gross_item_sales_amount
+
+    timestamp: order_date
+    time_grains: [day, week, month, quarter, year, all_time]
+
+    dimensions:
+      - customer_id
+      - priority_code
+      - clerk_name
+
+
+  - name: total_orders
+    label: Total Jaffle Orders Placed
+    description: count of orders placed at the Jaffle Shop
+    model: ref('fct_orders')
+
+    calculation_method: count
+    expression: order_id
+
+    timestamp: order_date
+    time_grains: [day, week, month, quarter, year, all_time]
+
+    dimensions:
+      - customer_id
+      - priority_code
+      - clerk_name
+
+
+  - name: revenue_per_order
+    label: Average Revenue per Order in Period
+    description: Average Revenue per Order in Period
+
+    calculation_method: derived
+    expression: " {{ metric('total_revenue') }} / {{ metric('total_orders') }} "
+
+    timestamp: order_date
+    time_grains: [day, week, month, quarter, year, all_time]
+
+    dimensions:
+      - customer_id
+      - priority_code
+      - clerk_name

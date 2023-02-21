@@ -1,23 +1,23 @@
 with part as (
-    
-    select * from {{ ref('stg_tpch_parts') }}
+
+    select * from {{ ref('stg_tpch__parts') }}
 
 ),
 
 supplier as (
 
-    select * from {{ ref('stg_tpch_suppliers') }}
+    select * from {{ ref('stg_tpch__suppliers') }}
 
 ),
 
 part_supplier as (
 
-    select * from {{ ref('stg_tpch_part_suppliers') }}
+    select * from {{ ref('stg_tpch__part_suppliers') }}
 
 ),
 
 final as (
-    select 
+    select
 
     part_supplier.part_supplier_id,
     part.part_id,
@@ -39,8 +39,8 @@ final as (
     part_supplier.available_quantity,
     part_supplier.cost
 from
-    part 
-inner join 
+    part
+inner join
     part_supplier
         on part.part_id = part_supplier.part_id
 inner join
