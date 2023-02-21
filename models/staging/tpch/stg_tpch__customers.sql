@@ -13,6 +13,7 @@ renamed as (
 
         -- descriptions
         c_name as name,
+        1 as test,
         c_address as address,
         c_phone as phone_number,
         c_acctbal as account_balance,
