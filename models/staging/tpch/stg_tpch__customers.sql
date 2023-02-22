@@ -8,7 +8,6 @@ renamed as (
 
     select
         -- ids
-        1 as static_field,
         c_custkey as customer_id,
         c_nationkey as nation_id,
 
