@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: is_holiday_2024
+
+    # Document within the same codebase
+    description: This assembles a date spine with a boolean for which dates are us holidays in 2024
+
+    # Configure in ways that feel intuitive and familiar
+    config:
+      materialized: table
+      tags: ['python']
