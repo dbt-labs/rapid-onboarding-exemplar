@@ -12,7 +12,7 @@ renamed as (
         c_nationkey as nation,
 
         -- descriptions
-        c_name as name,
+        c_name as name_update,
         c_address as address,
         c_phone as phone_number,
         c_acctbal as account_balance,
