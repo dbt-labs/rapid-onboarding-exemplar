@@ -3,6 +3,9 @@ with line_item as (
     select * from {{ ref('stg_tpch__line_items') }}
 
 )
+
+
+
 select
 
     order_item_id,
