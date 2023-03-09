@@ -1,6 +1,8 @@
 {{
     config(
-        tags = ['finance']
+        tags = ['finance'],
+        materialized='incremental',
+        unique_key='order_item_id',
     )
 }}
 
@@ -50,9 +52,19 @@ final as (
             on order_item.part_id = part_supplier.part_id and
                 order_item.supplier_id = part_supplier.supplier_id
 )
+
+
 select 
     *
 from
     final
+
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  where commit_date > (select max(commit_date) from {{ this }})
+
+{% endif %}
+
 order by
     order_date
