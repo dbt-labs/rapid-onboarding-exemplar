@@ -32,5 +32,5 @@ renamed as (
 
 select * from renamed
 
-{{ limit_data_in_dev('order_date', 10)}}
+{{ limit_data_in_dev('order_date', 10000)}}
 
