@@ -6,7 +6,7 @@
 
 with customer as (
 
-    select * from {{ ref('stg_tpch__customers') }}
+    select * from {{ ref('stg_tpch__customers') }} where customer_id = 2
 
 ),
 nation as (
