@@ -11,6 +11,7 @@
     )
 }}
 
+
 select * from {{ source('stripe', 'payment') }}
 
 {% endsnapshot %}
