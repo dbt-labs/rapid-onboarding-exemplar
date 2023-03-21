@@ -46,4 +46,3 @@ addressed, and remove any items that are not relevant to this PR.
 - [ ] My SQL follows the [dbt Labs style guide](https://github.com/dbt-labs/corp/blob/master/dbt_style_guide.md).
 - [ ] I have materialized my models appropriately.
 - [ ] I have added appropriate tests and documentation to any new models or fields.
-- [ ] I have noted if my changes break something in Looker and have a corresponding Looker PR to resolve the breaking change
