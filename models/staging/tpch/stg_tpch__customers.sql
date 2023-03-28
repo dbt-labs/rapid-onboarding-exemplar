@@ -1,6 +1,14 @@
+{{
+    config(
+        post_hook = "select 1"
+    )
+}}
+
+
+
 with source as (
 
-    select * from {{ source('tpch', 'customer') }}
+    select *, flavors[0] as chocolate_string from {{ source('tpch', 'customer') }}
 
 ),
 
