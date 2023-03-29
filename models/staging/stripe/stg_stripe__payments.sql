@@ -10,7 +10,7 @@ select
     status,
     
     -- datetimes
-    created as created_at
+    created as created_time_at
 
 from {{ ref('snapshot_stg_payments') }} 
 -- pull only the most recent update for each unique record
