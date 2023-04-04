@@ -7,6 +7,7 @@ models:
       - name: order_item_id
         description: '{{ doc("order_item_id") }}'
         tests:
+          
           - unique
           - not_null
       - name: order_id

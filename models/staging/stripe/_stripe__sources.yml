@@ -8,6 +8,7 @@ sources:
       - name: payment
         columns:
           - name: id
+          
             tests:
               - not_null
               - unique
