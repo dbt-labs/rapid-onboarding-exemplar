@@ -40,4 +40,4 @@ models:
     intermediate:
       +materialized: view
     staging:
-      +materialized: view
+      +materialized: table
