@@ -5,7 +5,7 @@
 
 {% docs discounted_price %} factoring in the discount_percentage, the line item discount total {% enddocs %}
 
-{% docs tax_rate %} tax rate of the order item {% enddocs %}
+{% docs tax_rate %} Tax rate of the order item {% enddocs %}
 
 {% docs gross_item_sales_amount %} same as extended_price {% enddocs %}
 
