@@ -41,3 +41,8 @@ models:
       +materialized: view
     staging:
       +materialized: view
+
+
+query-comment:
+  comment: "run by {{ target.user }} in dbt"
+  append: True
