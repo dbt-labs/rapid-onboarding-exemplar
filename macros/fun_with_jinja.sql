@@ -1,6 +1,6 @@
 {# Practice with basic variables assignments #}
 
-{# 
+
 
 {%- set my_cool_string = 'Wow! Cool!' -%}
 {%- set my_second_cool_string = 'This is Jinja' -%}
@@ -16,7 +16,7 @@
     My favorite place to hike is {{ park }} National Park!
 {% endfor %}    
 
-#}
+
 
 {% set temperature = 55 %}
 
