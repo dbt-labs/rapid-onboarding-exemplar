@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: fct_order_items
+    group: finance
     description: order items fact table
     columns:
       - name: order_item_id
