@@ -1,0 +1,7 @@
+sources:
+  - name: "{{ var('user_id') }}"
+    tables:
+      - name: customer
+      - name: order
+      - name: order_line
+      - name: transaction
