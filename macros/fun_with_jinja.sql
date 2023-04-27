@@ -1,9 +1,7 @@
 {# Practice with basic variables assignments #}
 
-
-
-{%- set my_cool_string = 'Wow! Cool!' -%}
-{%- set my_second_cool_string = 'This is Jinja' -%}
+{% set my_cool_string = 'Wow! Cool!' %}
+{% set my_second_cool_string = 'This is Jinja' %}
 {% set my_cool_number = 50 %}
 
 {{ my_cool_string }} {{ my_second_cool_string }} I want to write Jinja for {{ my_cool_number }} years.
