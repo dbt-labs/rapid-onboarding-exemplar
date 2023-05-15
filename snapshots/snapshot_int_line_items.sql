@@ -9,6 +9,7 @@
 
 {{
     config(
+      target_database='analytics'
       target_schema=var('example_target_snapshot_schema'),
       unique_key='order_item_id',
       strategy='check',
