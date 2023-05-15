@@ -1,3 +1,4 @@
+{# https://github.com/dbt-labs/dbt-utils/tree/1.1.0/#get_column_values-source #}
 
 {%- set payment_methods = dbt_utils.get_column_values(table=ref('stg_stripe__payments'), column='payment_method') -%}
 

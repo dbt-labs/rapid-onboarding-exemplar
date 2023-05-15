@@ -1,5 +1,5 @@
 {# 
-example calling generate_source macro with some arguments
+example calling generate_source macro
 https://github.com/dbt-labs/dbt-codegen/blob/main/macros/generate_source.sql
 #}
 

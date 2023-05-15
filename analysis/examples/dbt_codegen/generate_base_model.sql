@@ -1,5 +1,5 @@
 {# 
-example calling generate_base_model macro with some arguments
+example calling generate_base_model macro
 https://github.com/dbt-labs/dbt-codegen/blob/main/macros/generate_base_model.sql
 #}
 

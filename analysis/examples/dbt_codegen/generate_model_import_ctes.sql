@@ -1,5 +1,5 @@
 {# 
-example calling generate_model_import_ctes macro with some arguments
+example calling generate_model_import_ctes macro
 https://github.com/dbt-labs/dbt-codegen#create_base_models-source
 #}
 

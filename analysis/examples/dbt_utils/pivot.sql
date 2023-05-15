@@ -1,3 +1,5 @@
+{# https://github.com/dbt-labs/dbt-utils/tree/1.1.0/#pivot-source #}
+
 select
   order_id,
   {{ dbt_utils.pivot(

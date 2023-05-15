@@ -1,5 +1,5 @@
 {# 
-example calling generate_model_yaml macro with some arguments
+example calling generate_model_yaml macro
 https://github.com/dbt-labs/dbt-codegen/blob/main/macros/generate_model_yaml.sql
 #}
 
