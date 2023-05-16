@@ -1,6 +1,7 @@
 with source as (
 
     select * from {{ source('tpch', 'customer') }}
+    
 
 ),
 
@@ -18,7 +19,7 @@ renamed as (
         c_acctbal as account_balance,
         c_mktsegment as market_segment,
         c_comment as comment
-
+        
     from source
 
 )
