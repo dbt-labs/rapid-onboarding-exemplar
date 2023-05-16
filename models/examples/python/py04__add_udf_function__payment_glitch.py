@@ -27,7 +27,7 @@ def model(dbt, session):
     )
     
     # bring in reference Python model as dataframe
-    payments_glitch = dbt.ref("py04__define_function__payment_glitch")
+    payments_glitch = dbt.ref("py03__define_function__payment_glitch")
 
     add_random = register_udf_add_random()
 
