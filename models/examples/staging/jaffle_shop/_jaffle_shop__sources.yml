@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: our famous jaffle shop customers and orders
+    database: raw
+    schema: jaffle_shop
+    tables:
+      - name: customers
+      - name: orders
