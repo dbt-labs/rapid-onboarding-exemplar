@@ -54,3 +54,10 @@ models:
   dbt_artifacts:
     staging:
       +materialized: ephemeral
+
+tests:
+  rapid_onboarding_exemplar:
+    examples:
+      staging:
+        +store_failures: "{{ true if target.name == 'prod' else false }}"
+
