@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: py01__python_builtins__describe
+    # Document within the same codebase
+    description: My transformation written in Python
+    # Configure in ways that feel intuitive and familiar
+    config:
+      materialized: table
+      tags: ['python']
+
+  - name: py02__use_variables__customers_limit_10
+    config:
+      materialized: table
+      tags: ['python']
+      target_name: "{{ target.name }}"
+    description: Customer dimensions table limited
+    columns:
+      - name: customer_id
+        description: Primary id on the customers table
+        tests:
+          - unique
+          - not_null
+
+  # You can choose _not_ to config your Python files, though we think you should
+  # If you choose not to, simply ensure you have added a config to your 
+  # Python files that materializes them as a table, otherwise they will fail.
