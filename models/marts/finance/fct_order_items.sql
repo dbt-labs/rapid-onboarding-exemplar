@@ -3,6 +3,7 @@
         tags = ['finance'],
         materialized='incremental',
         unique_key='order_item_id',
+         incremental_strategy='delete+insert'
     )
 }}
 
@@ -60,10 +61,7 @@ from
     final
 
 {% if is_incremental() %}
-
-  -- this filter will only be applied on an incremental run
-  where commit_date > (select max(commit_date) from {{ this }})
-
+where commit_date > (select max(commit_date) from {{ this }} )
 {% endif %}
 
 order by
