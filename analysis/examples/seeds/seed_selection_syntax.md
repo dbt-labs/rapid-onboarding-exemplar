@@ -11,3 +11,10 @@ dbt seed
 ```
 dbt build --select alphabet_grouping
 ```
+
+3. Full refresh your seed so that dbt will drop and recreate the object instead of truncating and inserting.
+This is useful when you add or remove columns from a seed
+
+```
+dbt build --select alphabet_grouping --full-refresh
+```
