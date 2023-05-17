@@ -3,8 +3,43 @@ version: 2
 sources:
   - name: jaffle_shop
     description: our famous jaffle shop customers and orders
-    database: raw
-    schema: jaffle_shop
+    
+    # example to show how to use environment variables within the database property for a source 
+    database: "{{ 'raw' if env_var('DBT_ENV_NAME') == 'dev' else 'raw' }}" 
+    
+    # example to show how to use a long chunk of custom logic in the schema property. also shows off target
+    schema: |
+      {%- if target.name == "default" or target.name == "dev" -%} jaffle_shop
+      {%- elif target.name == "qa"-%} jaffle_shop
+      {%- elif target.name == "prod"-%} jaffle_shop
+      {%- else -%} jaffle_shop
+      {%- endif -%}
+    
+    loader: fivetran
+    freshness:
+          warn_after:
+            count: 7
+            period: day
+          error_after:
+            count: 14
+            period: day
+    loaded_at_field: _etl_loaded_at
     tables:
       - name: customers
+        identifier: customers
+        freshness: null
+        columns:
+          - name: id 
+            tests:
+              - not_null
       - name: orders
+        identifier: orders
+        quoting:
+          database: false
+          schema: false
+          identifier: false
+        columns:
+          - name: id 
+            tests:
+              - not_null
+        
