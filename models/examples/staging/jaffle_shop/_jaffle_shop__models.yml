@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_jaffle_shop__customers
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: source('jaffle_shop', 'customers')
+      - dbt_utils.equality:
+          compare_model: source('jaffle_shop', 'customers')
+          compare_columns:
+            - first_name
+            - last_name
+      - dbt_utils.expression_is_true:
+          expression: "len(first_name) > 1"
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          min_value: 1
+
+    columns:
+      - name: customer_id
+        tests:
+          - unique 
+          - not_null
+      - name: first_name
+        tests:
+          - dbt_utils.at_least_one
+          - dbt_utils.not_constant
+          - dbt_utils.not_empty_string
+          - dbt_utils.not_accepted_values:
+              values: ['test']
+  - name: stg_jaffle_shop__orders
+    tests:
+      - dbt_utils.recency:
+          datepart: day
+          field: _etl_loaded_at
+          interval: 7
+    columns:
+      - name: order_date
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
