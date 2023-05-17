@@ -29,7 +29,6 @@ vars:
   example_target_snapshot_schema: "{{ target.schema if target.name == 'dev' else 'prod_snapshot' }}"
 
 on-run-end:
-  - "{{ dbt_project_evaluator.print_dbt_project_evaluator_issues() }}"
   - "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
 
 
