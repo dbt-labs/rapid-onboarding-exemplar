@@ -2,6 +2,10 @@ version: 2
 
 models:
   - name: stg_jaffle_shop__customers
+    description: |
+      multi line description 
+      of my staging
+      jaffle shop customers model
     tests:
       - dbt_utils.equal_rowcount:
           compare_model: source('jaffle_shop', 'customers')
@@ -17,6 +21,10 @@ models:
 
     columns:
       - name: customer_id
+        description: >
+          multi line description 
+          of my customer id column from my
+          jaffle shop customers model
         tests:
           - unique 
           - not_null
@@ -28,6 +36,10 @@ models:
           - dbt_utils.not_accepted_values:
               values: ['test']
   - name: stg_jaffle_shop__orders
+    description: >
+          multi line description 
+          of my staging orders model from
+          jaffle shop
     tests:
       - dbt_utils.recency:
           datepart: day
@@ -35,6 +47,10 @@ models:
           interval: 7
     columns:
       - name: order_date
+        description: |
+          multi line description 
+          of my order date column from my
+          jaffle shop orders model
         tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
               column_type: date

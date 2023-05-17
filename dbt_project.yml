@@ -43,6 +43,14 @@ models:
       +materialized: view
     staging:
       +materialized: view
+    examples:
+      +materialized: table
+      staging:
+        jaffle_shop:
+          +materialized: view
+          +tags:
+            - example 
+            - hourly
   dbt_artifacts:
     staging:
       +materialized: ephemeral
