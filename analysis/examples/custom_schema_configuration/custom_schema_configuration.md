@@ -34,7 +34,7 @@ variable we are using is called `DBT_ENV_NAME` and we're checking to see if the 
 to use environment variables as opposed to target.
 
 ```
-{% macro generate_schema_name_for_env(custom_schema_name, node) -%}
+{% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
     {%- if env_var("DBT_ENV_NAME") == 'prod' and custom_schema_name is not none -%}
@@ -55,7 +55,7 @@ to use environment variables as opposed to target.
 Very similar to the above example, except concatenating schemas in non-prod environments.
 
 ```
-{% macro generate_schema_name_for_env(custom_schema_name, node) -%}
+{% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
     {%- if env_var("DBT_ENV_NAME") == 'prod' and custom_schema_name is not none -%}
