@@ -1,9 +1,7 @@
 {{
     config(
         tags = ['finance'],
-        materialized='incremental',
-        unique_key='order_item_id',
-         incremental_strategy='delete+insert'
+
     )
 }}
 
@@ -59,10 +57,6 @@ select
     *
 from
     final
-
-{% if is_incremental() %}
-where commit_date > (select max(commit_date) from {{ this }} )
-{% endif %}
 
 order by
     order_date
