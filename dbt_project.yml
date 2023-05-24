@@ -28,6 +28,10 @@ vars:
   example_variable: foo
   example_target_snapshot_schema: "{{ target.schema if target.name == 'dev' else 'prod_snapshot' }}"
 
+on-run-end:
+  - "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
+
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 models:
@@ -35,9 +39,25 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
-      intermediate:
-        +materialized: view
     intermediate:
       +materialized: view
     staging:
       +materialized: view
+    examples:
+      +materialized: table
+      staging:
+        jaffle_shop:
+          +materialized: view
+          +tags:
+            - example 
+            - hourly
+  dbt_artifacts:
+    staging:
+      +materialized: ephemeral
+
+tests:
+  rapid_onboarding_exemplar:
+    examples:
+      staging:
+        +store_failures: "{{ true if target.name == 'prod' else false }}"
+

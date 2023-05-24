@@ -8,9 +8,10 @@
 
 {{ 
   audit_helper.compare_all_columns(
-    a_relation=ref('dim_customers'),
-    b_relation=api.Relation.create(database='analytics', schema='analytics', identifier='dim_customers'),
-    primary_key='customer_id'
+    a_relation=ref('stg_tpch__orders'),
+    b_relation=api.Relation.create(database='analytics', schema='analytics', identifier='stg_tpch__orders'),
+
+    primary_key='order_id'
   ) 
 }}
 where not perfect_match
