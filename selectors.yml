@@ -1,0 +1,13 @@
+# selectors.yml
+version: 2
+
+selectors:
+  - name: all_models_and_tagged_snapshots
+    description: includes all models, but only snapshots any snapshot tagged daily
+    definition:
+      union:
+        - 'models/*'
+        - 'seeds/*'
+        - intersection:
+          - 'config.materialized:snapshot'
+          - 'tag:test'

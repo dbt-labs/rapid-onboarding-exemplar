@@ -8,6 +8,7 @@
 
       strategy='timestamp',
       updated_at='_BATCHED_AT',
+      tags=["test"]
     )
 }}
 
