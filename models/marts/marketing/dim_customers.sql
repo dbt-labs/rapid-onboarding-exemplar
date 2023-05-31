@@ -1,6 +1,7 @@
 {{
     config(
-        transient = false
+        transient = false,
+        schema = 'my_custom_schema'
     )
 }}
 
