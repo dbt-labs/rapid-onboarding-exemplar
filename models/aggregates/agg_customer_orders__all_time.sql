@@ -6,4 +6,3 @@ from {{
         dimensions=['customer_id']
     )
 }}
-order by 2 desc
