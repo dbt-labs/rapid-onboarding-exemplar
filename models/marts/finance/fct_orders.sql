@@ -1,6 +1,6 @@
 {{
     config(
-        tags = ['finance']
+        tags = ['finance', 'sales']
     )
 }}
 
