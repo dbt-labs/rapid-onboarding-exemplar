@@ -4,6 +4,9 @@ with source as (
 
 ),
 
+
+
+
 renamed as (
 
     select
