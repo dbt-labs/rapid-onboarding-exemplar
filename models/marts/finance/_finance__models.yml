@@ -9,6 +9,7 @@ models:
         tests:
           - unique
           - not_null
+          - filtered_unique
       - name: order_id
         description: foreign id for orders
       - name: order_date
