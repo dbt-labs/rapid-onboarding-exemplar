@@ -17,7 +17,7 @@ Everywhere else, use the actual model name for the object name.
 This is particularly useful when developers can't use their own dev schema but don't want to overwrite each other's objects, so they need a distinct object name in dev or in CI.
 
 ```
-{% macro default__generate_alias_name(custom_alias_name=none, node=none) -%}
+{% macro generate_alias_name(custom_alias_name=none, node=none) -%}
     {%- if target.name == 'dev' -%}
         {%- if custom_alias_name is none -%}
             {{ target.schema }}__{{ node.name }}
