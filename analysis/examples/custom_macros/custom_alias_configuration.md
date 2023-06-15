@@ -18,13 +18,7 @@ This is particularly useful when developers can't use their own dev schema but d
 
 ```
 {% macro generate_alias_name(custom_alias_name=none, node=none) -%}
-    {%- if target.name == 'dev' -%}
-        {%- if custom_alias_name is none -%}
-            {{ target.schema }}__{{ node.name }}
-        {%- else -%}
-            {{ custom_alias_name | trim }}
-        {%- endif -%}
-    {%- elif target.name = 'CI'  -%}
+    {%- if target.name == 'dev' or target.name == 'CI' -%}
         {%- if custom_alias_name is none -%}
             {{ target.schema }}__{{ node.name }}
         {%- else -%}
