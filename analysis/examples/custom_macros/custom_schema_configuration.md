@@ -70,3 +70,30 @@ Very similar to the above example, except concatenating schemas in non-prod envi
 
 {%- endmacro %}
 ```
+
+### In target.name = CI (set in environment settings), use a specific given schema
+
+If target.name = CI (set in environment settings), use a specific given schema. 
+Everywhere else, use the default schema unless a custom schema is defined. 
+Then use the custom schema only -- not the target.schema and custom schema.
+
+
+```
+{% macro generate_schema_name(custom_schema_name, node) -%}
+
+   {%- set default_schema = target.schema -%}
+    {%- if target.name == 'CI' -%}
+        ci_schema
+        
+    {%- elif custom_schema_name is none -%}
+
+       {{ default_schema }}
+
+   {%- else -%}
+
+       {{ custom_schema_name | trim }}
+
+   {%- endif -%}
+
+{%- endmacro %}
+```
