@@ -53,3 +53,9 @@ dbt build --select marts.finance --exclude fct_orders+
 ```
 dbt build --select config.materialized.incremental
 ```
+
+10. Build all models (and seeds and snapshots) in the selector all_models_and_tagged_snapshots
+
+```
+dbt build --selector all_models_and_tagged_snapshots
+```
