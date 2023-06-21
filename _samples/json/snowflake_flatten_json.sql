@@ -1,7 +1,7 @@
 --snowflake functionality to demo how SQL can be used to parse json in a single column 
 
 with json_example as (
-select * from raw.tpch_json.customer_json
+select parse_json(cust_json::variant) as cust_json from raw.tpch_json.customer_json
 ),
 
 --use the snowflake parse_json() function
@@ -12,14 +12,14 @@ json_to_parse as (
 
 --extract the key value pairs into columns
 json_parsed as (
-select json_to_parse_column:c_name::string as c_name,
-json_to_parse_column:c_custkey::string as c_key,
-json_to_parse_column:c_acctbal::float as c_accbal,
-json_to_parse_column:c_mktsegment::string as c_mktsegment,
-json_to_parse_column:c_nationkey::string as c_nationkey,
-json_to_parse_column:c_comment::string as c_comment,
-json_to_parse_column:c_address::string as c_address,
-json_to_parse_column:c_phone::int as c_phone
+select json_to_parse_column:C_NAME::string as c_name,
+json_to_parse_column:C_CUSTKEY::string as c_custkey,
+json_to_parse_column:C_ACCTBAL::float as c_acctbal,
+json_to_parse_column:C_MKTSEGMENT::string as c_mktsegment,
+json_to_parse_column:C_NATIONKEY::string as c_nationkey,
+json_to_parse_column:C_COMMENT::string as c_comment,
+json_to_parse_column:C_ADDRESS::string as c_address,
+json_to_parse_column:C_PHONE::string as c_phone
 
 from json_to_parse
 ),
