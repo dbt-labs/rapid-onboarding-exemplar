@@ -7,20 +7,28 @@
 {% set status_options=['shipped', 'ordered', 'placed', 'returned'] %}
 {% set country_options=['US', 'Mexico', 'Canada', 'Germany', 'England', 'France', 'Ireland'] %}
 
-WITH RECURSIVE seconds_this_month AS (
-    -- start date
-    SELECT date_trunc('month', current_timestamp) as _etl_loaded_at
-    UNION ALL
-    SELECT DATEADD('second',1,_etl_loaded_at) as _etl_loaded_at
-    FROM seconds_this_month
-    
-    WHERE _etl_loaded_at < current_timestamp
+with series as (
+
+{{ dbt_utils.generate_series(3000000) }}
+
+),
+
+seconds_this_month as (
+
+select 
+    generated_number as id,
+    {{ dbt.dateadd("second", "id", dbt.date_trunc('month', 'current_timestamp')) }} as _etl_loaded_at
+
+from series
+
+where _etl_loaded_at <= current_timestamp
+
 ),
 
 final as (
 
     select 
-        ROW_NUMBER() over (order by _etl_loaded_at) as id,
+        id,
         case 
             when date_part('second', _etl_loaded_at)::int between 0 and 14
                 then '{{ status_options[0] }}'
