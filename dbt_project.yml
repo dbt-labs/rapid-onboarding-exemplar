@@ -27,6 +27,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 vars:
   example_variable: foo
   example_target_snapshot_schema: "{{ target.schema if target.name == 'dev' else 'prod_snapshot' }}"
+  incremental_lookback_value: 3
+  incremental_lookback_period: 'hour'
 
 on-run-end:
   - "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
