@@ -9,7 +9,7 @@ with source as (
     select * from {{ ref('example_source_for_incremental') }}
     {% if is_incremental() %}
         -- this filter will only be applied on an incremental run
-        where id not in (select id from {{ this }}) 
+        where event_id not in (select event_id from {{ this }}) 
     {% endif %}
 )
 
