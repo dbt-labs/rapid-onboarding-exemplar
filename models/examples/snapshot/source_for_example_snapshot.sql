@@ -4,10 +4,14 @@
     )
 }}
 
+{% set statuses=['returned', 'completed', 'return_pending', 'shipped', 'placed'] %}
+
+
+
 
 with id_series as (
 
-{{ dbt_utils.generate_series(2000) }}
+{{ dbt_utils.generate_series(100000) }}
 
 ),
 
@@ -21,9 +25,9 @@ select
     dense_rank() over (
         order by 
             case 
-                when id % 7 = 0
+                when id % 5 = 0
                     then id - 1
-                when id % 7 = 1 
+                when id % 5 = 1 
                     then id - 2
                 when id % 9 = 0
                     then id - 1
@@ -44,32 +48,57 @@ distinct_order_ids as (
     from adding_order_id
 ),
 
+adding_order_created_at as (
+    select 
+        order_id,
+        {{ dbt.dateadd(
+            'month',
+            -1,
+            dbt.dateadd("second", "order_id", dbt.date_trunc('day', 'current_timestamp'))) 
+        }} as order_created_at
+    
+    from distinct_order_ids
+),
+
 adding_order_details as (
     select 
         order_id,
-        -- 60% of records get an update
-        uniform(1, 10, random()) <= 6 as needs_update,
+        -- every 5th order gets an update
+        order_id % 5 = 0 as needs_update,
         
         case 
-            -- 60% chance of shipped
-            when uniform(1, 10, random()) <= 6
+            -- every 5th order gets randomly updated
+            when order_id % 5 = 0
+                then 
+                    case 
+                        when uniform(0, 5, random()) = 0
+                            then '{{ statuses[0] }}'
+                        when uniform(0, 5, random()) = 1
+                            then '{{ statuses[1] }}'
+                        when uniform(0, 5, random()) = 2
+                            then '{{ statuses[2] }}'
+                        when uniform(0, 5, random()) = 3
+                            then '{{ statuses[3] }}'
+                        else '{{ statuses[4] }}'
+                    end 
+            when order_id % 3 = 0
+                then 'placed'
+            when order_id % 3 = 1
                 then 'shipped'
-            
-            -- 75% of remaining time placed
-            when uniform(1, 4, random()) <= 3
-                then 'pending'
-            
-            -- 60% of remaining time in delivery
-            when uniform(1, 4, random()) <= 3
-                then 'in delivery'
-            
             else 'returned'
-        
         end as status,
 
-        {{ dbt.dateadd("hour", "order_id", dbt.date_trunc('year', 'current_timestamp')) }}::date as order_created_date
+        order_created_at,
 
-    from  distinct_order_ids
+        case 
+            -- every 5th order gets randomly updated
+            when order_id % 5 = 0
+                then current_timestamp
+            else order_created_at
+        end as order_updated_at
+
+
+    from  adding_order_created_at
 ),
 
 final as (
@@ -87,6 +116,8 @@ final as (
         end as payment_method,
 
         case 
+            when adding_order_details.needs_update
+                then uniform(5, 35, random())::float - .01
             when id % 3 = 0
                 then 9.99
             when id % 3 = 1
@@ -96,13 +127,9 @@ final as (
 
         adding_order_details.status,
 
-        adding_order_details.order_created_date,
+        adding_order_details.order_created_at,
 
-        case 
-            when adding_order_details.needs_update
-                then current_timestamp
-            else order_created_date
-        end as order_updated_at
+        adding_order_details.order_updated_at
 
 
     from adding_order_id
@@ -114,3 +141,4 @@ final as (
 
 select *
 from final
+order by 1, 2
