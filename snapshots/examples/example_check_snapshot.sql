@@ -1,4 +1,4 @@
-{% snapshot example_snapshot_check %}
+{% snapshot example_check_snapshot %}
     {{
         config(
             target_database='analytics',
@@ -10,11 +10,11 @@
         )
     }}
 
-    {% set column_names = dbt_utils.get_filtered_columns_in_relation(from=ref('source_for_example_snapshot'), except=["id"]) %}
+    {% set column_names = dbt_utils.get_filtered_columns_in_relation(from=ref('example_orders_line_items_source_for_snapshot'), except=["id"]) %}
 
 
     select 
         *,
         {{ dbt_utils.generate_surrogate_key(column_names) }} as check_cols
-    from {{ ref('source_for_example_snapshot') }}
+    from {{ ref('example_orders_line_items_source_for_snapshot') }}
  {% endsnapshot %}

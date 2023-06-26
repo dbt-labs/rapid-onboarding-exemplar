@@ -1,8 +1,8 @@
-{% snapshot example_snapshot %}
+{% snapshot example_generate_schema_snapshot %}
     {{
         config(
             target_database='analytics',
-            target_schema='snapshots',
+            target_schema=generate_schema_name('snapshots'),
             unique_key='id',
             strategy='timestamp',
             updated_at='order_updated_at',
@@ -10,5 +10,5 @@
         )
     }}
 
-    select * from {{ ref('source_for_example_snapshot') }}
+    select * from {{ ref('example_orders_line_items_source_for_snapshot') }}
  {% endsnapshot %}

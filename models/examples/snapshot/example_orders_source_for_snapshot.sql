@@ -4,9 +4,8 @@
     )
 }}
 
+
 {% set statuses=['returned', 'completed', 'return_pending', 'shipped', 'placed'] %}
-
-
 
 
 with id_series as (
@@ -60,11 +59,19 @@ adding_order_created_at as (
     from distinct_order_ids
 ),
 
-adding_order_details as (
+final as (
     select 
         order_id,
         -- every 5th order gets an update
         order_id % 5 = 0 as needs_update,
+
+        case 
+            when adding_order_created_at.order_id % 10 <= 6
+                then 'credit'
+            when adding_order_created_at.order_id % 10 <= 8
+                then 'debit'
+            else 'cash'
+        end as payment_method,
         
         case 
             -- every 5th order gets randomly updated
@@ -99,46 +106,15 @@ adding_order_details as (
 
 
     from  adding_order_created_at
-),
+) 
 
-final as (
+select 
+    order_id,
+    status,
+    payment_method,
+    order_created_at,
+    order_updated_at
 
-    select 
-        adding_order_id.id, 
-        adding_order_id.order_id,
-        
-        case 
-            when adding_order_id.order_id % 10 <= 6
-                then 'credit'
-            when adding_order_id.order_id % 10 <= 8
-                then 'debit'
-            else 'cash'
-        end as payment_method,
-
-        case 
-            when adding_order_details.needs_update
-                then uniform(5, 35, random())::float - .01
-            when id % 3 = 0
-                then 9.99
-            when id % 3 = 1
-                then 5.99
-            else 19.99
-        end as amount,
-
-        adding_order_details.status,
-
-        adding_order_details.order_created_at,
-
-        adding_order_details.order_updated_at
-
-
-    from adding_order_id
-
-    join adding_order_details
-    using (order_id)
-
-)
-
-select *
 from final
-order by 1, 2
+
+order by 1
