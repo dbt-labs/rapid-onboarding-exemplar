@@ -1,5 +1,11 @@
 version: 2
 
+groups:
+  - name: marketing
+    owner:
+      email: marketing@jaffleshop.com
+      name: Marketing Person
+
 models:
   - name: dim_customers
     description: Customer dimensions table

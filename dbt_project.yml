@@ -42,6 +42,12 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
+      finance:
+        +group: finance
+      marketing:
+        +group: marketing
+      operations:
+        +group: operations
     intermediate:
       +materialized: view
     staging:
@@ -63,4 +69,3 @@ tests:
     examples:
       staging:
         +store_failures: "{{ true if target.name == 'prod' else false }}"
-

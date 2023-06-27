@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: example_private_finance_model
+    access: private
+    group: finance
+
+  - name: example_selecting_from_private_model
+
+    # change this to marketing if you want to see the error from not having access to the private finance model
+    group: finance
