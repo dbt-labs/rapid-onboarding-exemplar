@@ -59,3 +59,15 @@ dbt build --select config.materialized.incremental
 ```
 dbt build --selector all_models_and_tagged_snapshots
 ```
+
+11. Build version 2 (latest version) of a model called example_private_finance_model which has an alias of example_private_finance_model
+
+```
+dbt build --select example_private_finance_model
+```
+
+12. Build version 1 of a model called example_private_finance_model
+
+```
+dbt build --select example_private_finance_model.v1
+```
