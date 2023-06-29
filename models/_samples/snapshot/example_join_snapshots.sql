@@ -14,18 +14,18 @@ orders_line_items_snapshot as (
 
 joined as (
 
-select 
+select
     orders_line_items_snapshot.id as line_item_id,
     order_snapshot.order_id,
     order_snapshot.payment_method,
-    order_snapshot.order_created_at,
-    order_snapshot.order_updated_at,
     order_snapshot.status,
     orders_line_items_snapshot.amount,
     greatest(order_snapshot.dbt_valid_from,
         orders_line_items_snapshot.dbt_valid_from) as valid_from,
     least(order_snapshot.dbt_valid_to,
-        orders_line_items_snapshot.dbt_valid_to) as valid_to
+        orders_line_items_snapshot.dbt_valid_to) as valid_to,
+    min(least(order_snapshot.order_created_at, orders_line_items_snapshot.order_created_at)) as order_created_at,
+    max(least(order_snapshot.order_updated_at, orders_line_items_snapshot.order_updated_at)) as order_updated_at
 
 
 from order_snapshot
@@ -34,6 +34,8 @@ left join orders_line_items_snapshot
 on order_snapshot.order_id = orders_line_items_snapshot.order_id
 and order_snapshot.dbt_valid_from <= orders_line_items_snapshot.dbt_valid_to
 and order_snapshot.dbt_valid_to >= orders_line_items_snapshot.dbt_valid_from
+
+group by 1,2,3,4,5,6,7
 
 ),
 

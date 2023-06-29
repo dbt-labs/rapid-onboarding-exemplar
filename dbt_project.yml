@@ -52,7 +52,7 @@ models:
       +materialized: view
     staging:
       +materialized: view
-    examples:
+    _samples:
       +materialized: table
       staging:
         jaffle_shop:
@@ -66,6 +66,6 @@ models:
 
 tests:
   rapid_onboarding_exemplar:
-    examples:
+    _samples:
       staging:
         +store_failures: "{{ true if target.name == 'prod' else false }}"

@@ -1,23 +1,23 @@
 version: 2
 
 snapshots:
-  - name: example_snapshot
+  - name: example_orders_line_items_snapshot
     columns:
       - name: id 
         tests:
           - relationships:
-              to: ref('source_for_example_snapshot')
+              to: ref('example_orders_line_items_source_for_snapshot')
               field: id
       - name: dbt_scd_id
         tests:
           - unique
           - not_null
-  - name: example_snapshot_check
+  - name: example_check_snapshot
     columns:
       - name: id 
         tests:
           - relationships:
-              to: ref('source_for_example_snapshot')
+              to: ref('example_orders_line_items_source_for_snapshot')
               field: id
       - name: dbt_scd_id
         tests:
