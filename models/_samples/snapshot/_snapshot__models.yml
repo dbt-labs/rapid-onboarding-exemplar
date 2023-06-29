@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: example_join_snapshots
+    columns:
+      - name: surrogate_key
+        tests:
+          - unique
+          - not_null
