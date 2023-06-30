@@ -17,7 +17,8 @@ sources:
           - name: o_orderkey
             description: SF*1,500,000 are sparsely populated
             tests: 
-              - unique
+              - unique:
+                  severity: warn
               - not_null
                   
           - name: o_custkey

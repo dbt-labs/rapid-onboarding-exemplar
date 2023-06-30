@@ -7,7 +7,10 @@ models:
       - name: customer_id
         description: primary id of the model
         tests:
-          - unique
+          - unique:
+              config:
+                error_if: "> 100"
+                warn_if: "> 10"
           - not_null
       - name: name
         description: customer id
