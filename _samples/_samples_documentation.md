@@ -70,7 +70,7 @@
 **Describe a seed [samples](../seeds/samples/_seeds.yml)**
 - Shows how to add descriptions on seeds
 
-** Documenting snapshots [samples](../snapshots/_samples/_example__snapshots.yml)**
+**Documenting snapshots [samples](../snapshots/_samples/_example__snapshots.yml)**
 - Shows how to document snapshots
 
 ## Seeds
@@ -179,30 +179,30 @@
 
 ## Node Selection Syntax
 
-**Model selection syntax [samples](node_selection_syntax/model_selection_syntax.yml)**
+**Model selection syntax [samples](node_selection_syntax/model_selection_syntax.md)**
 
-**Seed selection syntax [samples](node_selection_syntax/seed_selection_syntax.yml)**
+**Seed selection syntax [samples](node_selection_syntax/seed_selection_syntax.md)**
 
-**Source selection syntax [samples](node_selection_syntax/source_selection_syntax.yml)**
+**Source selection syntax [samples](node_selection_syntax/source_selection_syntax.md)**
 
-**Tag selection syntax [samples](node_selection_syntax/tag_selection_syntax.yml)**
+**Tag selection syntax [samples](node_selection_syntax/tag_selection_syntax.md)**
 
-**Test selection syntax [samples](node_selection_syntax/test_selection_syntax.yml)**
+**Test selection syntax [samples](node_selection_syntax/test_selection_syntax.md)**
 
 ## Helpful Packages
 
 ### dbt_codegen
 
-**Generate base model [samples](dbt_codegen/generate_base_model.yml)**
+**Generate base model [samples](dbt_codegen/generate_base_model.sql)**
 - How to use generate_base_model to create the staging model for a source
 
-**Generate model import CTEs [samples](dbt_codegen/generate_model_import_ctes.yml)**
+**Generate model import CTEs [samples](dbt_codegen/generate_model_import_ctes.sql)**
 - Shows how to use generate_model_import_ctes to clean up a model
 
-**Generate model yaml [samples](dbt_codegen/generate_model_yaml.yml)**
+**Generate model yaml [samples](dbt_codegen/generate_model_yaml.sql)**
 - How to use generate_model_yaml to create the yaml for a model
 
-**Generate source [samples](dbt_codegen/generate_source.yml)**
+**Generate source [samples](dbt_codegen/generate_source.sql)**
 - Shows how to generate the source yaml for a given database and schema
 
 ### dbt_utils
