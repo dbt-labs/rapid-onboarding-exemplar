@@ -1,7 +1,7 @@
 # Documentation of sample dbt concepts in this project
 
 ## Sources
-- Source selection syntax [samples](_samples/sources/source_selection_syntax.md)
+- Source selection syntax [samples](sources/source_selection_syntax.md)
 
 ## Models
 
