@@ -39,6 +39,9 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
+      marketing:
+        +schema: marketing
+     
     intermediate:
       +materialized: view
     staging:
