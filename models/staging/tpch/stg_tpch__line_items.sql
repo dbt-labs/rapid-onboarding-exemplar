@@ -4,7 +4,6 @@ with source as (
 
 ),
 
-
 renamed as (
 
     select
@@ -21,7 +20,7 @@ renamed as (
         -- descriptions
         l_linenumber as line_number,
         l_comment as comment,
-        l_shipmode as ship_mode,
+        l_shipmode as shipmode,
         l_shipinstruct as ship_instructions,
         
         -- numbers
