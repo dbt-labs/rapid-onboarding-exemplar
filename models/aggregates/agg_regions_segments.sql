@@ -4,6 +4,8 @@ customers as (
     select * from {{ ref('dim_customers') }}
 ),
 
+
+
 orders as (
     select * from {{ ref('fct_orders') }}
 ),
