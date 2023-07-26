@@ -1,3 +1,5 @@
+-- lauren's note
+
 with stg_customers as (
     select * from {{ ref('stg_jaffle_shop__customers') }}
 ),
