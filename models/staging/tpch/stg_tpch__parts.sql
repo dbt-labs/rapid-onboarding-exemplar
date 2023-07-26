@@ -7,7 +7,7 @@ with source as (
 renamed as (
 
     select
-
+        1 as static_field, 
         -- ids
         p_partkey as part_id,
         

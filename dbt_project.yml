@@ -66,6 +66,9 @@ models:
 
 tests:
   rapid_onboarding_exemplar:
-    _samples:
-      staging:
-        +store_failures: "{{ true if target.name == 'prod' else false }}"
+    +store_failures: true
+    +schema: the_island_of_misfit_tests
+#    _samples:
+#      staging:
+#        +store_failures: "{{ true if target.name == 'prod' else false }}"
+
