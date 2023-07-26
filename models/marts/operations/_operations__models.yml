@@ -1,5 +1,11 @@
 version: 2
 
+groups:
+  - name: operations
+    owner:
+      email: operations@jaffleshop.com
+      name: Operations Person
+
 models:
   - name: dim_parts
     description: Parts dimensions table

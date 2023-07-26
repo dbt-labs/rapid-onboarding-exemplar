@@ -27,6 +27,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 vars:
   example_variable: foo
   example_target_snapshot_schema: "{{ target.schema if target.name == 'dev' else 'prod_snapshot' }}"
+  incremental_lookback_value: 3
+  incremental_lookback_period: 'hour'
+  future_proof_date: '9999-12-31'
+
+on-run-end:
+  - "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
+
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -35,9 +42,30 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
-      intermediate:
-        +materialized: view
+      finance:
+        +group: finance
+      marketing:
+        +group: marketing
+      operations:
+        +group: operations
     intermediate:
       +materialized: view
     staging:
       +materialized: view
+    _samples:
+      +materialized: table
+      staging:
+        jaffle_shop:
+          +materialized: view
+          +tags:
+            - example 
+            - hourly
+  dbt_artifacts:
+    staging:
+      +materialized: ephemeral
+
+tests:
+  rapid_onboarding_exemplar:
+    _samples:
+      staging:
+        +store_failures: "{{ true if target.name == 'prod' else false }}"
