@@ -14,7 +14,8 @@ renamed as (
 
         -- descriptions
         n_name as name,
-        n_comment as comment
+        n_comment as comment,
+        'carol field' as new_field
 
     from source
 
