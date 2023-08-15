@@ -1,7 +1,5 @@
 ## Some examples of helpful syntax for using tags
 
-### Testing Sources
-
 1. Build all models that have the hourly tag
 
 ```
