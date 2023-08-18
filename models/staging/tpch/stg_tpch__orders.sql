@@ -7,8 +7,6 @@ with source as (
 renamed as (
 
     select
-        2 as another_field,
-        1 as static_field,
         -- ids
         o_orderkey as order_id,
         o_custkey as customer_id,
