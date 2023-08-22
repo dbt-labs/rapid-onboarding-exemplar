@@ -1,3 +1,4 @@
+
 with source as (
 
     select * from {{ source('tpch', 'part') }}
@@ -19,6 +20,7 @@ renamed as (
         p_brand as brand,
         p_comment as comment,
         p_container as container,
+        'fun' as carol_columns,
 
         -- amounts
         p_retailprice as retail_price
