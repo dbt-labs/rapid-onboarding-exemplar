@@ -3,7 +3,7 @@
 {{
     config(
       target_database='analytics',
-      target_schema='snapshots',
+      target_schema= var('snapshot_schema'),
       unique_key='ID',
 
       strategy='timestamp',
