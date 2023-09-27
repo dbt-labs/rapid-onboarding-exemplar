@@ -11,7 +11,7 @@ line_item as (
 )
 select
 
-    line_item.order_item_id,
+    line_item.order_item_id as orderitem_id,
     orders.order_id,
     orders.customer_id,
     line_item.part_id,
