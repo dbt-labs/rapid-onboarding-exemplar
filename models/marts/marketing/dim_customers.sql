@@ -9,6 +9,8 @@ with customer as (
     select * from {{ ref('stg_tpch__customers') }}
 
 ),
+
+
 nation as (
 
     select * from {{ ref('stg_tpch__nations') }}
