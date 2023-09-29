@@ -41,7 +41,8 @@ select
     line_item.item_discount_amount,
     line_item.tax_rate,
     line_item.item_tax_amount,
-    line_item.net_item_sales_amount
+    line_item.net_item_sales_amount,
+    'new field' as carol_new_field
 
 from
     orders
