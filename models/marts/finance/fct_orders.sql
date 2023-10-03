@@ -26,7 +26,8 @@ final as (
         sum(gross_item_sales_amount) as gross_item_sales_amount,
         sum(item_discount_amount) as item_discount_amount,
         sum(item_tax_amount) as item_tax_amount,
-        sum(net_item_sales_amount) as net_item_sales_amount
+        sum(net_item_sales_amount) as net_item_sales_amount,
+        "new_column!" as new_column
 
     from order_item
     {{ dbt_utils.group_by(n = 8) }}
