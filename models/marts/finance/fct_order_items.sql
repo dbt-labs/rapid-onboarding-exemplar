@@ -1,6 +1,7 @@
 {{
     config(
-        tags = ['finance']
+        tags = ['finance'],
+        schema = 'finance'
     )
 }}
 
