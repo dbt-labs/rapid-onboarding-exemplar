@@ -19,4 +19,3 @@
 select 
     $postdate as original_date,
     $thrudate as previous_date
-
