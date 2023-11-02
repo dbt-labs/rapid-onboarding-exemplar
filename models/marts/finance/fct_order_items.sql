@@ -17,6 +17,7 @@ part_supplier as (
 ),
 final as (
     select 
+        1 as static_field,
         order_item.order_item_id,
         order_item.order_id,
         order_item.order_date,
