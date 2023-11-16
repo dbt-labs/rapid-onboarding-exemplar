@@ -5,8 +5,6 @@ packages:
     version: 1.1.0
   - package: dbt-labs/audit_helper
     version: 0.9.0
-  - package: dbt-labs/metrics
-    version: 1.5.0
   - package: brooklyn-data/dbt_artifacts
     version: 2.4.2
   - package: dbt-labs/dbt_project_evaluator
