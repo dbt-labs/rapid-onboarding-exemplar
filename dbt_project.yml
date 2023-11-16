@@ -40,6 +40,7 @@ on-run-end:
 models:
   rapid_onboarding_exemplar:
     marts:
+      +schema: marts
       +materialized: table
       +tags: ['tag']
       finance:
