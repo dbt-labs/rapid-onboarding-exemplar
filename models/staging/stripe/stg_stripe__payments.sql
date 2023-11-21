@@ -15,4 +15,6 @@ select
 
 from {{ ref('snapshot_stg_payments') }} 
 -- pull only the most recent update for each unique record
+{% if target.name == 'CI'%}
 where dbt_valid_to is null
+{% endif %}
