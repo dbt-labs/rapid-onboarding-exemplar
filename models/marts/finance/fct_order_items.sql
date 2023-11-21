@@ -7,6 +7,10 @@
 with order_item as (
     
     select * from {{ ref('int_order_items_joined') }}
+    {% if target.name == 'CI' %}
+    where order_date > dateadd('-1',current_date())
+    {% endif %}
+
 
 ),
 part_supplier as (
