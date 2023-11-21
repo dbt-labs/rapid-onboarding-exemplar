@@ -8,6 +8,7 @@ renamed as (
 
     select
         -- ids
+        1 as field_to_test_ci,
         o_orderkey as order_id,
         o_custkey as customer_id,
 
