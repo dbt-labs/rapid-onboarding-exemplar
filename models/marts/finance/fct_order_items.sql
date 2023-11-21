@@ -51,7 +51,7 @@ final as (
                 order_item.supplier_id = part_supplier.supplier_id
 )
 select 
-    *
+    *, 'jess' as test
 from
     final
 order by
