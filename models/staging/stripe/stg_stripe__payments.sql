@@ -14,7 +14,9 @@ select
     created as created_at
 
 from {{ ref('snapshot_stg_payments') }} 
--- pull only the most recent update for each unique record
+
+-- for CI builds, only pull the records from the prior day
+
 {% if target.name == 'CI'%}
 where created_at >= dateadd('day',-1,current_date())
 {% endif %}
