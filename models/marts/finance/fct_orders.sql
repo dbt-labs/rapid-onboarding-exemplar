@@ -14,7 +14,7 @@ final as (
 
     select 
 
-        order_id, 
+        order_id as id, 
         order_date,
         customer_id,
         order_status_code,
