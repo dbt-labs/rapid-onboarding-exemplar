@@ -18,5 +18,7 @@ from {{ ref('snapshot_stg_payments') }}
 -- for CI builds, only pull the records from the prior day
 
 {% if target.name == 'CI'%}
-where created_at >= dateadd('day',-1,current_date())
+
+    where created_at >= dateadd('day',-1,current_date())
+
 {% endif %}
