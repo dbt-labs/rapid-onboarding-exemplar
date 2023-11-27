@@ -13,6 +13,12 @@ select
     -- datetimes
     created as created_at
 
-from {{ ref('snapshot_stg_payments') }} 
--- pull only the most recent update for each unique record
-where dbt_valid_to is null
+from {{ source('stripe', 'payment') }}
+
+{% if target.name == 'CI' %}
+
+    where created_at >= dateadd('day',-3,current_date())
+
+{% endif %}
+
+
