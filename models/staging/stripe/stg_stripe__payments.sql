@@ -14,5 +14,11 @@ select
     created as created_at
 
 from {{ source('stripe', 'payment') }}
--- pull only the most recent update for each unique record
-where dbt_valid_to is null
+
+{% if target.name == 'CI' %}
+
+    where created_at >= dateadd('day',-3,current_date())
+
+{% endif %}
+
+
