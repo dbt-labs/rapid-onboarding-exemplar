@@ -69,3 +69,12 @@ tests:
     _samples:
       staging:
         +store_failures: "{{ true if target.name == 'prod' else false }}"
+
+sources: 
+  rapid_onboarding_exemplar: 
+    models: 
+      staging:
+        stripe:
+          +enabled: false
+    tpch:
+      +enabled: false
