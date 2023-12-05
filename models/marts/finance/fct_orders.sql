@@ -10,7 +10,7 @@ with order_item as (
 
 ),
 
-final as (
+almost_final as (
 
     select 
 
@@ -31,7 +31,17 @@ final as (
     from order_item
     {{ dbt_utils.group_by(n = 8) }}
 
+),
+
+add_subtotal as (
+
+    select
+        *,
+        gross_item_sales_amount + item_discount_amount as item_subtotal_amount
+
+    from almost_final
+
 )
 
-select * from final
+select * from add_subtotal
 order by order_date
