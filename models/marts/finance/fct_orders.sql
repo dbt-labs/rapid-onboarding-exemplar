@@ -1,10 +1,6 @@
-{{
-    config(
-        tags = ['finance']
-    )
-}}
+with 
 
-with order_item as (
+order_item as (
     
     select * from {{ ref('int_order_items_joined') }}
 
