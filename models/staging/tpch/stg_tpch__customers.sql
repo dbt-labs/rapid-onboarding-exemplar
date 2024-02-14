@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized= env_var('DBT_MATERIALIZATION')
+    )
+}}
+
 with source as (
 
     select * from {{ source('tpch', 'customer') }}

@@ -51,7 +51,9 @@ models:
     intermediate:
       +materialized: view
     staging:
-      +materialized: view
+      +materialized: dynamic_table
+      +snowflake_warehouse: 'transforming'
+      +target_lag: '1 minute' 
     _samples:
       +materialized: table
       staging:
