@@ -70,3 +70,7 @@ tests:
     _samples:
       staging:
         +store_failures: "{{ true if target.name == 'prod' else false }}"
+    marts: 
+      +schema: marts
+    staging:
+      +schema: staging
