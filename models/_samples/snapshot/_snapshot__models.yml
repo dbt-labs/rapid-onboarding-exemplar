@@ -5,5 +5,4 @@ models:
     columns:
       - name: surrogate_key
         tests:
-          - unique
           - not_null

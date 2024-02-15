@@ -40,6 +40,7 @@ on-run-end:
 models:
   rapid_onboarding_exemplar:
     marts:
+      +schema: marts
       +materialized: table
       +tags: ['tag']
       finance:
@@ -69,3 +70,7 @@ tests:
     _samples:
       staging:
         +store_failures: "{{ true if target.name == 'prod' else false }}"
+    marts: 
+      +schema: marts
+    staging:
+      +schema: staging

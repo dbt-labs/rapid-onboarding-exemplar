@@ -1,0 +1,10 @@
+models:
+  - name: fct_payments
+    description: This is all the payments that we have processed since 2020
+    columns:
+      - name: id
+        description: This is the primary key for payments
+        tests:
+          - unique
+          - not_null
+  
