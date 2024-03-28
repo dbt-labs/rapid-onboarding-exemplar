@@ -5,7 +5,7 @@
 -- if you don't want to write to the same schema in development and prod, 
 -- use environment-aware variable from dbt_project.yml
 
--- if you do not have a reliable updated at timestamp, checek columns for changes.
+-- if you do not have a reliable updated at timestamp, check columns for changes.
 
 {{
     config(
