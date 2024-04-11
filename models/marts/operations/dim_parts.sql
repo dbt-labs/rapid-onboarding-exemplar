@@ -6,7 +6,7 @@ with part as (
 
 final as (
     select
-        part_id,
+        part_id as part_id_number,
         manufacturer,
         name,
         brand,
@@ -19,4 +19,4 @@ final as (
 )
 select *
 from final
-order by part_id
+order by part_id_number
