@@ -51,6 +51,7 @@ models:
     intermediate:
       +materialized: view
     staging:
+      database: '{{ env_var("DBT_DATABASE","analytics")}}'
       +materialized: view
     _samples:
       +materialized: table
@@ -66,9 +67,11 @@ models:
 
 tests:
   rapid_onboarding_exemplar:
+    +severity: '{{ env_var("DBT_TEST_WARN_IN_DEV") }}'
     +store_failures: true
     +schema: the_island_of_misfit_tests
 #    _samples:
 #      staging:
 #        +store_failures: "{{ true if target.name == 'prod' else false }}"
-
+  audit_helper:
+    +severity: '{{ env_var("DBT_TEST_WARN_IN_DEV") }}'
