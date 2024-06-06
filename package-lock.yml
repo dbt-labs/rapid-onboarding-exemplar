@@ -4,7 +4,7 @@ packages:
   - package: dbt-labs/dbt_utils
     version: 1.1.1
   - package: dbt-labs/audit_helper
-    version: 0.9.0
+    version: 0.11.0
   - package: brooklyn-data/dbt_artifacts
     version: 2.6.3
   - package: dbt-labs/dbt_project_evaluator
@@ -13,4 +13,4 @@ packages:
     version: 0.9.0
   - package: calogica/dbt_date
     version: 0.8.1
-sha1_hash: 8a9a49dc3508de375b37f886479d1a1da6e6d392
+sha1_hash: 062a9d7660578e97ace802520191b7b4d36cea25
