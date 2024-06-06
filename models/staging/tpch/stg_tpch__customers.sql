@@ -5,7 +5,7 @@ with source as (
 ),
 
 renamed as (
-
+    -- adding a comment for slim ci
     select
         -- ids
         c_custkey as customer_id,

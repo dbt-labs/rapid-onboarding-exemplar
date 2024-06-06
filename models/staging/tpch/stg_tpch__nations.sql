@@ -5,7 +5,7 @@ with source as (
 ),
 
 renamed as (
-
+ -- Testing Slim CI.
     select
 
         -- ids

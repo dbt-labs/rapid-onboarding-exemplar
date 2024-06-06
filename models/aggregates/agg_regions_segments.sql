@@ -5,6 +5,7 @@ customers as (
 ),
 
 orders as (
+    -- adding a comment for slim ci
     select * from {{ ref('fct_orders') }}
 ),
 
