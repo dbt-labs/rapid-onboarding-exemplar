@@ -10,13 +10,14 @@
 {{
     config(
       target_database='analytics',
-      target_schema=var('example_target_snapshot_schema'),
+      target_schema='dbt_bhipple',
       unique_key='order_item_id',
       strategy='check',
       check_cols=['gross_item_sales_amount', 'net_item_sales_amount'],
     )
 }}
 
-select * from {{ ref('int_line_items_amounts_calculated') }}
-
+select row_number() over(order by order_item_id)  as row_id, * from {{ ref('int_line_items_amounts_calculated') }}
+order by row_id
 {% endsnapshot %}
+
