@@ -1,3 +1,5 @@
+--this model override allows users to avoid dbt's "auto lowercasing" behavior when using codegen to generate model yaml. 
+--To actually use this macro, put it in the macros folder and name it generate_model_yaml.sql. 
 {% macro generate_column_yaml(column, model_yaml, column_desc_dict, parent_column_name="") %}
     {% if parent_column_name %}
         {% set column_name = parent_column_name ~ "." ~ column.name %}
