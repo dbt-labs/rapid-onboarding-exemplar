@@ -1,0 +1,4 @@
+models:
+  - name: stg_stripe__payments
+    access: public
+    description: description
