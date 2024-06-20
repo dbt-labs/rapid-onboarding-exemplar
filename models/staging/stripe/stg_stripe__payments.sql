@@ -1,7 +1,4 @@
 -- example showing staging model after snapshot
-
-
-
 select
     -- ids
     id as payment_id,
