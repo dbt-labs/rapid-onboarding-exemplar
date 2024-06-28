@@ -4,6 +4,6 @@ models:
   - name: example_join_snapshots
     columns:
       - name: surrogate_key
-        tests:
+        data_tests:
           - unique
           - not_null
