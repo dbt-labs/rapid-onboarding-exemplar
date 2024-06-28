@@ -5,5 +5,7 @@ models:
     columns:
       - name: surrogate_key
         data_tests:
-          - unique
+          - unique:
+              config:
+                where: valid_to = '{{ var("future_proof_date") }}'
           - not_null
