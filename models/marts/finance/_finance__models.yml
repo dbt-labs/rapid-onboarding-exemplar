@@ -12,7 +12,7 @@ models:
     columns:
       - name: order_item_id
         description: '{{ doc("order_item_id") }}'
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: order_id
@@ -69,12 +69,12 @@ models:
     columns:
       - name: order_id
         description: primary id of the model
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: customer_id
         description: foreign id for customers
-        tests:
+        data_tests:
           - relationships:
               to: ref('dim_customers')
               field: customer_id

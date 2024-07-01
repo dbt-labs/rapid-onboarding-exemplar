@@ -30,7 +30,7 @@ sources:
         freshness: null
         columns:
           - name: id 
-            tests:
+            data_tests:
               - not_null
       - name: orders
         identifier: orders
@@ -40,6 +40,6 @@ sources:
           identifier: false
         columns:
           - name: id 
-            tests:
+            data_tests:
               - not_null
         
