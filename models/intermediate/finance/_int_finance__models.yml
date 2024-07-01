@@ -6,7 +6,7 @@ models:
     columns:
       - name: order_item_id
         description: '{{ doc("order_item_id") }}'
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: order_id
@@ -59,7 +59,7 @@ models:
     columns:
       - name: order_item_id
         description: '{{ doc("order_item_id") }}'
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: order_id
@@ -122,7 +122,7 @@ models:
     columns:
       - name: part_supplier_id
         description: primary id of the models
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: part_id

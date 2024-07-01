@@ -18,7 +18,7 @@ models:
     columns:
       - name: customer_id
         description: Primary id on the customers table
-        tests:
+        data_tests:
           - unique
           - not_null
 

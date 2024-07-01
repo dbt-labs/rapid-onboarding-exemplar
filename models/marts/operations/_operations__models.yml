@@ -12,7 +12,7 @@ models:
     columns:
       - name: part_id
         description: primary id of the model
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: manufacturer
@@ -35,7 +35,7 @@ models:
     columns:
       - name: supplier_id
         description: primary id of the model
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: supplier_name

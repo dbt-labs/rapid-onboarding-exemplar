@@ -6,7 +6,7 @@ models:
     columns:
       - name: customer_id
         description: Primary key for customers
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: total_sales
@@ -17,19 +17,19 @@ models:
     columns:
       - name: region
         description: One of the five global regions.
-        tests:
+        data_tests:
           - accepted_values:
               values: ['MIDDLE EAST','AFRICA','EUROPE','ASIA','AMERICA']
 
       - name: market_segment
         description: One of the five market segments.
-        tests:
+        data_tests:
           - accepted_values:
               values: ['HOUSEHOLD','AUTOMOBILE','FURNITURE','BUILDING','MACHINERY']
 
       - name: total_sales
         description: Total sales for the region and market segment.
-        tests:
+        data_tests:
           - not_null
 
   # These two models are just different ways of doing the same thing (pivot over categories) using jinja and the PIVOT operation in Snowflake

@@ -17,7 +17,7 @@ models:
           # unique constraint is NOT enforced in snowflake
           - type: unique 
             warn_unenforced: false
-        tests:
+        data_tests:
           - unique
       - name: order_date
         data_type: date 
