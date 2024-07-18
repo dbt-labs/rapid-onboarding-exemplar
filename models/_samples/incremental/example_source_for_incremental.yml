@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: example_source_for_incremental
+    description: ""
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: event_id
+        data_type: float
+        description: ""
+        data_tests:
+          - unique_and_not_null
+
+      - name: user_id
+        data_type: number
+        description: ""
+
+      - name: event
+        data_type: varchar
+        description: ""
+
+      - name: event_timestamp
+        data_type: number
+        description: ""
+
+      - name: page_url
+        data_type: varchar
+        description: ""
+
+      - name: page_title
+        data_type: varchar
+        description: ""
+
+      - name: device_type
+        data_type: varchar
+        description: ""
+
+      - name: geo
+        data_type: varchar
+        description: ""
+
+      - name: _etl_loaded_at
+        data_type: timestamp_ltz
+        description: ""
