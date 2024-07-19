@@ -49,6 +49,8 @@ models:
           - include: all
             exclude: 
               - priority_code
+          - name: order_count_plus_one
+            data_type: number
       - v: 1
 
   - name: example_selecting_from_private_model
