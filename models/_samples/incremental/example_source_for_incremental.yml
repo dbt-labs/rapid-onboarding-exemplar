@@ -22,7 +22,7 @@ models:
         description: ""
 
       - name: event_timestamp
-        data_type: number
+        data_type: timestamp_ltz
         description: ""
 
       - name: page_url
