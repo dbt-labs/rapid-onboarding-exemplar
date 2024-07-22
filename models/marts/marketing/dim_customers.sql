@@ -30,6 +30,8 @@ final as (
         region.name as region,
         customer.phone_number,
         customer.account_balance,
+        --test ci change
+        (customer.account_balance + 1) as balance_plus_one
         customer.market_segment
     from
         customer
