@@ -4,5 +4,8 @@ models:
   - name: example_join_snapshots
     columns:
       - name: surrogate_key
-        tests:
+        data_tests:
+          - unique:
+              config:
+                where: valid_to = '{{ var("future_proof_date") }}'
           - not_null
