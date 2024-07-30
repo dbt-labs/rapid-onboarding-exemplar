@@ -3,11 +3,11 @@
 select
     -- ids
     id as payment_id,
-    orderid as order_id,
+    orderid,
+    1 as order_number,
     
     -- descriptions
     paymentmethod as payment_method,
-    status,
     {{ money('amount') }} as amount, -- amount is stored in cents, convert it to dollars
     
     -- datetimes
