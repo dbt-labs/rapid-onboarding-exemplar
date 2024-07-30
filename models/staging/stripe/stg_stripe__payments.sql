@@ -2,7 +2,7 @@
 select
     -- ids
     id as payment_id,
-    orderid as order_id,
+    orderid,
     
     -- descriptions
     paymentmethod as payment_method,
