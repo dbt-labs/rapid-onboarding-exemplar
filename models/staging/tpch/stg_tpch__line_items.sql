@@ -43,3 +43,4 @@ renamed as (
 )
 
 select * from renamed
+where order_id != '2400001'
