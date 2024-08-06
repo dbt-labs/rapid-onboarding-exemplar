@@ -5,9 +5,9 @@ models:
     access: private
     group: finance
     latest_version: 2
-    config:
-      contract:
-        enforced: true
+    # config:
+    #   contract:
+    #     enforced: true
     columns:
       - name: order_id
         data_type: int
