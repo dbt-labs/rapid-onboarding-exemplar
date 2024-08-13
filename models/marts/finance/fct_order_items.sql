@@ -35,7 +35,7 @@ final as (
         order_item.discount_percentage,
         order_item.discounted_price,
         order_item.tax_rate,
-        
+        (order_item.tax_rate + 1) tax_rate_plus_one,
         1 as order_item_count,
         order_item.quantity,
         order_item.gross_item_sales_amount,
