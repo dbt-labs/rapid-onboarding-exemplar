@@ -52,6 +52,8 @@ models:
       +materialized: view
     staging:
       +materialized: view
+      +contract:
+        enforced: true
     _samples:
       +materialized: table
       staging:

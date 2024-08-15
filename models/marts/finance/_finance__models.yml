@@ -9,13 +9,16 @@ groups:
 models:
   - name: fct_order_items
     description: order items fact table
+    config:
+      contract:
+        enforced: true
     columns:
       - name: order_item_id
         description: '{{ doc("order_item_id") }}'
         data_tests:
           - unique
           - not_null
-      - name: order_id
+      - name: order_id_two
         description: foreign id for orders
       - name: order_date
         description: date of the order
