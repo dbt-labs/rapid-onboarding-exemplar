@@ -52,6 +52,7 @@ models:
       +materialized: view
     staging:
       +materialized: view
+      +persist_dcos: true
     _samples:
       +materialized: table
       staging:
