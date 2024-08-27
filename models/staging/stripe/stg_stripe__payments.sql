@@ -9,7 +9,7 @@ select
     paymentmethod as payment_method,
     status,
     {{ money('amount') }} as amount, -- amount is stored in cents, convert it to dollars
-    
+    amount + 1 as amount_plus_one,
     -- datetimes
     created as created_at
 
