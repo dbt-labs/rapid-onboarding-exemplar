@@ -1,3 +1,10 @@
+{{
+    config(
+        database = 'demo_db',
+        schema = 'dev1'
+    )
+}}
+
 -- example showing staging model after snapshot
 
 select
