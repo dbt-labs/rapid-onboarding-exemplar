@@ -13,7 +13,7 @@ with order_item as (
 final as (
 
     select 
-
+        1 as static_field_1,
         order_id, 
         order_date,
         customer_id,
