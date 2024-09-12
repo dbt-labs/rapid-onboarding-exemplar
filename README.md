@@ -9,7 +9,7 @@ Our analytics stack:
 
 ## Permissions
 
-Access to the Snowflake warehouse is managed on a per-user basis by the training team. 
+Your access to the Snowflake warehouse is managed on a per-user basis by the training team. 
 If you need access, open a request in the #training-rapid-onboarding Slack channel.
 
 ## Using This Project
