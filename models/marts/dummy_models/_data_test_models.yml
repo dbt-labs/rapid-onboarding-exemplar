@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: description
+    columns:
+      - name: email
+        tests:
+          - unique
+
+  
+ 

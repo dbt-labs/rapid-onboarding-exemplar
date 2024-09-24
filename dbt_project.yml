@@ -68,4 +68,4 @@ tests:
   rapid_onboarding_exemplar:
     _samples:
       staging:
-        +store_failures: "{{ true if target.name == 'prod' else false }}"
+        +store_failures: true

@@ -1,0 +1,23 @@
+version: 2
+
+unit_tests:
+  - name: test_is_valid_email_address
+    description: "Check my is_valid_email_address logic captures all known edge cases - emails without ., emails without @, and emails from invalid domains."
+    model: exemplar_dim_customers
+    given:
+      - input: ref('stg_customers')
+        rows:
+          - {email: cool@example.com,    email_top_level_domain: example.com}
+          - {email: cool@unknown.com,    email_top_level_domain: unknown.com}
+          - {email: badgmail.com,        email_top_level_domain: gmail.com}
+          - {email: missingdot@gmailcom, email_top_level_domain: gmail.com}
+      - input: ref('top_level_email_domains')
+        rows:
+          - {tld: example.com}
+          - {tld: gmail.com}
+    expect:
+      rows:
+        - {email: cool@example.com,    is_valid_email_address: true}
+        - {email: cool@unknown.com,    is_valid_email_address: false}
+        - {email: badgmail.com,        is_valid_email_address: false}
+        - {email: missingdot@gmailcom, is_valid_email_address: false}
