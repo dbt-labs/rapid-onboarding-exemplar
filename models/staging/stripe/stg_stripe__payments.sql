@@ -1,3 +1,4 @@
+
 -- example showing staging model after snapshot
 
 select
