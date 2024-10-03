@@ -5,7 +5,7 @@ select
     -- ids
     id as payment_id,
     orderid as order_id,
-    null as column_null,
+    3 as three_column,
     -- descriptions
     paymentmethod as payment_method,
     status,
