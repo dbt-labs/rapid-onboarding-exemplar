@@ -6,6 +6,7 @@ select
     id as payment_id,
     orderid as order_id,
     3 as three_column,
+    4 as four_column,
     -- descriptions
     paymentmethod as payment_method,
     status,
