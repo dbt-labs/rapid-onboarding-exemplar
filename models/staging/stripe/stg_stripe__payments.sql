@@ -8,6 +8,7 @@ select
     3 as three_column,
     4 as four_column,
     5 as five_column,
+    6 as six_column,
     -- descriptions
     paymentmethod as payment_method,
     status,
