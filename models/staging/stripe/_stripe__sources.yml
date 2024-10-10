@@ -20,3 +20,8 @@ sources:
             data_tests:
               - accepted_values:
                   values: ['success', 'fail']
+          - name: amount
+            data_tests:
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  max_value: 10000
