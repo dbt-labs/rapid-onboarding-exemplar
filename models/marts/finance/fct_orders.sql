@@ -22,6 +22,8 @@ final as (
         clerk_name,
         ship_priority,
                 
+
+                
         1 as order_count,                
         sum(gross_item_sales_amount) as gross_item_sales_amount,
         sum(item_discount_amount) as item_discount_amount,
