@@ -23,6 +23,9 @@ select
     orders.clerk_name,
     orders.ship_priority,
 
+
+
+
     line_item.return_flag,
     line_item.line_number,
     line_item.order_item_status_code,
