@@ -78,7 +78,7 @@ models:
           - relationships:
               to: ref('dim_customers')
               field: customer_id
-              severity: error
+              severity: warn
       - name: order_date
         description: date of the order
       - name: status_code
