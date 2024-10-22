@@ -1,0 +1,24 @@
+models:
+  - name: stg_stripe__payments
+    data_tests:
+      - filtered_unique
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+      - name: payment_method
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: created_at
+        tests:
+          - not_null
