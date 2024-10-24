@@ -21,7 +21,7 @@ models:
           - accepted_values:
               values: ['MIDDLE EAST','AFRICA','EUROPE','ASIA','AMERICA']
 
-      - name: market_segment
+      - name: market_segments
         description: One of the five market segments.
         data_tests:
           - accepted_values:
