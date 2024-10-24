@@ -19,7 +19,7 @@ agg_orders as (
 final as (
     select
         customers.region,
-        customers.market_segment,
+        customers.market_segments,
         round(sum(agg_orders.total_sales),2) as total_sales
     from customers
     left join agg_orders on customers.customer_id = agg_orders.customer_id
