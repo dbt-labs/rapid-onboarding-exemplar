@@ -55,11 +55,15 @@ models:
     _samples:
       +materialized: table
       staging:
+        my_old_unorganized_model:
+          enabled: false
         jaffle_shop:
           +materialized: view
           +tags:
             - example 
             - hourly
+          stg_jaffle_shop__orders:
+            +tags: ['unique_tag']
   dbt_artifacts:
     staging:
       +materialized: ephemeral
