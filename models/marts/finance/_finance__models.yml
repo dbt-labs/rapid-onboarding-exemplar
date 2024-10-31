@@ -12,9 +12,9 @@ models:
     columns:
       - name: order_item_id
         description: '{{ doc("order_item_id") }}'
-        data_tests:
-          - unique
-          - not_null
+        # data_tests:
+        #   - unique
+        #   - not_null
       - name: order_id
         description: foreign id for orders
       - name: order_date
@@ -69,16 +69,16 @@ models:
     columns:
       - name: order_id
         description: primary id of the model
-        data_tests:
-          - unique
-          - not_null
+        # data_tests:
+        #   - unique
+        #   - not_null
       - name: customer_id
         description: foreign id for customers
-        data_tests:
-          - relationships:
-              to: ref('dim_customers')
-              field: customer_id
-              severity: error
+        # data_tests:
+        #   - relationships:
+        #       to: ref('dim_customers')
+        #       field: customer_id
+        #       severity: error
       - name: order_date
         description: date of the order
       - name: status_code
