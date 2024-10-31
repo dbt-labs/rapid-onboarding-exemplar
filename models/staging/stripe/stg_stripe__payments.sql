@@ -15,6 +15,3 @@ select
 from {{ ref('snapshot_stg_payments') }} 
 -- pull only the most recent update for each unique record
 where dbt_valid_to is null
-
-
-
