@@ -4,7 +4,6 @@ select
     -- ids
     id as payment_id,
     orderid as order_id,
-    "1" as new_id,
     -- descriptions
     paymentmethod as payment_method,
     status,
