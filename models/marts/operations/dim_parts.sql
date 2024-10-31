@@ -13,7 +13,8 @@ final as (
         type,
         size,
         container,
-        retail_price
+        retail_price,
+        retail_price + 30 as inflation_price
     from
         part
 )
