@@ -51,7 +51,7 @@ models:
     intermediate:
       +materialized: view
     staging:
-      database: '{{ env_var("DBT_DATABASE","analytics")}}'
+      #+database: '{{ env_var("DBT_DATABASE","analytics")}}'
       +materialized: view
     _samples:
       +materialized: table
