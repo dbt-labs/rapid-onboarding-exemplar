@@ -1,0 +1,25 @@
+models:
+  - name: stg_stripe_payments_non_snapshot
+    description: This model extracts all payment data from the Stripe source without applying any snapshot logic, providing a real-time view of payment transactions.
+    data_tests:
+      - audit_compare_relations:
+          dbt_model: ref('stg_stripe_payments_non_snapshot')
+          database: 'RAW'  # Replace with the target database name
+          schema: 'STRIPE'  # Replace with the target schema name
+          identifier: 'PAYMENT'  # Replace with the target table name
+          primary_key: 'order_id'
+    columns:
+      - name: id
+        description: A unique identifier for each payment transaction.
+      - name: amount
+        description: The total amount of the payment transaction.
+      - name: currency
+        description: The currency in which the payment was made.
+      - name: created
+        description: The timestamp when the payment was created.
+      - name: status
+        description: The current status of the payment transaction, such as succeeded or failed.
+      - name: customer_id
+        description: A unique identifier for the customer associated with the payment.
+      - name: payment_method
+        description: The method used for the payment, such as credit card or bank transfer.

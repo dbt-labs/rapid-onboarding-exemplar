@@ -46,4 +46,4 @@ final as (
     from joined
 )
 
-select * from final
+select * from final order by order_id
