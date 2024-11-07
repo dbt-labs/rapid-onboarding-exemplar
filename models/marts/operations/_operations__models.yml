@@ -17,6 +17,8 @@ models:
           - not_null
       - name: manufacturer
         description: manufacturer of the part
+        data_tests:
+          - not_null
       - name: name
         description: name of the part
       - name: brand
