@@ -1,0 +1,24 @@
+models:
+  - name: stg_stripe_payments_no_snapshot
+    description: This model extracts all payment records from the Stripe source table, providing a comprehensive view of each payment transaction without any historical snapshots.
+    tests:
+      - audit_compare_relations:
+          database: raw
+          schema: stripe
+          identifier: payment
+          primary_key: order_id
+    columns:
+      - name: id
+        description: A unique identifier for each payment transaction.
+      - name: orderid
+        description: The identifier for the order associated with the payment.
+      - name: paymentmethod
+        description: The method used to process the payment, such as credit card or bank transfer.
+      - name: status
+        description: The current status of the payment, indicating whether it is completed, pending, or failed.
+      - name: amount
+        description: The total amount of the payment transaction.
+      - name: created
+        description: The date when the payment was created.
+      - name: _batched_at
+        description: The timestamp indicating when the payment record was last batched into the system.
