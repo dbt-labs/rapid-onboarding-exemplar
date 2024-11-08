@@ -19,7 +19,7 @@ snapshots:
       enabled: true
       strategy: timestamp
       updated_at: order_updated_at
-      unique_key: ID
+      unique_key: order_id
       persist_docs:
         relation: true
         columns: true
