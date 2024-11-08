@@ -12,6 +12,19 @@ snapshots:
       persist_docs:
         relation: true
         columns: true
+# Another standard snapshot but this time with a different table. 
+  - name: snapshot_example_orders
+    relation: ref('example_orders_source_for_snapshot')
+    config:
+      enabled: true
+      strategy: timestamp
+      updated_at: order_updated_at
+      unique_key: ID
+      persist_docs:
+        relation: true
+        columns: true
+      invalidate_hard_deletes: true
+  
 # This snapshot has the check_cols example
   - name: snapshot_int_line_items
     relation: ref('int_line_items_amounts_calculated')
@@ -19,7 +32,7 @@ snapshots:
       enabled: true
       strategy: check
       check_cols: ['gross_item_sales_amount', 'net_item_sales_amount']
-      unique_key: order_item_id
+      unique_key: order_id
       persist_docs:
         relation: true
         columns: true
