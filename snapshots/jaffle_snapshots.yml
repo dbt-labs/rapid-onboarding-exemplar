@@ -1,0 +1,24 @@
+version: 2
+
+snapshots:
+  - name: snapshot_stg_payments
+    relation: source('stripe', 'payment')
+    config:
+      enabled: true
+      strategy: timestamp
+      updated_at: _BATCHED_AT
+      unique_key: ID
+      persist_docs:
+        relation: true
+        columns: true
+  - name: snapshot_int_line_items
+    relation: ref('int_line_items_amounts_calculated')
+    config:
+      enabled: true
+      strategy: check
+      check_cols: ['gross_item_sales_amount', 'net_item_sales_amount']
+      unique_key: order_item_id
+      persist_docs:
+        relation: true
+        columns: true
+
