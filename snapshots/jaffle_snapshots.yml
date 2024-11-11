@@ -9,9 +9,32 @@ snapshots:
       strategy: timestamp
       updated_at: _BATCHED_AT
       unique_key: ID
+      # optional configs
+      database: jaffle_test
+      schema: snapshot_schema
+      invalidate_hard_deletes: true
+      snapshot_meta_column_names: 
+        dbt_valid_from: valid_from
+        dbt_valid_to: valid_to
+        dbt_scd_id: scd_id
+        dbt_updated_at: dbt_updated_at
       persist_docs:
         relation: true
         columns: true
+      # end optional configs
+
+# This snapshot has the check_cols example
+  - name: snapshot_int_line_items
+    relation: ref('int_line_items_amounts_calculated')
+    config:
+      enabled: true
+      strategy: check
+      check_cols: ['gross_item_sales_amount', 'net_item_sales_amount']
+      unique_key: order_item_id
+      persist_docs:
+        relation: true
+        columns: true
+
 # Another standard snapshot but this time with a different table. 
   - name: snapshot_example_orders
     relation: ref('example_orders_source_for_snapshot')
@@ -25,17 +48,7 @@ snapshots:
         columns: true
       invalidate_hard_deletes: true
   
-# This snapshot has the check_cols example
-  - name: snapshot_int_line_items
-    relation: ref('int_line_items_amounts_calculated')
-    config:
-      enabled: true
-      strategy: check
-      check_cols: ['gross_item_sales_amount', 'net_item_sales_amount']
-      unique_key: order_item_id
-      persist_docs:
-        relation: true
-        columns: true
+
 # This snapshot has invalidate hard deletes as an example
   - name: snapshot_orders_line_items
     relation: ref('example_orders_line_items_source_for_snapshot')
