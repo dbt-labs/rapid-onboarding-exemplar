@@ -1,4 +1,4 @@
-{% snapshot snapshot_int_line_items %}
+{% snapshot _snapshot_int_line_items %}
 
 -- Example showing check columns strategy and using custom schemas (this is rare)
 
