@@ -1,4 +1,4 @@
-with order_snapshot as (
+{# with order_snapshot as (
     select 
         * exclude dbt_valid_to,
         coalesce(dbt_valid_to, cast('{{ var("future_proof_date") }}' as timestamp)) as dbt_valid_to
@@ -47,3 +47,4 @@ final as (
 )
 
 select * from final
+#} 
