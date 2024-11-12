@@ -11,7 +11,9 @@ select
     {{ money('amount') }} as amount, -- amount is stored in cents, convert it to dollars
     
     -- datetimes
-    created as created_at
+    created as created_at,
+    1 as new_id
+
 
 from {{ ref('snapshot_stg_payments') }} 
 -- pull only the most recent update for each unique record
