@@ -9,6 +9,7 @@ select
     paymentmethod as payment_method,
     status,
     {{ money('amount') }} as amount, -- amount is stored in cents, convert it to dollars
+    1 as testing_column,
     
     -- datetimes
     created as created_at
