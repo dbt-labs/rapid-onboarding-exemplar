@@ -22,7 +22,8 @@ final as (
         clerk_name,
         ship_priority,
                 
-        1 as order_count,                
+        1 as order_count,
+        2 as example_change,                
         sum(gross_item_sales_amount) as gross_item_sales_amount,
         sum(item_discount_amount) as item_discount_amount,
         sum(item_tax_amount) as item_tax_amount,
