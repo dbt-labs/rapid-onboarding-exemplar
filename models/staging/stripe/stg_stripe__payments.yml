@@ -1,0 +1,22 @@
+models:
+  - name: stg_stripe__payments
+    description: This model stages payment data from Stripe, transforming and filtering it to ensure only the most recent updates for each unique record are included. It converts monetary amounts from cents to dollars and prepares the data for further analysis.
+    columns:
+      - name: payment_id
+        description: A unique identifier for each payment transaction.
+      - name: order_id
+        description: A unique identifier for the order associated with the payment.
+      - name: four
+        description: A placeholder column with a constant value 'four'.
+        tests:
+          - accepted_values:
+              values:
+                - "four"
+      - name: payment_method
+        description: The method used to make the payment, such as credit card or bank transfer.
+      - name: status
+        description: The current status of the payment, indicating whether it is pending, completed, or failed.
+      - name: amount
+        description: The total amount of the payment in dollars, converted from cents.
+      - name: created_at
+        description: The date and time when the payment was created.
