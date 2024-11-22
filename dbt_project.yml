@@ -50,6 +50,7 @@ models:
         +group: operations
     intermediate:
       +materialized: view
+      +schema: int
     staging:
       +materialized: view
     _samples:
