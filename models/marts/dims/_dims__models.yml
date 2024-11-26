@@ -2,11 +2,27 @@ version: 2
 
 models:
   - name: dim_orders
+    config:
+      contract:
+        enforced: true
     columns:
       - name: order_sk
+        data_type: decimal(10,2)
         data_tests:
           - unique
           - not_null
+      - name: cust_fname
+        data_type: string
+      - name: cust_lname
+        data_type: string
+      - name: order_country_origin
+        data_type: string
+      - name: order_date
+        data_type: date
+      - name: order_id
+        data_type: string
+      - name: order_quantity
+        data_type: decimal(15,2)
 
   - name: dim_countries
     columns:
