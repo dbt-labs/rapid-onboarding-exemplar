@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: dim_orders
+    columns:
+      - name: order_sk
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_countries
+    columns:
+      - name: country_name
+        data_tests:
+          - accepted_values:
+              values:
+                - "United States"
+                - "France"
+                - "Italy"
+                - "Philippines"
+
+unit_tests:
+  - name: test_if_full_name_format_is_correct
+    description: "Checks if the format for customer full name is correct"
+    model: dim_customer_info
+    config:
+      tags: |
+        {%- if target.name == 'prod' -%} unit_test
+        {%- else -%} do_not_run
+        {% endif %}
+    given:
+      - input: ref('dim_orders')
+        rows:
+          - {"cust_fname": "Johnny", "cust_lname": "Bravo"}
+
+    expect:
+      rows:
+        - {cust_fullname: "Bravo, Johnny"}

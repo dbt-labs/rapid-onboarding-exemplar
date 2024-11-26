@@ -1,0 +1,12 @@
+unit_tests:
+  - name: test_if_full_name_format_is_correct
+    description: "Checks if the format for customer full name is correct"
+    model: dim_customer_info
+    given:
+      - input: ref('dim_orders')
+        rows:
+          - {"cust_fname": "Johnny", "cust_lname": "Bravo"}
+
+    expect:
+      rows:
+        - {cust_fullname: "Bravo, Johnny"}

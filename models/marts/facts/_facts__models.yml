@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: fct_daily_orders
+    columns:
+      - name: order_sk
+        tests:
+          - relationships:
+              to: ref('dim_orders')
+              field: order_sk
