@@ -59,21 +59,61 @@ unit_tests:
         
     given:
       - input: ref('dim_depreciation_accounts')
-        rows:
-          - {"account_id": "1", "account_type": "Major", "depreciation_cost_usd": "-10"}
+        format: sql
+        rows: |
+          with
+          main as (
+              select
+                '1'::numeric(10, 3)     as account_id,
+                'Major'::varchar        as account_type,
+                '-10'::numeric(10, 3)   as depreciation_cost_usd      
+          )
+
+          select * from main
 
       - input: ref('dim_interests_accounts')
-        rows:
-          - {"account_id": "1", "account_type": "Major", "interests_amount_usd": "10"}
+        format: sql
+        rows: |
+          with
+          main as (
+            select
+              '1'::numeric(10, 3)       as account_id,
+              'Major'::varchar          as account_type,
+              '10'::numeric(10, 3)      as interests_amount_usd
+          )
+
+          select * from main
 
       - input: ref('dim_net_income')
-        rows:
-          - {"account_id": "1", "account_type": "Major", "net_income_usd": "10"}
+        format: sql
+        rows: |
+          with
+          main as (
+            select
+              '1'::numeric(10, 3) as account_id,
+              'Major'::varchar as account_type,
+              '10'::numeric(10, 3) as net_income_usd
+          )
+
+          select * from main
 
       - input: ref('dim_tax_accounts')
-        rows:
-          - {"account_id": "1", "account_type": "Major", "tax_usd": "-10"}
+        format: sql
+        rows: |
+          with
+          main as (
+            select
+              '1'::numeric(10, 3) as account_id,
+              'Major'::varchar as account_type,
+              '-10'::numeric(10, 3) as tax_usd
+          )
+
+          select * from main
 
     expect:
-      rows:
-        - {"account_id": "1", "account_type": "Major", "ebitda": "0"}
+      format: sql
+      rows: |
+        select
+          1::numeric(10, 3) as account_id,
+          'Major' as account_type,
+          0::numeric(10, 3) as ebitda
