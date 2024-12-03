@@ -13,7 +13,7 @@ def model(dbt, session):
     columns_without_cc_number = upstream_model[['order_sk', 'order_id', 'order_date', 'order_country_origin',  'cust_fname', 'cust_lname']]
 
     # Create DataFrame with the string as a single row in one column
-    df = pd.DataFrame([default_salt], columns=['hashed_id'])
+    hashed_value = pd.DataFrame([default_salt], columns=['hashed_id'])
 
     return columns_without_cc_number
     
