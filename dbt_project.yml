@@ -52,6 +52,13 @@ models:
         +group: marketing
       operations:
         +group: operations
+      accounting:
+        +group: accounting
+        +access: public
+      cfo:
+        +group: cfo
+        +access: public
+
     intermediate:
       +materialized: view
     staging:

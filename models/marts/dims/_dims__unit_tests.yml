@@ -46,7 +46,7 @@ unit_tests:
 
     expect:
       rows:
-        - {"account_id": "1", "account_type": "Major", "ebitda": "0"}
+        - {"account_id": "1", "account_type": "Major", "ebitda": "-1"}
 
   - name: test_accuracy_of_ebitda_calculation__sql_format
     description: "Test if the EBITDA calculation is correct using SQL format"

@@ -1,0 +1,10 @@
+groups:
+  - name: cfo
+    owner:
+      # 'name' or 'email' is required; additional properties allowed
+      email: cfo@mycompany.com
+  
+  - name: accounting
+    owner:
+      email: finance@mycompany.com
+      
