@@ -1,8 +1,11 @@
 {{
     config(
-        materialized='table'
+        materialized='table',
+        tags=["orders"]
     )
 }}
+
+
 
 with
 

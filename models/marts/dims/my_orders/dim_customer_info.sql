@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='table',
+        tags=["orders"]
+    )
+}}
+
 with
 
 dim_orders as (
