@@ -1,3 +1,8 @@
+{{ config(
+    materialized="table",
+    tags="orders"
+) }}
+
 with
 
 int_daily_orders_fact as (
