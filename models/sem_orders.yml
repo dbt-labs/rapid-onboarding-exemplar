@@ -1,0 +1,15 @@
+semantic_models:
+  - name: orders 
+    model: ref('dim_orders') # References the dbt model named `fact_transactions`
+    description: "This table contains information about orders."
+    defaults:
+      agg_time_dimension: order_date
+
+    entities: # Entities included in the table are defined here. MetricFlow will use these columns as join keys.
+      - name: transaction
+        type: primary
+        expr: transaction_id
+      - name: customer
+        type: foreign
+        expr: customer_id
+

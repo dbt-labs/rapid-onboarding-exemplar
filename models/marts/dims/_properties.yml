@@ -4,58 +4,16 @@ version: 2
 
 models:
   - name: dim_orders
-    latest_version: 2
-
-    versions:
-      - v: 1
-        config:
-          columns:
-            - name: order_sk
-              data_type: decimal(10,2)
-              data_tests:
-                - unique
-                - not_null
-            - name: cust_fname
-              data_type: string
-            - name: cust_lname
-              data_type: string
-            - name: order_country_origin
-              data_type: string
-            - name: order_date
-              data_type: date
-            - name: order_id
-              data_type: string
-            - name: order_quantity
-              data_type: decimal(15,2)
-
-      - v: 2
-        config:
-          alias: dim_orders
-          #group: accounting
-          columns:
-            - name: order_sk
-              data_type: decimal(10,2)
-              data_tests:
-                - unique
-                - not_null
-            - name: credit_card_number
-              data_type: varchar(100)
-            - name: cust_fname
-              data_type: string
-            - name: cust_lname
-              data_type: string
-            - name: order_country_origin
-              data_type: string
-            - name: order_date
-              data_type: date
-            - name:   
-              data_type: string
 
   - name: dim_countries
     config:
-      group: accounting
+      contract:
+        enforced: true
     columns:
+      - name: country_sk
+        data_type: numeric(13, 2)
       - name: country_name
+        data_type: string
         data_tests:
           - accepted_values:
               values:

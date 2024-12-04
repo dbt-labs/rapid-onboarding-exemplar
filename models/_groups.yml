@@ -7,4 +7,5 @@ groups:
   - name: accounting
     owner:
       email: finance@mycompany.com
-      
+
+
