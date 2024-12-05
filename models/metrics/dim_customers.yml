@@ -6,7 +6,7 @@ semantic_models:
     description: |
       semantic model for dim_customers
 
-    model: ref('dim_customers')
+    model: ref('dim_customer')
 
     entities:
       - name: customer
@@ -42,4 +42,3 @@ semantic_models:
       - name: customers
         expr: customer_id
         agg: count_distinct
-        
