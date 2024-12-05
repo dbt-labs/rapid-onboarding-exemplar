@@ -1,0 +1,23 @@
+version: 2
+
+
+
+models:
+  - name: dim_orders
+
+  - name: dim_countries
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: country_sk
+        data_type: numeric(13, 2)
+      - name: country_name
+        data_type: string
+        data_tests:
+          - accepted_values:
+              values:
+                - "United States"
+                - "France"
+                - "Italy"
+                - "Philippines"

@@ -1,0 +1,51 @@
+version: 2
+
+snapshots:
+# This is a pretty standard snapshot
+  - name: snapshot_stg_payments
+    relation: source('stripe', 'payment')
+    config:
+      enabled: true
+      strategy: timestamp
+      updated_at: _BATCHED_AT
+      unique_key: ID
+      persist_docs:
+        relation: true
+        columns: true
+# Another standard snapshot but this time with a different table. 
+  - name: snapshot_example_orders
+    relation: ref('example_orders_source_for_snapshot')
+    config:
+      enabled: true
+      strategy: timestamp
+      updated_at: order_updated_at
+      unique_key: order_id
+      persist_docs:
+        relation: true
+        columns: true
+      invalidate_hard_deletes: true
+  
+# This snapshot has the check_cols example
+  - name: snapshot_int_line_items
+    relation: ref('int_line_items_amounts_calculated')
+    config:
+      enabled: true
+      strategy: check
+      check_cols: ['gross_item_sales_amount', 'net_item_sales_amount']
+      unique_key: order_item_id
+      persist_docs:
+        relation: true
+        columns: true
+# This snapshot has invalidate hard deletes as an example
+  - name: snapshot_orders_line_items
+    relation: ref('example_orders_line_items_source_for_snapshot')
+    config:
+      enabled: true
+      strategy: timestamp
+      unique_key: id
+      updated_at: order_updated_at
+      invalidate_hard_deletes: true
+      persist_docs:
+        relation: true
+        columns: true
+

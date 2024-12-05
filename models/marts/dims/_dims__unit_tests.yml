@@ -1,0 +1,119 @@
+version: 2
+
+unit_tests:
+  - name: test_if_full_name_format_is_correct
+    description: "Checks if the format for customer full name is correct"
+    model: dim_customer_info
+    config:
+      tags: |
+        {%- if target.name == 'prod' -%} unit_test
+        {%- else -%} do_not_run
+        {% endif %}
+    given:
+      - input: ref('dim_orders')
+        rows:
+          - {"cust_fname": "Johnny", "cust_lname": "Bravo"}
+
+    expect:
+      rows:
+        - {cust_fullname: "Bravo, Johnny"}
+
+  - name: test_accuracy_of_ebitda_calculation
+    description: "Test if the EBITDA calculation is correct"
+    model: int_revenue_fct
+    config:
+      tags: |
+        {%- if target.name != 'prod' -%} unit_test
+        {%- else -%} do_not_run
+        {% endif %}
+
+    given:
+      - input: ref('dim_depreciation_accounts')
+        rows:
+          - {"account_id": "1", "account_type": "Major", "depreciation_cost_usd": "-10"}
+
+      - input: ref('dim_interests_accounts')
+        rows:
+          - {"account_id": "1", "account_type": "Major", "interests_amount_usd": "10"}
+
+      - input: ref('dim_net_income')
+        rows:
+          - {"account_id": "1", "account_type": "Major", "net_income_usd": "10"}
+
+      - input: ref('dim_tax_accounts')
+        rows:
+          - {"account_id": "1", "account_type": "Major", "tax_usd": "-10"}
+
+    expect:
+      rows:
+        - {"account_id": "1", "account_type": "Major", "ebitda": "-1"}
+
+  - name: test_accuracy_of_ebitda_calculation__sql_format
+    description: "Test if the EBITDA calculation is correct using SQL format"
+    model: int_revenue_fct
+    config:
+      tags: |
+        {%- if target.name != 'prod' -%} unit_test
+        {%- else -%} do_not_run
+        {% endif %}
+        
+    given:
+      - input: ref('dim_depreciation_accounts')
+        format: sql
+        rows: |
+          with
+          main as (
+              select
+                '1'::numeric(10, 3)     as account_id,
+                'Major'::varchar        as account_type,
+                '-10'::numeric(10, 3)   as depreciation_cost_usd      
+          )
+
+          select * from main
+
+      - input: ref('dim_interests_accounts')
+        format: sql
+        rows: |
+          with
+          main as (
+            select
+              '1'::numeric(10, 3)       as account_id,
+              'Major'::varchar          as account_type,
+              '10'::numeric(10, 3)      as interests_amount_usd
+          )
+
+          select * from main
+
+      - input: ref('dim_net_income')
+        format: sql
+        rows: |
+          with
+          main as (
+            select
+              '1'::numeric(10, 3) as account_id,
+              'Major'::varchar as account_type,
+              '10'::numeric(10, 3) as net_income_usd
+          )
+
+          select * from main
+
+      - input: ref('dim_tax_accounts')
+        format: sql
+        rows: |
+          with
+          main as (
+            select
+              '1'::numeric(10, 3) as account_id,
+              'Major'::varchar as account_type,
+              '-10'::numeric(10, 3) as tax_usd
+          )
+
+          select * from main
+
+    expect:
+      format: sql
+      rows: |
+        select
+          1::numeric(10, 3) as account_id,
+          'Major' as account_type,
+          0::numeric(10, 3) as ebitda

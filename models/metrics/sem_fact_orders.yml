@@ -1,0 +1,45 @@
+semantic_models:
+
+  - name: orders
+    defaults:
+      agg_time_dimension: order_date
+    description: |
+      Order fact table. This table's grain is one row per order.
+    model: ref('fact_orders')
+
+    entities: 
+      - name: order_id
+        type: primary
+
+      - name: customer
+        expr: customer_id
+        type: foreign
+
+    dimensions:   
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
+
+    measures:   
+      - name: order_total
+        description: The total amount for each order including taxes.
+        agg: sum
+        expr: amount
+
+      - name: order_count
+        expr: 1
+        agg: sum
+
+      - name: customers_with_orders
+        description: Distinct count of customers placing orders
+        agg: count_distinct
+        expr: customer_id
+
+      - name: order_value_p99 ## The 99th percentile order value
+        expr: amount
+        agg: percentile
+        agg_params:
+          percentile: 0.99
+          use_discrete_percentile: True
+          use_approximate_percentile: False
