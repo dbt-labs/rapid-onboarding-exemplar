@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: fct_daily_orders
+    description: |
+      "This is a fact table about orders."
+
+    columns:
+      - name: order_sk
+        description: "Order SK"
+        
+        tests:
+          - relationships:
+              to: ref('dim_orders')
+              field: order_sk

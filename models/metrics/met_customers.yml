@@ -1,0 +1,8 @@
+metrics:
+  - name: "customers_with_orders"
+    label: "customers_with_orders"
+    description: "Unique count of customers placing orders"
+    type: simple
+    type_params:
+      measure:
+        name: customers

@@ -13,6 +13,6 @@ select
     -- datetimes
     created as created_at
 
-from {{ ref('snapshot_stg_payments') }} 
+from {{ source('stripe', 'payment') }}
 -- pull only the most recent update for each unique record
 where dbt_valid_to is null

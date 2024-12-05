@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: is_holiday_2024
+    columns:
+      - name: date_day
+        data_tests:
+          - unique
+  

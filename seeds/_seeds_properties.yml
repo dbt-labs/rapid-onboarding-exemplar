@@ -1,0 +1,7 @@
+version: 2
+
+seeds:
+  - name: seeds_test
+    config:
+      database: analytics
+      schema: dbt_kfajardo
