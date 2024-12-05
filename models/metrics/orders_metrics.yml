@@ -44,6 +44,7 @@ metrics:
       measure:
         name: order_total
       grain_to_date: month
+      
   # Derived metric
   - name: "pct_of_orders_that_are_large"
     label: "pct_of_orders_that_are_large"
