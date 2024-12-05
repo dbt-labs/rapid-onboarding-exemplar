@@ -1,3 +1,10 @@
+{{
+    config(
+        materialized='table',
+        tags=["semantic_layer_demo"]
+    )
+}}
+
 with customers as (
    select * from {{ ref('stg_jaffle_shop__customers')}}
 ),
