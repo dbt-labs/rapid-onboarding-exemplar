@@ -1,13 +1,17 @@
 {{
     config(
-        tags = ['finance'],
-        schema = 'finance'
+        materialized='incremental',
+        unique_key='order_item_id'
+
     )
 }}
 
 with order_item as (
     
     select * from {{ ref('int_order_items_joined') }}
+    {% if is_incremental() %}
+        where commit_date > (select max(commit_date) from {{ this }} )
+    {% endif %}
 
 ),
 part_supplier as (
