@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: stripe
-    description: Incoming stripe payment data.
+    description: Incoming payment data from stripe.
     database: raw
     schema: stripe
     tables:
