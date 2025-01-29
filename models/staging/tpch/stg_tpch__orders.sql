@@ -16,7 +16,7 @@ renamed as (
         o_clerk as clerk_name,
 
         -- numbers
-        o_totalprice as total_price,
+        o_totalprice as total_price_new,
 
         -- statuses
         o_orderstatus as order_status_code,
