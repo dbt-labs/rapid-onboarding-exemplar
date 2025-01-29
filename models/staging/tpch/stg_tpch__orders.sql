@@ -18,6 +18,9 @@ renamed as (
         -- numbers
         o_totalprice as total_price_new,
 
+
+        
+
         -- statuses
         o_orderstatus as order_status_code,
         o_orderpriority as priority_code,
