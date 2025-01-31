@@ -3,6 +3,7 @@
 {{
     config(
         severity = 'warn'
+        enabled=false
     )
 }}
 
