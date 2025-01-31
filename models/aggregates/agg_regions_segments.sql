@@ -18,7 +18,6 @@ agg_orders as (
 
 final as (
     select
-        customers.region,
         customers.market_segment,
         round(sum(agg_orders.total_sales),2) as total_sales
     from customers

@@ -13,6 +13,12 @@ renamed as (
 
         -- descriptions
         o_comment as comment,
+
+        case
+            when o_comment is not null then true
+            else false
+        end as is_comment_present,
+        
         o_clerk as clerk_name,
 
         -- numbers
