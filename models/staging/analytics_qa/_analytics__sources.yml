@@ -1,0 +1,1557 @@
+version: 2
+
+sources:
+  - name: analytics_qa
+    database: analytics
+    tables:
+      - name: agg_regions_segments
+        columns:
+          - name: region
+          - name: market_segment
+          - name: total_sales
+
+      - name: agg_ship_modes_dynamic_pivot
+        columns:
+          - name: order_year
+          - name: mail_amount
+          - name: rail_amount
+          - name: ship_amount
+          - name: air_amount
+          - name: reg_air_amount
+          - name: truck_amount
+          - name: fob_amount
+
+      - name: agg_ship_modes_hardcoded_pivot
+        columns:
+          - name: order_year
+          - name: rail_amount
+          - name: mail_amount
+          - name: ship_amount
+          - name: air_amount
+          - name: reg_air_amount
+          - name: truck_amount
+          - name: fob_amount
+
+      - name: alphabet_grouping
+        columns:
+          - name: letter
+          - name: letter_grouping
+
+      - name: base_exposure_relationships
+        columns:
+          - name: resource_id
+          - name: direct_parent_id
+          - name: is_primary_relationship
+
+      - name: base_metric_relationships
+        columns:
+          - name: resource_id
+          - name: direct_parent_id
+          - name: is_primary_relationship
+
+      - name: base_node_relationships
+        columns:
+          - name: resource_id
+          - name: direct_parent_id
+          - name: is_primary_relationship
+
+      - name: customer_orders
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: surname
+          - name: givenname
+          - name: first_order_date
+          - name: order_count
+          - name: total_lifetime_value
+          - name: order_value_dollars
+          - name: order_status
+          - name: payment_status
+
+      - name: customer_orderz
+        columns:
+          - name: customer_id
+          - name: order_id
+          - name: order_placed_at
+          - name: order_status
+          - name: total_amount_paid
+          - name: payment_finalized_date
+          - name: customer_first_name
+          - name: customer_last_name
+          - name: transaction_seq
+          - name: customer_sales_seq
+          - name: nvsr
+          - name: customer_lifetime_value
+          - name: fdos
+
+      - name: dbt_project_evaluator_exceptions
+        columns:
+          - name: fct_name
+          - name: column_name
+          - name: id_to_exclude
+          - name: comment
+
+      - name: dim_customers
+        columns:
+          - name: customer_id
+          - name: name
+          - name: address
+          - name: nation
+          - name: region
+          - name: phone_number
+          - name: account_balance
+          - name: market_segment
+
+      - name: dim_dbt__current_models
+        columns:
+          - name: model_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: name
+          - name: depends_on_nodes
+          - name: package_name
+          - name: path
+          - name: checksum
+          - name: materialization
+          - name: tags
+          - name: meta
+          - name: alias
+          - name: last_full_refresh_run_completed_at
+          - name: last_full_refresh_run_total_runtime
+          - name: last_full_refresh_run_rows_affected
+          - name: last_run_completed_at
+          - name: last_run_total_runtime
+          - name: last_run_rows_affected
+          - name: last_incremental_run_completed_at
+          - name: last_incremental_run_total_runtime
+          - name: last_incremental_run_rows_affected
+
+      - name: dim_dbt__exposures
+        columns:
+          - name: exposure_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: name
+          - name: type
+          - name: owner
+          - name: maturity
+          - name: path
+          - name: description
+          - name: url
+          - name: package_name
+          - name: depends_on_nodes
+          - name: tags
+
+      - name: dim_dbt__models
+        columns:
+          - name: model_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: name
+          - name: depends_on_nodes
+          - name: package_name
+          - name: path
+          - name: checksum
+          - name: materialization
+          - name: tags
+          - name: meta
+          - name: alias
+
+      - name: dim_dbt__seeds
+        columns:
+          - name: seed_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: name
+          - name: package_name
+          - name: path
+          - name: checksum
+          - name: meta
+          - name: alias
+
+      - name: dim_dbt__snapshots
+        columns:
+          - name: snapshot_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: name
+          - name: depends_on_nodes
+          - name: package_name
+          - name: path
+          - name: checksum
+          - name: strategy
+          - name: meta
+          - name: alias
+
+      - name: dim_dbt__sources
+        columns:
+          - name: source_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: source_name
+          - name: loader
+          - name: name
+          - name: identifier
+          - name: loaded_at_field
+          - name: freshness
+
+      - name: dim_dbt__tests
+        columns:
+          - name: test_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: name
+          - name: depends_on_nodes
+          - name: package_name
+          - name: test_path
+          - name: tags
+
+      - name: dim_hosts_cleansed
+        columns:
+          - name: host_id
+          - name: host_name
+          - name: is_superhost
+          - name: created_at
+          - name: updated_at
+
+      - name: dim_jaffle_shop_customers
+        columns:
+          - name: customer_id
+          - name: first_name
+          - name: last_name
+          - name: letter_grouping
+
+      - name: dim_listings_cleansed
+        columns:
+          - name: listing_id
+          - name: listing_name
+          - name: room_type
+          - name: minimum_nights
+          - name: host_id
+          - name: price
+          - name: created_at
+          - name: updated_at
+
+      - name: dim_listings_w_host
+        columns:
+          - name: listing_id
+          - name: listing_name
+          - name: room_type
+          - name: minimum_nights
+          - name: price
+          - name: host_id
+          - name: host_name
+          - name: host_is_superhost
+          - name: created_at
+          - name: updated_at
+
+      - name: dim_parts
+        columns:
+          - name: part_id
+          - name: manufacturer
+          - name: name
+          - name: brand
+          - name: type
+          - name: size
+          - name: container
+          - name: retail_price
+
+      - name: dim_suppliers
+        columns:
+          - name: supplier_id
+          - name: supplier_name
+          - name: supplier_address
+          - name: nation
+          - name: region
+          - name: phone_number
+          - name: account_balance
+
+      - name: example_incremental_model
+        columns:
+          - name: event_id
+          - name: user_id
+          - name: event
+          - name: event_timestamp
+          - name: page_url
+          - name: page_title
+          - name: device_type
+          - name: geo
+          - name: _etl_loaded_at
+
+      - name: example_incremental_model_no_timestamp
+        columns:
+          - name: event_id
+          - name: user_id
+          - name: event
+          - name: event_timestamp
+          - name: page_url
+          - name: page_title
+          - name: device_type
+          - name: geo
+          - name: _etl_loaded_at
+
+      - name: example_incremental_model_relative_start_and_end_dates
+        columns:
+          - name: event_id
+          - name: user_id
+          - name: event
+          - name: event_timestamp
+          - name: page_url
+          - name: page_title
+          - name: device_type
+          - name: geo
+          - name: _etl_loaded_at
+
+      - name: example_incremental_model_using_project_variable_lookback_window
+        columns:
+          - name: event_id
+          - name: user_id
+          - name: event
+          - name: event_timestamp
+          - name: page_url
+          - name: page_title
+          - name: device_type
+          - name: geo
+          - name: _etl_loaded_at
+
+      - name: example_incremental_model_with_unique_key
+        columns:
+          - name: event_id
+          - name: user_id
+          - name: event
+          - name: event_timestamp
+          - name: page_url
+          - name: page_title
+          - name: device_type
+          - name: geo
+          - name: _etl_loaded_at
+
+      - name: example_join_snapshots
+        columns:
+          - name: surrogate_key
+          - name: line_item_id
+          - name: order_id
+          - name: payment_method
+          - name: status
+          - name: amount
+          - name: valid_from
+          - name: valid_to
+          - name: order_created_at
+          - name: order_updated_at
+
+      - name: example_orders_line_items_source_for_snapshot
+        columns:
+          - name: id
+          - name: order_id
+          - name: amount
+          - name: order_created_at
+          - name: order_updated_at
+
+      - name: example_orders_source_for_snapshot
+        columns:
+          - name: order_id
+          - name: status
+          - name: payment_method
+          - name: order_created_at
+          - name: order_updated_at
+
+      - name: example_private_finance_model
+        columns:
+          - name: order_id
+          - name: order_date
+          - name: customer_id
+          - name: order_status_code
+          - name: clerk_name
+          - name: ship_priority
+          - name: order_count
+          - name: gross_item_sales_amount
+          - name: item_discount_amount
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+
+      - name: example_private_finance_model_v1
+        columns:
+          - name: order_id
+          - name: order_date
+          - name: customer_id
+          - name: order_status_code
+          - name: priority_code
+          - name: clerk_name
+          - name: ship_priority
+          - name: order_count
+          - name: gross_item_sales_amount
+          - name: item_discount_amount
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+
+      - name: example_selecting_from_old_version_of_private_model
+        columns:
+          - name: order_id
+          - name: order_date
+          - name: customer_id
+          - name: order_status_code
+          - name: priority_code
+          - name: clerk_name
+          - name: ship_priority
+          - name: order_count
+          - name: gross_item_sales_amount
+          - name: item_discount_amount
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+
+      - name: example_selecting_from_private_model
+        columns:
+          - name: order_id
+          - name: order_date
+          - name: customer_id
+          - name: order_status_code
+          - name: clerk_name
+          - name: ship_priority
+          - name: order_count
+          - name: gross_item_sales_amount
+          - name: item_discount_amount
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+
+      - name: example_source_for_incremental
+        columns:
+          - name: event_id
+          - name: user_id
+          - name: event
+          - name: event_timestamp
+          - name: page_url
+          - name: page_title
+          - name: device_type
+          - name: geo
+          - name: _etl_loaded_at
+
+      - name: exposures
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: name
+          - name: type
+          - name: owner
+          - name: maturity
+          - name: path
+          - name: description
+          - name: url
+          - name: package_name
+          - name: depends_on_nodes
+          - name: tags
+          - name: all_results
+
+      - name: fct_chained_views_dependencies
+        columns:
+          - name: parent
+          - name: child
+          - name: distance
+          - name: path
+
+      - name: fct_customer__orders
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: surname
+          - name: givenname
+          - name: first_order_date
+          - name: order_count
+          - name: total_lifetime_value
+          - name: order_value_dollars
+          - name: order_status
+          - name: payment_status
+
+      - name: fct_dbt__invocations
+        columns:
+          - name: command_invocation_id
+          - name: dbt_version
+          - name: project_name
+          - name: run_started_at
+          - name: dbt_command
+          - name: full_refresh_flag
+          - name: target_profile_name
+          - name: target_name
+          - name: target_schema
+          - name: target_threads
+          - name: dbt_cloud_project_id
+          - name: dbt_cloud_job_id
+          - name: dbt_cloud_run_id
+          - name: dbt_cloud_run_reason_category
+          - name: dbt_cloud_run_reason
+          - name: env_vars
+          - name: dbt_vars
+          - name: invocation_args
+          - name: dbt_custom_envs
+
+      - name: fct_dbt__model_executions
+        columns:
+          - name: model_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: was_full_refresh
+          - name: thread_id
+          - name: status
+          - name: compile_started_at
+          - name: query_completed_at
+          - name: total_node_runtime
+          - name: rows_affected
+          - name: materialization
+          - name: schema
+          - name: name
+          - name: alias
+          - name: message
+
+      - name: fct_dbt__seed_executions
+        columns:
+          - name: seed_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: was_full_refresh
+          - name: thread_id
+          - name: status
+          - name: compile_started_at
+          - name: query_completed_at
+          - name: total_node_runtime
+          - name: rows_affected
+          - name: materialization
+          - name: schema
+          - name: name
+          - name: alias
+          - name: message
+
+      - name: fct_dbt__snapshot_executions
+        columns:
+          - name: snapshot_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: was_full_refresh
+          - name: thread_id
+          - name: status
+          - name: compile_started_at
+          - name: query_completed_at
+          - name: total_node_runtime
+          - name: rows_affected
+          - name: materialization
+          - name: schema
+          - name: name
+          - name: alias
+          - name: message
+
+      - name: fct_dbt__test_executions
+        columns:
+          - name: test_execution_id
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: was_full_refresh
+          - name: thread_id
+          - name: status
+          - name: compile_started_at
+          - name: query_completed_at
+          - name: total_node_runtime
+          - name: rows_affected
+          - name: failures
+          - name: message
+
+      - name: fct_direct_join_to_source
+        columns:
+          - name: parent_id
+          - name: parent
+          - name: parent_resource_type
+          - name: parent_model_type
+          - name: parent_materialized
+          - name: parent_source_name
+          - name: parent_file_path
+          - name: parent_directory_path
+          - name: parent_file_name
+          - name: parent_is_excluded
+          - name: child_id
+          - name: child
+          - name: child_resource_type
+          - name: child_model_type
+          - name: child_materialized
+          - name: child_source_name
+          - name: child_file_path
+          - name: child_directory_path
+          - name: child_file_name
+          - name: child_is_excluded
+          - name: distance
+          - name: path
+          - name: is_dependent_on_chain_of_views
+
+      - name: fct_documentation_coverage
+        columns:
+          - name: measured_at
+          - name: total_models
+          - name: documented_models
+          - name: documentation_coverage_pct
+          - name: staging_documentation_coverage_pct
+          - name: intermediate_documentation_coverage_pct
+          - name: marts_documentation_coverage_pct
+          - name: other_documentation_coverage_pct
+
+      - name: fct_duplicate_sources
+        columns:
+          - name: source_db_location
+          - name: source_names
+
+      - name: fct_exposure_parents_materializations
+        columns:
+          - name: parent_resource_type
+          - name: parent_resource_name
+          - name: exposure_name
+          - name: parent_model_materialization
+
+      - name: fct_hard_coded_references
+        columns:
+          - name: model
+          - name: hard_coded_references
+
+      - name: fct_marts_or_intermediate_dependent_on_source
+        columns:
+          - name: parent
+          - name: parent_resource_type
+          - name: child
+          - name: child_model_type
+
+      - name: fct_missing_primary_key_tests
+        columns:
+          - name: resource_name
+          - name: model_type
+          - name: is_primary_key_tested
+          - name: number_of_tests_on_model
+
+      - name: fct_model_directories
+        columns:
+          - name: resource_name
+          - name: resource_type
+          - name: model_type
+          - name: current_file_path
+          - name: change_file_path_to
+
+      - name: fct_model_fanout
+        columns:
+          - name: parent
+          - name: parent_model_type
+          - name: leaf_children
+
+      - name: fct_model_naming_conventions
+        columns:
+          - name: resource_name
+          - name: prefix
+          - name: model_type
+          - name: appropriate_prefixes
+
+      - name: fct_multiple_sources_joined
+        columns:
+          - name: child
+          - name: source_parents
+
+      - name: fct_order_items
+        columns:
+          - name: order_item_id
+          - name: order_id
+          - name: order_date
+          - name: customer_id
+          - name: part_id
+          - name: supplier_id
+          - name: order_item_status_code
+          - name: return_flag
+          - name: line_number
+          - name: ship_date
+          - name: commit_date
+          - name: receipt_date
+          - name: ship_mode
+          - name: supplier_cost
+          - name: base_price
+          - name: discount_percentage
+          - name: discounted_price
+          - name: tax_rate
+          - name: order_item_count
+          - name: quantity
+          - name: gross_item_sales_amount
+          - name: discounted_item_sales_amount
+          - name: item_discount_amount
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+
+      - name: fct_orders
+        columns:
+          - name: order_id
+          - name: order_date
+          - name: customer_id
+          - name: order_status_code
+          - name: priority_code
+          - name: clerk_name
+          - name: ship_priority
+          - name: order_count
+          - name: gross_item_sales_amount
+          - name: item_discount_amount
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+
+      - name: fct_rejoining_of_upstream_concepts
+        columns:
+          - name: parent
+          - name: child
+          - name: parent_and_child
+          - name: is_loop_independent
+
+      - name: fct_reviews
+        columns:
+          - name: listing_id
+          - name: review_date
+          - name: reviewer_name
+          - name: review_text
+          - name: review_sentiment
+
+      - name: fct_root_models
+        columns:
+          - name: child
+
+      - name: fct_source_directories
+        columns:
+          - name: resource_name
+          - name: resource_type
+          - name: current_file_path
+          - name: change_file_path_to
+
+      - name: fct_source_fanout
+        columns:
+          - name: parent
+          - name: model_children
+
+      - name: fct_staging_dependent_on_marts_or_intermediate
+        columns:
+          - name: parent
+          - name: parent_model_type
+          - name: child
+          - name: child_model_type
+
+      - name: fct_staging_dependent_on_staging
+        columns:
+          - name: parent
+          - name: parent_model_type
+          - name: child
+          - name: child_model_type
+
+      - name: fct_test_coverage
+        columns:
+          - name: measured_at
+          - name: total_models
+          - name: total_tests
+          - name: tested_models
+          - name: test_coverage_pct
+          - name: staging_test_coverage_pct
+          - name: intermediate_test_coverage_pct
+          - name: marts_test_coverage_pct
+          - name: other_test_coverage_pct
+          - name: test_to_model_ratio
+
+      - name: fct_test_directories
+        columns:
+          - name: test_name
+          - name: model_name
+          - name: current_test_directory
+          - name: change_test_directory_to
+
+      - name: fct_undocumented_models
+        columns:
+          - name: resource_name
+          - name: model_type
+
+      - name: fct_unused_sources
+        columns:
+          - name: parent
+
+      - name: int_all_dag_relationships
+        columns:
+          - name: parent_id
+          - name: parent
+          - name: parent_resource_type
+          - name: parent_model_type
+          - name: parent_materialized
+          - name: parent_source_name
+          - name: parent_file_path
+          - name: parent_directory_path
+          - name: parent_file_name
+          - name: parent_is_excluded
+          - name: child_id
+          - name: child
+          - name: child_resource_type
+          - name: child_model_type
+          - name: child_materialized
+          - name: child_source_name
+          - name: child_file_path
+          - name: child_directory_path
+          - name: child_file_name
+          - name: child_is_excluded
+          - name: distance
+          - name: path
+          - name: is_dependent_on_chain_of_views
+
+      - name: int_all_graph_resources
+        columns:
+          - name: resource_id
+          - name: resource_name
+          - name: prefix
+          - name: resource_type
+          - name: file_path
+          - name: directory_path
+          - name: is_generic_test
+          - name: file_name
+          - name: model_type_prefix
+          - name: model_type_folder
+          - name: position_folder
+          - name: column_name
+          - name: is_test_unique
+          - name: is_test_not_null
+          - name: is_test_unique_combination_of_columns
+          - name: is_enabled
+          - name: materialized
+          - name: on_schema_change
+          - name: database
+          - name: schema
+          - name: package_name
+          - name: alias
+          - name: is_described
+          - name: exposure_type
+          - name: maturity
+          - name: url
+          - name: owner_name
+          - name: owner_email
+          - name: meta
+          - name: macro_dependencies
+          - name: metric_type
+          - name: model
+          - name: label
+          - name: sql
+          - name: timestamp
+          - name: source_name
+          - name: is_source_described
+          - name: loaded_at_field
+          - name: loader
+          - name: identifier
+          - name: hard_coded_references
+          - name: is_excluded
+          - name: model_type
+          - name: folder_name_rank
+
+      - name: int_direct_relationships
+        columns:
+          - name: unique_id
+          - name: resource_id
+          - name: resource_name
+          - name: resource_type
+          - name: file_path
+          - name: directory_path
+          - name: file_name
+          - name: model_type
+          - name: materialized
+          - name: source_name
+          - name: is_excluded
+          - name: direct_parent_id
+          - name: is_primary_test_relationship
+
+      - name: int_line_items_amounts_calculated
+        columns:
+          - name: order_item_id
+          - name: order_id
+          - name: part_id
+          - name: supplier_id
+          - name: return_flag
+          - name: line_number
+          - name: order_item_status_code
+          - name: ship_date
+          - name: commit_date
+          - name: receipt_date
+          - name: ship_mode
+          - name: extended_price
+          - name: quantity
+          - name: base_price
+          - name: discount_percentage
+          - name: discounted_price
+          - name: gross_item_sales_amount
+          - name: discounted_item_sales_amount
+          - name: item_discount_amount
+          - name: tax_rate
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+
+      - name: int_model_test_summary
+        columns:
+          - name: resource_name
+          - name: model_type
+          - name: is_primary_key_tested
+          - name: number_of_tests_on_model
+
+      - name: int_order_items_joined
+        columns:
+          - name: order_item_id
+          - name: order_id
+          - name: customer_id
+          - name: part_id
+          - name: supplier_id
+          - name: order_date
+          - name: order_status_code
+          - name: priority_code
+          - name: clerk_name
+          - name: ship_priority
+          - name: return_flag
+          - name: line_number
+          - name: order_item_status_code
+          - name: ship_date
+          - name: commit_date
+          - name: receipt_date
+          - name: ship_mode
+          - name: extended_price
+          - name: quantity
+          - name: base_price
+          - name: discount_percentage
+          - name: discounted_price
+          - name: gross_item_sales_amount
+          - name: discounted_item_sales_amount
+          - name: item_discount_amount
+          - name: tax_rate
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+
+      - name: int_orders
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: order_date
+          - name: order_status
+          - name: valid_order_date
+          - name: user_order_seq
+          - name: payment_status
+          - name: order_value_dollars
+
+      - name: int_part_suppliers_joined
+        columns:
+          - name: part_supplier_id
+          - name: part_id
+          - name: part_name
+          - name: manufacturer
+          - name: brand
+          - name: part_type
+          - name: part_size
+          - name: container
+          - name: retail_price
+          - name: supplier_id
+          - name: supplier_name
+          - name: supplier_address
+          - name: phone_number
+          - name: account_balance
+          - name: nation_id
+          - name: available_quantity
+          - name: cost
+
+      - name: invocations
+        columns:
+          - name: command_invocation_id
+          - name: dbt_version
+          - name: project_name
+          - name: run_started_at
+          - name: dbt_command
+          - name: full_refresh_flag
+          - name: target_profile_name
+          - name: target_name
+          - name: target_schema
+          - name: target_threads
+          - name: dbt_cloud_project_id
+          - name: dbt_cloud_job_id
+          - name: dbt_cloud_run_id
+          - name: dbt_cloud_run_reason_category
+          - name: dbt_cloud_run_reason
+          - name: env_vars
+          - name: dbt_vars
+          - name: invocation_args
+          - name: dbt_custom_envs
+
+      - name: model_executions
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: was_full_refresh
+          - name: thread_id
+          - name: status
+          - name: compile_started_at
+          - name: query_completed_at
+          - name: total_node_runtime
+          - name: rows_affected
+          - name: materialization
+          - name: schema
+          - name: name
+          - name: alias
+          - name: message
+          - name: adapter_response
+
+      - name: models
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: name
+          - name: depends_on_nodes
+          - name: package_name
+          - name: path
+          - name: checksum
+          - name: materialization
+          - name: tags
+          - name: meta
+          - name: alias
+          - name: all_results
+
+      - name: my_old_unorganized_model
+        columns:
+          - name: customer_id
+          - name: order_id
+          - name: order_status
+
+      - name: my_unorganized_model
+        columns:
+          - name: customer_id
+          - name: order_id
+          - name: order_status
+
+      - name: oooops
+        columns:
+          - name: metric_time__day
+          - name: minimum_nights
+
+      - name: pokemon
+        columns:
+          - name: id
+          - name: name
+          - name: type1
+          - name: type2
+          - name: total
+          - name: hp
+          - name: attack
+          - name: defense
+          - name: spatk
+          - name: spdef
+          - name: speed
+          - name: generation
+          - name: legendary
+
+      - name: pokemon_battle
+        columns:
+          - name: id
+          - name: name
+          - name: type1
+          - name: type2
+          - name: total
+          - name: hp
+          - name: attack
+          - name: defense
+          - name: spatk
+          - name: spdef
+          - name: speed
+          - name: legendary
+          - name: generation
+          - name: release_date
+
+      - name: pokemon_battle_v2
+        columns:
+          - name: id
+          - name: name
+          - name: type1
+          - name: type2
+          - name: total
+          - name: hp
+          - name: attack
+          - name: defense
+          - name: spatk
+          - name: spdef
+          - name: speed
+          - name: legendary
+          - name: generation
+
+      - name: pokemon_remove_dupes
+        columns:
+          - name: id
+          - name: name
+          - name: type1
+          - name: type2
+          - name: total
+          - name: hp
+          - name: attack
+          - name: defense
+          - name: spatk
+          - name: spdef
+          - name: speed
+          - name: legendary
+          - name: generation
+          - name: rn
+
+      - name: pokemon_strength
+        columns:
+          - name: id
+          - name: name
+          - name: total
+          - name: attack
+          - name: release_date
+          - name: power
+          - name: days_since_released
+
+      - name: pokemon_unclean
+        columns:
+          - name: id
+          - name: name
+          - name: type1
+          - name: type2
+          - name: total
+          - name: hp
+          - name: attack
+          - name: defense
+          - name: spatk
+          - name: spdef
+          - name: speed
+          - name: generation
+          - name: legendary
+
+      - name: py01__python_builtins__describe
+        columns:
+          - name: summary
+          - name: customer_id
+          - name: name
+          - name: address
+          - name: nation
+          - name: region
+          - name: phone_number
+          - name: account_balance
+          - name: market_segment
+
+      - name: py02__use_variables__customers_limit_10
+        columns:
+          - name: customer_id
+          - name: name
+          - name: address
+          - name: nation
+          - name: region
+          - name: phone_number
+          - name: account_balance
+          - name: market_segment
+
+      - name: py03__define_function__payment_glitch
+        columns:
+          - name: order_id
+          - name: order_date
+          - name: customer_id
+          - name: order_status_code
+          - name: priority_code
+          - name: clerk_name
+          - name: ship_priority
+          - name: order_count
+          - name: gross_item_sales_amount
+          - name: item_discount_amount
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+          - name: amount__glitch
+
+      - name: py04__add_udf_function__payment_glitch
+        columns:
+          - name: order_id
+          - name: order_date
+          - name: customer_id
+          - name: order_status_code
+          - name: priority_code
+          - name: clerk_name
+          - name: ship_priority
+          - name: order_count
+          - name: gross_item_sales_amount
+          - name: item_discount_amount
+          - name: item_tax_amount
+          - name: net_item_sales_amount
+          - name: amount__glitch
+          - name: amount_plus_random
+
+      - name: seed_executions
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: was_full_refresh
+          - name: thread_id
+          - name: status
+          - name: compile_started_at
+          - name: query_completed_at
+          - name: total_node_runtime
+          - name: rows_affected
+          - name: materialization
+          - name: schema
+          - name: name
+          - name: alias
+          - name: message
+          - name: adapter_response
+
+      - name: seeds
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: name
+          - name: package_name
+          - name: path
+          - name: checksum
+          - name: meta
+          - name: alias
+          - name: all_results
+
+      - name: snapshot_executions
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: was_full_refresh
+          - name: thread_id
+          - name: status
+          - name: compile_started_at
+          - name: query_completed_at
+          - name: total_node_runtime
+          - name: rows_affected
+          - name: materialization
+          - name: schema
+          - name: name
+          - name: alias
+          - name: message
+          - name: adapter_response
+
+      - name: snapshots
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: name
+          - name: depends_on_nodes
+          - name: package_name
+          - name: path
+          - name: checksum
+          - name: strategy
+          - name: meta
+          - name: alias
+          - name: all_results
+
+      - name: sources
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: database
+          - name: schema
+          - name: source_name
+          - name: loader
+          - name: name
+          - name: identifier
+          - name: loaded_at_field
+          - name: freshness
+          - name: all_results
+
+      - name: stg_exposure_relationships
+        columns:
+          - name: unique_id
+          - name: resource_id
+          - name: direct_parent_id
+          - name: is_primary_relationship
+
+      - name: stg_exposures
+        columns:
+          - name: unique_id
+          - name: name
+          - name: resource_type
+          - name: file_path
+          - name: is_described
+          - name: exposure_type
+          - name: maturity
+          - name: package_name
+          - name: url
+          - name: owner_name
+          - name: owner_email
+          - name: meta
+
+      - name: stg_jaffle_shop_customers
+        columns:
+          - name: customer_id
+          - name: surname
+          - name: givenname
+          - name: full_name
+
+      - name: stg_jaffle_shop_orders
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: order_date
+          - name: order_status
+          - name: valid_order_date
+          - name: user_order_seq
+
+      - name: stg_jaffle_shop_payments
+        columns:
+          - name: payment_id
+          - name: order_id
+          - name: payment_status
+          - name: payment_amount
+
+      - name: stg_metric_relationships
+        columns:
+          - name: unique_id
+          - name: resource_id
+          - name: direct_parent_id
+          - name: is_primary_relationship
+
+      - name: stg_metrics
+        columns:
+          - name: unique_id
+          - name: name
+          - name: resource_type
+          - name: file_path
+          - name: is_described
+          - name: metric_type
+          - name: model
+          - name: label
+          - name: sql
+          - name: timestamp
+          - name: package_name
+          - name: dimensions
+          - name: filters
+          - name: meta
+
+      - name: stg_naming_convention_folders
+        columns:
+          - name: folder_name
+          - name: model_type
+          - name: folder_name_value
+
+      - name: stg_naming_convention_prefixes
+        columns:
+          - name: unique_id
+          - name: prefix_name
+          - name: model_type
+          - name: prefix_value
+
+      - name: stg_node_relationships
+        columns:
+          - name: unique_id
+          - name: resource_id
+          - name: direct_parent_id
+          - name: is_primary_relationship
+
+      - name: stg_nodes
+        columns:
+          - name: unique_id
+          - name: name
+          - name: resource_type
+          - name: file_path
+          - name: is_enabled
+          - name: materialized
+          - name: on_schema_change
+          - name: database
+          - name: schema
+          - name: package_name
+          - name: alias
+          - name: is_described
+          - name: column_name
+          - name: meta
+          - name: hard_coded_references
+          - name: macro_dependencies
+          - name: is_generic_test
+          - name: is_excluded
+
+      - name: stg_sources
+        columns:
+          - name: unique_id
+          - name: name
+          - name: file_path
+          - name: alias
+          - name: resource_type
+          - name: source_name
+          - name: is_source_described
+          - name: is_described
+          - name: is_enabled
+          - name: loaded_at_field
+          - name: database
+          - name: schema
+          - name: package_name
+          - name: loader
+          - name: identifier
+          - name: meta
+          - name: is_excluded
+
+      - name: stg_stripe__payments
+        columns:
+          - name: payment_id
+          - name: order_id
+          - name: payment_method
+          - name: status
+          - name: amount
+          - name: created_at
+
+      - name: stg_tpch__customers
+        columns:
+          - name: customer_id
+          - name: nation_id
+          - name: name
+          - name: address
+          - name: phone_number
+          - name: account_balance
+          - name: market_segment
+          - name: comment
+
+      - name: stg_tpch__line_items
+        columns:
+          - name: order_item_id
+          - name: order_id
+          - name: part_id
+          - name: supplier_id
+          - name: line_number
+          - name: comment
+          - name: ship_mode
+          - name: ship_instructions
+          - name: quantity
+          - name: extended_price
+          - name: discount_percentage
+          - name: tax_rate
+          - name: order_item_status_code
+          - name: return_flag
+          - name: ship_date
+          - name: commit_date
+          - name: receipt_date
+
+      - name: stg_tpch__nations
+        columns:
+          - name: nation_id
+          - name: region_id
+          - name: name
+          - name: comment
+
+      - name: stg_tpch__orders
+        columns:
+          - name: order_id
+          - name: customer_id
+          - name: comment
+          - name: clerk_name
+          - name: total_price
+          - name: order_status_code
+          - name: priority_code
+          - name: ship_priority
+          - name: order_date
+
+      - name: stg_tpch__part_suppliers
+        columns:
+          - name: part_supplier_id
+          - name: part_id
+          - name: supplier_id
+          - name: comment
+          - name: available_quantity
+          - name: cost
+
+      - name: stg_tpch__parts
+        columns:
+          - name: part_id
+          - name: name
+          - name: type
+          - name: size
+          - name: manufacturer
+          - name: brand
+          - name: comment
+          - name: container
+          - name: retail_price
+
+      - name: stg_tpch__regions
+        columns:
+          - name: region_id
+          - name: name
+          - name: comment
+
+      - name: stg_tpch__suppliers
+        columns:
+          - name: supplier_id
+          - name: nation_id
+          - name: supplier_name
+          - name: supplier_address
+          - name: phone_number
+          - name: comment
+          - name: account_balance
+
+      - name: test
+        columns:
+          - name: id
+          - name: name
+          - name: type1
+          - name: type2
+          - name: total
+          - name: hp
+          - name: attack
+          - name: defense
+          - name: spatk
+          - name: spdef
+          - name: speed
+          - name: legendary
+          - name: generation
+
+      - name: test_executions
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: was_full_refresh
+          - name: thread_id
+          - name: status
+          - name: compile_started_at
+          - name: query_completed_at
+          - name: total_node_runtime
+          - name: rows_affected
+          - name: failures
+          - name: message
+          - name: adapter_response
+
+      - name: tests
+        columns:
+          - name: command_invocation_id
+          - name: node_id
+          - name: run_started_at
+          - name: name
+          - name: depends_on_nodes
+          - name: package_name
+          - name: test_path
+          - name: tags
+          - name: all_results
+
+      - name: time_spine_daily
+        columns:
+          - name: date_day
+
+      - name: time_spine_hourly
+        columns:
+          - name: date_hour
+
