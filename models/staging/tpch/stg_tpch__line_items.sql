@@ -1,7 +1,7 @@
 with source as (
 
     select * from {{ source('tpch', 'lineitem') }}
-
+    {{ limit_data_in_dev('l_commitdate', 10000) }}
 ),
 
 renamed as (
