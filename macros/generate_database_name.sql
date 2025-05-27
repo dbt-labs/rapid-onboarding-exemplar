@@ -4,7 +4,7 @@
     {%- set env = env_var('DBT_ENV_NAME') -%}
     {%- if custom_database_name is not none -%}
 
-        {{ custom_database_name | trim }}_env 
+        {{ custom_database_name | trim }}_{{ env }}
 
     {%- else -%}
 
