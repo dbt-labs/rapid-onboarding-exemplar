@@ -2,13 +2,13 @@
 
     {%- set default_database = target.database -%}
     {%- set env = env_var('DBT_ENV_NAME') -%}
-    {%- if custom_database_name is none and env != 'dev' -%}
+    {%- if custom_database_name is not none -%}
 
-        {{ default_database }}
+        {{ custom_database_name | trim }}_env 
 
     {%- else -%}
 
-        {{ custom_database_name | trim }}
+        {{ default_database }}
 
     {%- endif -%}
 

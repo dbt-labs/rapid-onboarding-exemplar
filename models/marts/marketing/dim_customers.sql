@@ -3,7 +3,6 @@
         transient = false
     )
 }}
-
 with customer as (
 
     select * from {{ ref('stg_tpch__customers') }}
@@ -21,7 +20,8 @@ region as (
 ),
 final as (
     select
-        customer.customer_id,
+        --customer.customer_id,
+        customer.customer_id as cust_id,
         customer.name,
         customer.address,
         {# nation.nation_id as nation_id, #}
