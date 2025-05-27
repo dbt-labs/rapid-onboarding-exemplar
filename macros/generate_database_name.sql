@@ -8,7 +8,7 @@
 
     {%- else -%}
 
-        {{ custom_database_name | trim }}_{{ env }}
+        {{ custom_database_name | trim }}
 
     {%- endif -%}
 
