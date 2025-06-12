@@ -5,7 +5,7 @@
 
         {{ default_schema }}
 
-    {% elif target.name == 'dev' %}
+    {% elif target.name == 'dev' or target.name == 'ci' %}
 
         {{ default_schema}}_{{ custom_schema_name | trim }}
 

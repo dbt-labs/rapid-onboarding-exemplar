@@ -44,8 +44,10 @@ models:
       +tags: ['tag']
       finance:
         +group: finance
+        +schema: finance
       marketing:
         +group: marketing
+        +schema: marketing
       operations:
         +group: operations
     intermediate:
