@@ -9,27 +9,47 @@ groups:
 models:
   - name: dim_customers
     description: Customer dimensions table
+    config:
+      group: marketing
+      access: public
+      contract:
+        enforced: true
+    data_tests:
+      - not_empty
     columns:
       - name: customer_id
+        data_type: number
+        constraints:
+          - type: primary_key
+          - type: not_null
         description: Primary id on the customers table
         data_tests:
           - unique
           - not_null
       - name: region
+        data_type: varchar
         description: region name
         data_tests:
           - accepted_values:
               values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
               severity: warn
       - name: name
+        data_type: varchar
         description: customer id
       - name: address
+        data_type: varchar
         description: address of the customer
       - name: nation
+        data_type: varchar
+        constraints:
+          - type: not_null
         description: nation name
       - name: phone_number
+        data_type: varchar
         description: phone number of the customer
       - name: account_balance
+        data_type: number
         description: '{{ doc("account_balance") }}'
       - name: market_segment
+        data_type: varchar
         description: market segment of the customer
