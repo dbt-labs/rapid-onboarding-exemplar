@@ -77,7 +77,7 @@ models:
         data_tests:
           - relationships:
               to: ref('dim_customers')
-              field: customer_id
+              field: cust_id
               severity: error
       - name: order_date
         description: date of the order

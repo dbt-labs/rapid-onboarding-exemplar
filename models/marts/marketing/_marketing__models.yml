@@ -10,7 +10,7 @@ models:
   - name: dim_customers
     description: Customer dimensions table
     columns:
-      - name: customer_id
+      - name: cust_id
         description: Primary id on the customers table
         data_tests:
           - unique

@@ -16,7 +16,7 @@ models:
       target_name: "{{ target.name }}"
     description: Customer dimensions table limited
     columns:
-      - name: customer_id
+      - name: cust_id
         description: Primary id on the customers table
         data_tests:
           - unique
