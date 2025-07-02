@@ -43,4 +43,4 @@ select
 from
     final
 order by
-    customer_id
+    cust_id

@@ -1,3 +1,10 @@
+{{
+   config(
+       materialized= env_var('DBT_MATERIALIZATION'),
+       warehouse = env_var('DBT_ENV_DWH')
+   )
+}}
+
 with part as (
 
     select * from {{ref('stg_tpch__parts')}}
