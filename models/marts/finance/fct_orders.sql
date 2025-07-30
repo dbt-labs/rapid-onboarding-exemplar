@@ -4,7 +4,7 @@
     )
 }}
 
-with order_item as (
+with order_item as ( -- sql comment
     
     select * from {{ ref('int_order_items_joined') }}
 
