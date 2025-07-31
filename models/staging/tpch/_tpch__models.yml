@@ -2,6 +2,8 @@ version: 2
 
 models:
   - name: stg_tpch__customers
+    data_tests:
+      - not_empty
     description: staging layer for customers data
     columns:
       - name: customer_id

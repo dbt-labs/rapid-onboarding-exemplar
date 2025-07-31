@@ -1,15 +1,17 @@
 {{ config(
-
     materialized='incremental',
-    unique_key = 'order_item_id' 
+    unique_key='order_item_id',
+    on_schema_change='append_new_columns',
+    incremental_strategy='delete+insert'
+)}}
 
-)
-}}
+
 with order_item as (
     
     select * from {{ ref('int_order_items_joined') }}
+    where 1 = 1
     {% if is_incremental() %}
-        where commit_date > (select dateadd('day', -3, max(commit_date)) from {{ this }} )
+        and commit_date > (select dateadd('day', -3, max(commit_date)) from {{ this }} )
     {% endif %}
     
 ),

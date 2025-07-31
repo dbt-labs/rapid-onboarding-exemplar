@@ -9,9 +9,7 @@ snapshots:
       strategy: timestamp
       updated_at: _BATCHED_AT
       unique_key: ID
-      persist_docs:
-        relation: true
-        columns: true
+
 # Another standard snapshot but this time with a different table. 
   - name: snapshot_example_orders
     relation: ref('example_orders_source_for_snapshot')
@@ -20,9 +18,6 @@ snapshots:
       strategy: timestamp
       updated_at: order_updated_at
       unique_key: order_id
-      persist_docs:
-        relation: true
-        columns: true
       invalidate_hard_deletes: true
   
 # This snapshot has the check_cols example
@@ -33,9 +28,7 @@ snapshots:
       strategy: check
       check_cols: ['gross_item_sales_amount', 'net_item_sales_amount']
       unique_key: order_item_id
-      persist_docs:
-        relation: true
-        columns: true
+      
 # This snapshot has invalidate hard deletes as an example
   - name: snapshot_orders_line_items
     relation: ref('example_orders_line_items_source_for_snapshot')
@@ -45,7 +38,14 @@ snapshots:
       unique_key: id
       updated_at: order_updated_at
       invalidate_hard_deletes: true
-      persist_docs:
-        relation: true
-        columns: true
 
+# This snapshot added for testing dbt_valid_to_current
+  - name: customers_snapshot
+    relation: source('tpch', 'customer')
+    config:
+      schema: snapshots
+      database: analytics
+      unique_key: c_custkey
+      strategy: check
+      check_cols: all
+      dbt_valid_to_current: "to_date('9999-12-31')" # Specifies that current records should have `dbt_valid_to` set to `'9999-12-31'` instead of `NULL`.
