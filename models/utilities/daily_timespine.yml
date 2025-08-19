@@ -1,0 +1,13 @@
+models:
+- name: daily_timespine
+  description: This model generates a daily date spine from January 1, 2000, to January
+    1, 2027. It is useful for creating a continuous sequence of dates, which can be
+    used for time series analysis or to ensure that every day is represented in a
+    dataset, even if no events occurred on that day.
+  time_spine:
+    standard_granularity_column: date_day # column for the standard grain of your table, must be date time type.
+  columns:
+    - name: date_day
+      description: The specific date in the daily date spine, ranging from January 1,
+        2000, to January 1, 2027.
+      granularity: day

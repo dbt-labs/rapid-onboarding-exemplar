@@ -18,7 +18,7 @@ final as (
     select 
         order_item.order_item_id,
         order_item.order_id,
-        order_item.order_date,
+        dateadd('day',9800,order_item.order_date) as order_date,
         order_item.customer_id,
         order_item.part_id,
         order_item.supplier_id,
