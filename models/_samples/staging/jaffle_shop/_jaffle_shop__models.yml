@@ -4,16 +4,16 @@ models:
 
   - name: stg_jaffle_shop__orders
     description: >
-          multi line description 
-          of my staging orders model from
-          jaffle shop
+      multi line description  of my staging orders model from
+      jaffle shop
     data_tests:
       - dbt_utils.recency:
-          datepart: day
-          field: _etl_loaded_at
-          interval: 7
+          arguments:
+            datepart: day
+            field: _etl_loaded_at
+            interval: 7
     columns:
-      - name: order_id 
+      - name: order_id
         data_tests:
           - not_null:
               config:
@@ -24,7 +24,8 @@ models:
                 limit: 25
                 store_failures: true
           - filtered_unique:
-              records_to_check: _etl_loaded_at >= dateadd('day', -3, current_timestamp())
+              arguments:
+                records_to_check: _etl_loaded_at >= dateadd('day', -3, current_timestamp())
       - name: order_date
         description: |
           multi line description 
@@ -32,8 +33,8 @@ models:
           jaffle shop orders model
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
-              column_type: date
-
+              arguments:
+                column_type: date
   - name: stg_jaffle_shop__customers
     description: |
       multi line description 
@@ -42,25 +43,27 @@ models:
     data_tests:
       - not_empty
       - dbt_utils.equal_rowcount:
-          compare_model: source('jaffle_shop', 'customers')
+          arguments:
+            compare_model: source('jaffle_shop', 'customers')
       - dbt_utils.equality:
-          compare_model: source('jaffle_shop', 'customers')
-          compare_columns:
-            - first_name
-            - last_name
+          arguments:
+            compare_model: source('jaffle_shop', 'customers')
+            compare_columns:
+              - first_name
+              - last_name
       - dbt_utils.expression_is_true:
-          expression: "len(first_name) > 1"
+          arguments:
+            expression: "len(first_name) > 1"
       - dbt_expectations.expect_table_row_count_to_be_between:
-          min_value: 1
-
+          arguments:
+            min_value: 1
     columns:
       - name: customer_id
         description: >
-          multi line description 
-          of my customer id column from my
+          multi line description  of my customer id column from my
           jaffle shop customers model
         data_tests:
-          - unique 
+          - unique
           - not_null
           - unique_and_not_null
       - name: first_name
@@ -69,4 +72,5 @@ models:
           - dbt_utils.not_constant
           - dbt_utils.not_empty_string
           - dbt_utils.not_accepted_values:
-              values: ['test']
+              arguments:
+                values: ['test']

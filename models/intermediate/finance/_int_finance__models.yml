@@ -54,8 +54,6 @@ models:
 
   - name: int_order_items_joined
     description: Intermediate model joining orders and line items. This model is at the order item level.
-    tags:
-      - output_table_type|orders
     columns:
       - name: order_item_id
         description: '{{ doc("order_item_id") }}'
@@ -116,7 +114,9 @@ models:
         description: item level tax total
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
-  
+    config:
+      tags:
+        - output_table_type|orders
   - name: int_part_suppliers_joined
     description: Intermediate model where we join part, supplier and part_supplier. This model is at the part supplier level.
     columns:

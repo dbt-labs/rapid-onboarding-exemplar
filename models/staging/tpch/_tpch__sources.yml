@@ -8,24 +8,20 @@ sources:
     tables:
       - name: orders
         description: main order tracking table
-        freshness: # make this a warning as this is static data
-          warn_after: {count: 6, period: hour}
-          # error_after: {count: 12, period: hour}
-        loaded_at_field: o_orderdate::timestamp
-        
         columns:
           - name: o_orderkey
             description: SF*1,500,000 are sparsely populated
-            data_tests: 
+            data_tests:
               - unique
               - not_null
-                  
+
           - name: o_custkey
             description: Foreign key to C_custkey
             data_tests:
               - relationships:
-                  to: source('tpch', 'customer')
-                  field: c_custkey
+                  arguments:
+                    to: source('tpch', 'customer')
+                    field: c_custkey
           - name: o_orderstatus
             description: status code of the order
           - name: o_totalprice
@@ -40,7 +36,10 @@ sources:
             description: numeric representation of the shipping priority, zero being the default
           - name: o_comment
             description: '{{ doc("comment") }}'
-          
+        config:
+          freshness: # make this a warning as this is static data
+            warn_after: {count: 6, period: hour}
+          loaded_at_field: o_orderdate::timestamp
       - name: customer
         description: main customer table
         columns:
@@ -48,9 +47,11 @@ sources:
             description: unique customer key
             data_tests:
               - unique:
-                  severity: warn
+                  config:
+                    severity: warn
               - not_null:
-                  severity: warn
+                  config:
+                    severity: warn
           - name: c_name
             description: customer key
           - name: c_address
@@ -60,7 +61,7 @@ sources:
           - name: c_phone
             description: phone number of the customer
           - name: c_acctbal
-            description: raw account balance 
+            description: raw account balance
           - name: c_mktsegment
             description: market segment of the customer
           - name: c_comment
@@ -73,20 +74,23 @@ sources:
             description: Foreign key to O_ORDERkey
             data_tests:
               - relationships:
-                  to: source('tpch', 'orders')
-                  field: o_orderkey
+                  arguments:
+                    to: source('tpch', 'orders')
+                    field: o_orderkey
           - name: l_partkey
-            description:  Foreign key to P_PARTkey, first part of the compound Foreign key to (PS_PARTkey,PS_SUPPkey) with L_SUPPkey
+            description: Foreign key to P_PARTkey, first part of the compound Foreign key to (PS_PARTkey,PS_SUPPkey) with L_SUPPkey
             data_tests:
               - relationships:
-                  to: source('tpch', 'part')
-                  field: p_partkey
+                  arguments:
+                    to: source('tpch', 'part')
+                    field: p_partkey
           - name: l_suppkey
             description: Foreign key to S_SUPPkey, second part of the compound Foreign key to (PS_PARTkey, PS_SUPPkey) with L_PARTkey
             data_tests:
               - relationships:
-                  to: source('tpch', 'supplier')
-                  field: s_suppkey
+                  arguments:
+                    to: source('tpch', 'supplier')
+                    field: s_suppkey
           - name: l_linenumber
             description: sequence of the order items within the order
           - name: l_quantity
@@ -121,17 +125,20 @@ sources:
             description: 25 nations are populated
             data_tests:
               - unique:
-                  severity: warn
+                  config:
+                    severity: warn
               - not_null:
-                  severity: warn
+                  config:
+                    severity: warn
           - name: n_name
             description: nation name
           - name: n_regionkey
             description: Foreign key to R_REGIONkey
             data_tests:
               - relationships:
-                  to: source('tpch', 'region')
-                  field: r_regionkey
+                  arguments:
+                    to: source('tpch', 'region')
+                    field: r_regionkey
           - name: n_comment
             description: '{{ doc("comment") }}'
 
@@ -142,9 +149,11 @@ sources:
             description: SF*200,000 are populated
             data_tests:
               - unique:
-                  severity: warn
+                  config:
+                    severity: warn
               - not_null:
-                  severity: warn
+                  config:
+                    severity: warn
           - name: p_name
             description: name of the part
           - name: p_mfgr
@@ -169,18 +178,20 @@ sources:
             description: Foreign key to P_PARTkey
             data_tests:
               - relationships:
-                  to: source('tpch', 'part')
-                  field: p_partkey
+                  arguments:
+                    to: source('tpch', 'part')
+                    field: p_partkey
           - name: ps_suppkey
             description: Foreign key to S_SUPPkey
             data_tests:
               - relationships:
-                  to: source('tpch', 'supplier')
-                  field: s_suppkey
+                  arguments:
+                    to: source('tpch', 'supplier')
+                    field: s_suppkey
           - name: ps_availqty
             description: raw available quantity
           - name: ps_supplycost
-            description: raw cost 
+            description: raw cost
           - name: ps_comment
             description: '{{ doc("comment") }}'
 
@@ -191,9 +202,11 @@ sources:
             description: 5 regions are populated
             data_tests:
               - unique:
-                  severity: warn
+                  config:
+                    severity: warn
               - not_null:
-                  severity: warn
+                  config:
+                    severity: warn
           - name: r_name
             description: region name
           - name: r_comment
@@ -206,9 +219,11 @@ sources:
             description: SF*10,000 are populated
             data_tests:
               - unique:
-                  severity: warn
+                  config:
+                    severity: warn
               - not_null:
-                  severity: warn
+                  config:
+                    severity: warn
           - name: s_name
             description: key of the supplier
           - name: s_address
@@ -217,12 +232,12 @@ sources:
             description: Foreign key to N_NATIONkey
             data_tests:
               - relationships:
-                  to: source('tpch', 'nation')
-                  field: n_nationkey
+                  arguments:
+                    to: source('tpch', 'nation')
+                    field: n_nationkey
           - name: s_phone
             description: phone number of the supplier
           - name: s_acctbal
             description: raw account balance
           - name: s_comment
             description: '{{ doc("comment") }}'
-

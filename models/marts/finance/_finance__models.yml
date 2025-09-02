@@ -76,9 +76,11 @@ models:
         description: foreign id for customers
         data_tests:
           - relationships:
-              to: ref('dim_customers')
-              field: customer_id
-              severity: error
+              config:
+                severity: error
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
       - name: order_date
         description: date of the order
       - name: status_code

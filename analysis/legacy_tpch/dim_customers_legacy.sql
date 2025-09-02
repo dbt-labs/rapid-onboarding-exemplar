@@ -1,8 +1,6 @@
-{{
-    config(
-        transient = false
-    )
-}}
+{{ config(
+    meta={'transient': False}
+) }}
 
 with customer as (
 

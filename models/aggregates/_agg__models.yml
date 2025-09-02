@@ -19,13 +19,15 @@ models:
         description: One of the five global regions.
         data_tests:
           - accepted_values:
-              values: ['MIDDLE EAST','AFRICA','EUROPE','ASIA','AMERICA']
+              arguments:
+                values: ['MIDDLE EAST', 'AFRICA', 'EUROPE', 'ASIA', 'AMERICA']
 
       - name: market_segment
         description: One of the five market segments.
         data_tests:
           - accepted_values:
-              values: ['HOUSEHOLD','AUTOMOBILE','FURNITURE','BUILDING','MACHINERY']
+              arguments:
+                values: ['HOUSEHOLD', 'AUTOMOBILE', 'FURNITURE', 'BUILDING', 'MACHINERY']
 
       - name: total_sales
         description: Total sales for the region and market segment.

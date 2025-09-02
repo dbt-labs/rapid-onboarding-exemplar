@@ -13,7 +13,8 @@ models:
     config:
       materialized: table
       tags: ['python']
-      target_name: "{{ target.name }}"
+      meta:
+        target_name: "{{ target.name }}"
     description: Customer dimensions table limited
     columns:
       - name: customer_id
