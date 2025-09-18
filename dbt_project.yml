@@ -40,12 +40,13 @@ on-run-end:
 models:
   rapid_onboarding_exemplar:
     marts:
-      +materialized: table
+      +schema: marts
+      +materialized: '{{ env_var("DBT_MATERIALIZATION") }}'
       +tags: ['tag']
       finance:
         +group: finance
       marketing:
-        +group: marketing
+        
       operations:
         +group: operations
     intermediate:
@@ -57,6 +58,7 @@ models:
       staging:
         jaffle_shop:
           +materialized: view
+          +schema: staging
           +tags:
             - example 
             - hourly

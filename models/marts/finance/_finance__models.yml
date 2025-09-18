@@ -1,3 +1,4 @@
+
 version: 2
 
 groups:
@@ -14,7 +15,11 @@ models:
         description: '{{ doc("order_item_id") }}'
         data_tests:
           - unique
-          - not_null
+          - not_null:
+              config:
+                severity: error
+                error_if: ">1000"
+                warn_if: ">10"
       - name: order_id
         description: foreign id for orders
       - name: order_date

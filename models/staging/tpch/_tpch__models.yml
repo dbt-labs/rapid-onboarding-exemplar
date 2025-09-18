@@ -1,28 +1,41 @@
-version: 2
 
 models:
   - name: stg_tpch__customers
     description: staging layer for customers data
+ 
+    config:
+      contract: {enforced: true}
+    # Declare the versions, and highlight the diffs
+    
     columns:
       - name: customer_id
+        data_type: bigint
         description: primary id of the model
         data_tests:
           - unique
           - not_null
       - name: name
-        description: customer id
+        data_type: string
+        description: customer name
       - name: address
+        data_type: string
         description: address of the customer
       - name: nation_id
+        data_type: int
         description: foreign id to stg_tpch_nations
       - name: phone_number
+        data_type: string
         description: phone number of the customer
       - name: account_balance
+        data_type: int
         description: total account balance from the customer
       - name: market_segment
+        data_type: string
         description: market segment of the customer
       - name: comment
+        data_type: string
         description: '{{ doc("comment") }}'
+    
 
   - name: stg_tpch__line_items
     description: staging layer for line items data
