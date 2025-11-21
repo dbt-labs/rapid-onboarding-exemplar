@@ -1,10 +1,9 @@
-version: 2
-
 sources:
   - name: stripe
     description: Incoming stripe payment data.
     database: raw
     schema: stripe
+    
     tables:
       - name: payment
         columns:

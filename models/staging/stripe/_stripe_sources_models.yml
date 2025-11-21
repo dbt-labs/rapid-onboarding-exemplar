@@ -1,0 +1,11 @@
+models:
+  - name: stg_stripe__payments
+    description: '{{ doc("payments_docs") }}'
+    columns:
+      - name: payment_id
+        data_tests:
+          - unique:
+              warn_if: "> 5"
+              error_if: "> 10"
+              severity: warn
+          - not_null_or_empty_string

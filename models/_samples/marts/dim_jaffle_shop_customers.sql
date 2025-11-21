@@ -14,9 +14,9 @@ stg_customers_tansformed as (
         lower(left(last_name, 1)) as first_character_last_name
 
     from stg_customers
-),
+)
 
-final as (
+,final as (
 
 select 
     stg_customers_tansformed.customer_id,
