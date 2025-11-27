@@ -1,12 +1,13 @@
 -- example showing staging model after snapshot
 
 select
+
     -- ids
     id as payment_id,
     orderid as order_id,
     
     -- descriptions
-    paymentmethod as payment_method,
+    paymentmethod as payment_methods,
     status,
     {{ money('amount') }} as amount, -- amount is stored in cents, convert it to dollars
     
