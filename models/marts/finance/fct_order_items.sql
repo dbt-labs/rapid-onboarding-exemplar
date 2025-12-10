@@ -18,6 +18,8 @@ final as (
     select 
         order_item.order_item_id,
         order_item.order_id,
+        'abc' as delimiter,
+        {{ dbt_utils.generate_surrogate_key(['order_item_id',"'abc'", 'order_id']) }} as fct_order_items_sk,
         order_item.order_date,
         order_item.customer_id,
         order_item.part_id,
@@ -28,7 +30,7 @@ final as (
         order_item.ship_date,
         order_item.commit_date,
         order_item.receipt_date,
-        order_item.ship_mode,
+        order_item.ship_mode as ship_mode,
         part_supplier.cost as supplier_cost,
         {# ps.retail_price, #}
         order_item.base_price,
@@ -56,3 +58,4 @@ from
     final
 order by
     order_date
+    

@@ -1,35 +1,37 @@
-version: 2
-
-groups:
-  - name: marketing
-    owner:
-      email: marketing@jaffleshop.com
-      name: Marketing Person
-
 models:
   - name: dim_customers
-    description: Customer dimensions table
+    description: this model consolidates customer information by joining customer data with nation and region details, providing a comprehensive view of customer demographics and financials.
     columns:
       - name: customer_id
-        description: Primary id on the customers table
-        data_tests:
+        description: a unique identifier for each customer.
+        tests:
           - unique
           - not_null
-      - name: region
-        description: region name
-        data_tests:
-          - accepted_values:
-              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
-              severity: warn
       - name: name
-        description: customer id
+        description: the name of the customer.
+        tests:
+          - not_null
       - name: address
-        description: address of the customer
+        description: the address of the customer.
+        tests:
+          - not_null
       - name: nation
-        description: nation name
+        description: the nation where the customer resides.
+        tests:
+          - not_null
+      - name: region
+        description: the region associated with the customer's nation.
+        tests:
+          - not_null
       - name: phone_number
-        description: phone number of the customer
+        description: the contact phone number of the customer.
+        tests:
+          - not_null
       - name: account_balance
-        description: '{{ doc("account_balance") }}'
+        description: the current account balance of the customer.
+        tests:
+          - not_null
       - name: market_segment
-        description: market segment of the customer
+        description: the market segment to which the customer belongs.
+        tests:
+          - not_null

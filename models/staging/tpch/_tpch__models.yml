@@ -15,12 +15,23 @@ models:
         description: address of the customer
       - name: nation_id
         description: foreign id to stg_tpch_nations
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_tpch__nations')
+              field: nation_id
       - name: phone_number
         description: phone number of the customer
+        data_tests:
+          - not_null
       - name: account_balance
         description: total account balance from the customer
+        data_tests:
+          - not_null
       - name: market_segment
         description: market segment of the customer
+        data_tests:
+          - not_null
       - name: comment
         description: '{{ doc("comment") }}'
 

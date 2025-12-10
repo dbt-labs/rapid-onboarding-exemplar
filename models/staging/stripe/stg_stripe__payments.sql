@@ -8,7 +8,7 @@ select
     -- descriptions
     paymentmethod as payment_method,
     status,
-    {{ money('amount') }} as amount, -- amount is stored in cents, convert it to dollars
+    {{ cents_to_dollars("amount", 'apple', decimals=4) }} as amount, -- amount is stored in cents, convert it to dollars
     
     -- datetimes
     created as created_at

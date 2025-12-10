@@ -15,6 +15,11 @@ models:
         data_tests:
           - unique
           - not_null
+      - name: fct_order_items_sk
+        description: fct order items surrogate key
+        data_tests:
+          - unique
+          - not_null
       - name: order_id
         description: foreign id for orders
       - name: order_date
@@ -63,6 +68,12 @@ models:
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - order_item_id
+              - order_id
 
   - name: fct_orders
     description: orders fact table
