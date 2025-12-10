@@ -42,10 +42,10 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
+      +schema: marts
+      +database: "ANALYTICS_{{ env_var('DBT_ENV_NAME') }}"
       finance:
         +group: finance
-      marketing:
-        +group: marketing
       operations:
         +group: operations
     intermediate:
