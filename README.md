@@ -1,6 +1,6 @@
-# dbt Training - Rapid Onboarding Exemplar
+# dbt Training - dbt Onboarding Exemplar
 
-This is a [dbt](https://www.getdbt.com) project for dbt Lab's Rapid Onboarding training.
+This is a [dbt](https://www.getdbt.com) project for dbt Lab's dbt Onboarding training.
 
 Our analytics stack:
 - Loader: Snowflake's TPCH sample data
@@ -10,24 +10,23 @@ Our analytics stack:
 ## Permissions
 
 Access to the Snowflake warehouse is managed on a per-user basis by the training team. 
-If you need access, open a request in the #training-rapid-onboarding Slack channel.
+If you need access, open a request in the #ask-training Slack channel.
 
 ## Using This Project
 
 <details>
   
-  <summary>Developing in the Cloud IDE</summary>
+  <summary>Developing in dbt Studio</summary>
   <p></p>
   
   The easiest way to contribute to this project is by developing in dbt Cloud. If you need access, contact the training team
-  in the #training-rapid-onboarding Slack channel.
+  in the #ask-training Slack channel.
   
   Once you have access, navigate to the develop tab in the menu and fill out any required information to get connected.
   
   In the command line bar at the bottom of the interface, run the following commands one at a time:
   - `dbt deps`  - installs any packages defined in the packages.yml file.
-  - `dbt seed`  - builds any .csv files as tables in the warehouse. These are located in the data folder of the project.
-  - `dbt run`   - builds the models found in the project into your dev schema in the warehouse.
+  - `dbt build` - builds the models, seeds, and snapshots found in the project into your dev schema in the warehouse and executes data tests. 
   
 </details>
   
@@ -86,7 +85,6 @@ If you need access, open a request in the #training-rapid-onboarding Slack chann
       Run the following commands one at a time from your command line:
       - `dbt debug` - tests your connection. If this fails, check your profiles.yml.
       - `dbt deps`  - installs any packages defined in the packages.yml file.
-      - `dbt seed`  - builds any .csv files as tables in the warehouse. These are located in the data folder of the project.
-      - `dbt run`   - builds the models found in the project into your dev schema in the warehouse.
+      - `dbt build` - builds the models, seeds, and snapshots found in the project into your dev schema in the warehouse and executes data tests. 
   
 </details>

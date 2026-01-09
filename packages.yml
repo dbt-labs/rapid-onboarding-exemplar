@@ -9,5 +9,5 @@ packages:
     version: 2.6.2
   - package: dbt-labs/dbt_project_evaluator
     version: 0.6.0
-  - package: calogica/dbt_expectations
+  - package: metaplane/dbt_expectations
     version: 0.8.5
