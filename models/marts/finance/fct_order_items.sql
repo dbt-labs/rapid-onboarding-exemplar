@@ -54,5 +54,4 @@ select
     *
 from
     final
-order by
-    order_date
+limit 10

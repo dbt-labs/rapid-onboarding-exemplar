@@ -8,6 +8,7 @@ groups:
 
 models:
   - name: fct_order_items
+    
     description: order items fact table
     columns:
       - name: order_item_id
@@ -65,14 +66,21 @@ models:
         description: '{{ doc("net_item_sales_amount") }}'
 
   - name: fct_orders
+    
     description: orders fact table
+    config:
+      group: finance
+      contract:
+        enforced: true
     columns:
       - name: order_id
+        data_type: int
         description: primary id of the model
         data_tests:
           - unique
           - not_null
       - name: customer_id
+        data_type: int
         description: foreign id for customers
         data_tests:
           - relationships:
@@ -80,22 +88,35 @@ models:
               field: customer_id
               severity: error
       - name: order_date
+        data_type: date
         description: date of the order
       - name: status_code
+        data_type: string
         description: status of the order
       - name: priority_code
+        data_type: string
         description: code associated with the order
       - name: clerk_name
+        data_type: string
         description: id of the clerk
       - name: ship_priority
+        data_type: int
         description: numeric representation of the shipping priority, zero being the default
       - name: order_count
+        data_type: int
         description: count of order
       - name: gross_item_sales_amount
+        data_type: int
         description: '{{ doc("gross_item_sales_amount") }}'
       - name: item_discount_amount
+        data_type: int
         description: '{{ doc("item_discount_amount") }}'
       - name: item_tax_amount
+        data_type: int
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
+        data_type: int
         description: '{{ doc("net_item_sales_amount") }}'
+      - name: order_status_code
+        data_type: string
+        description: Code representing the current status of the order.
