@@ -13,7 +13,7 @@ with order_item as (
 final as (
 
     select 
-
+        order_id as extra_order_id
         order_id, 
         order_date,
         customer_id,
