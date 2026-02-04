@@ -66,6 +66,8 @@ models:
 
   - name: fct_orders
     description: orders fact table
+    config:
+      access: public
     columns:
       - name: order_id
         description: primary id of the model
