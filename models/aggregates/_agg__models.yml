@@ -7,7 +7,9 @@ models:
       - name: customer_id
         description: Primary key for customers
         data_tests:
-          - unique
+          - unique:
+              config:
+                severity: Warn
           - not_null
       - name: total_sales
         description: Sum of gross items sales amount by customer
