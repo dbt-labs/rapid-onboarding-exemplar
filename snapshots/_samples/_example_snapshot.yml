@@ -1,0 +1,10 @@
+snapshots:
+  - name: orders_snapshot
+    relation: source('stripe', 'payment')
+    config:
+      schema: snapshots
+      database: analytics
+      unique_key: id
+      strategy: timestamp
+      updated_at: created
+      dbt_valid_to_current: "to_date('9999-12-31')" # Specifies that current records should have `dbt_valid_to` set to `'9999-12-31'` instead of `NULL`.
