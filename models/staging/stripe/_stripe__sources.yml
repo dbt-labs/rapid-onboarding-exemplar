@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: stripe
     description: Incoming stripe payment data.
-    database: raw
+    database: "{{ env_var('DBT_ENV_NAME') }}_raw"
     schema: stripe
     tables:
       - name: payment
