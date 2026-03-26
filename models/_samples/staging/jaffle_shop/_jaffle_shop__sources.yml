@@ -16,18 +16,20 @@ sources:
       {%- endif -%}
     
     loader: fivetran
-    freshness:
-          warn_after:
-            count: 7
-            period: day
-          error_after:
-            count: 14
-            period: day
-    loaded_at_field: _etl_loaded_at
+    config: 
+      freshness:
+            warn_after:
+              count: 7
+              period: day
+            error_after:
+              count: 14
+              period: day
+      loaded_at_field: _etl_loaded_at
     tables:
       - name: customers
         identifier: customers
-        freshness: null
+        config: 
+          freshness: null
         columns:
           - name: id 
             data_tests:
