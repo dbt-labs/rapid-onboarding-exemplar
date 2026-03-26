@@ -2,12 +2,12 @@ version: 2
 
 models:
   - name: example_private_finance_model
-    access: private
-    group: finance
-    latest_version: 2
     config:
+      access: private
+      group: finance
       contract:
         enforced: true
+    latest_version: 2    
     columns:
       - name: order_id
         data_type: int
@@ -45,15 +45,17 @@ models:
       - v: 2
         config:
           alias: example_private_finance_model
-        columns:
-          - include: all
-            exclude: 
-              - priority_code
+          columns:
+            - include: all
+              exclude:
+                - priority_code
       - v: 1
 
   - name: example_selecting_from_private_model
     # change this to marketing if you want to see the error from not having access to the private finance model
-    group: finance
+    config:
+      group: finance
 
   - name: example_selecting_from_old_version_of_private_model
-    group: finance
+    config:
+      group: finance
