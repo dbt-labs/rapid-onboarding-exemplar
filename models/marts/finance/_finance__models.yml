@@ -1,13 +1,10 @@
 version: 2
 
-groups:
-  - name: finance
-    owner:
-      email: finance@jaffleshop.com
-      name: Finance Person
 
 models:
   - name: fct_order_items
+    config:
+      group: finance
     description: order items fact table
     columns:
       - name: order_item_id

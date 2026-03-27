@@ -1,0 +1,14 @@
+groups:
+
+  - name: foundation
+    owner:
+      # ‘name’ or ‘email’ is required; additional properties allowed
+      email: foundation.team@dbtlabs.com
+      slack: foundation-data
+      github: foundation-data-team
+
+  - name: finance
+    owner:
+      email: finance.team@dbtlabs.com
+      slack: finance-data
+      github: finance-data-team
