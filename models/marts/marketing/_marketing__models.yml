@@ -19,8 +19,12 @@ models:
         description: region name
         data_tests:
           - accepted_values:
-              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
-              severity: warn
+              arguments: 
+                values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
+                config: 
+                  severity: warn
+                  warn_if: ">0"         # (optional) warn if any bad rows
+                  error_if: ">100"
       - name: name
         description: customer id
       - name: address
