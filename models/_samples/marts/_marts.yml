@@ -1,0 +1,15 @@
+models:
+  - name: dim_jaffle_shop_customers
+    description: description
+    columns:
+      - name: customer_id
+        data_tests:
+          - not_null
+          - unique
+          
+          
+      - name: letter_grouping 
+        data_tests:
+          - accepted_values:
+              arguments: 
+                values: [1,2,3,4,5,6,7,8,9]
