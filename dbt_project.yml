@@ -42,6 +42,7 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
+      +schema: gold
       finance:
         +group: finance
       marketing:
@@ -50,8 +51,10 @@ models:
         +group: operations
     intermediate:
       +materialized: view
+      +schema: silver
     staging:
       +materialized: view
+      +schema: bronze
     _samples:
       +materialized: table
       staging:
