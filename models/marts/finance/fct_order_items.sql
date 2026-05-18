@@ -56,4 +56,3 @@ from
     final
 order by
     order_date
-{{ dev_row_limit(5000) }}

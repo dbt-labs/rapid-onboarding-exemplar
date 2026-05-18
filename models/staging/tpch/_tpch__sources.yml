@@ -7,13 +7,11 @@ sources:
     schema: tpch_sf1
     config:
       freshness:
-        warn_after:
-          count: 12
-          period: hour
         error_after:
-          count: 24
-          period: hour
+          count: 10
+          period: minute
       loaded_at_field: loaded_at_field
+
     tables:
       - name: orders
         description: main order tracking table
