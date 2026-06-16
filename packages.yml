@@ -10,4 +10,4 @@ packages:
   - package: dbt-labs/dbt_project_evaluator
     version: 0.6.0
   - package: metaplane/dbt_expectations
-    version: 0.8.5
+    version: 0.10.9

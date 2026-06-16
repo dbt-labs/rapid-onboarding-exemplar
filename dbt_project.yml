@@ -42,7 +42,7 @@ models:
     marts:
       +materialized: table
       +tags: ['tag']
-      +schema: gold
+      +schema: presentation
       finance:
         +group: finance
       marketing:
