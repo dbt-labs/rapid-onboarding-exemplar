@@ -3,7 +3,6 @@ version: 2
 models:
   - name: example_private_finance_model
     
-    e
     latest_version: 2
     config:
       access: private
