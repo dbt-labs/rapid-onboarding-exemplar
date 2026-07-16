@@ -1,0 +1,11 @@
+groups:
+  - name: finance
+    owner: 
+      email: cam.kolk@dbtlabs.com
+    config:
+      meta:
+        data_owner: Finance team
+        cost_center: finance
+        data_classification: sensitive
+
+      
