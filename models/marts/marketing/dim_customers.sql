@@ -1,6 +1,8 @@
 {{
     config(
         transient = false
+        materialized= env_var('DBT_MATERIALIZATION')
+
     )
 }}
 
