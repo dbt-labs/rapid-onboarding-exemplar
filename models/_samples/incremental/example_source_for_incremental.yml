@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: example_source_for_incremental
+    description: >
+      Synthetic web-event source used to demonstrate incremental-model patterns. The model has one row for each elapsed second from the start of the current calendar month through the time the model is queried or built. It does not ingest an external event stream and has no `ref()` or `source()` dependencies: the upstream `series` CTE calls `dbt_utils.generate_series(3000000)` to produce candidate sequence numbers, and `seconds_this_month` maps each candidate number to a timestamp by adding that many seconds to the start of the current month. Rows with timestamps after `current_timestamp` are removed. The `final` CTE deterministically derives all remaining attributes from the timestamp's second component and the generated event ID. Values will therefore change as the current month advances and should be used only for examples, development, and incremental-processing demonstrations—not as real behavioral, geographic, or user data.
+
+      **Grain:** one simulated event per second. `event_id` is the generated sequence number and is unique within a given model evaluation. The calendar anchor, `current_timestamp`, is evaluated by the warehouse; a rebuild in a new month restarts the modeled time window at that month’s first second.
+    columns:
+      - name: event_id
+        description: >
+          Synthetic event identifier and the primary sequence driving this model. It originates as `generated_number` from the upstream `series` CTE, which is produced by `dbt_utils.generate_series(3000000)`. The `seconds_this_month` CTE renames that generated number to `event_id` without changing it. It starts at the macro's first generated integer and advances by one for each candidate second; it is used to create `event_timestamp` and to calculate `_etl_loaded_at`. Within one evaluation of this model, each retained row has a distinct `event_id`. It is a demonstration identifier, not an identifier from an application event-tracking system.
+      - name: user_id
+        description: >
+          Simulated numeric user identifier derived entirely from `event_timestamp`; it has no upstream user table. In the `final` CTE, the model takes the second-of-minute component of `event_timestamp`, divides it by 10.0, adds 1, and rounds the result. This intentionally groups events into recurring ten-second-style buckets and yields a small rotating population of synthetic users. Because the calculation uses only the second component (0–59), the same simulated `user_id` recurs every minute and does not represent a persistent real-world user key. The same derived value also determines `device_type` and `geo`.
+      - name: event
+        description: >
+          Simulated event category calculated from the second-of-minute component of `event_timestamp`. When `second(event_timestamp) % 3` is 0 or 1, the model assigns `page_view`; when the remainder is 2, it assigns `page_ping`. This produces a repeating three-second pattern with two page views followed by one page ping. It is not passed through from an upstream event source and should be interpreted as sample event-type data only.
+      - name: event_timestamp
+        description: >
+          Timestamp assigned to the synthetic event. The upstream `seconds_this_month` CTE derives it by adding `event_id` seconds to the warehouse-truncated start of the current calendar month: `date_trunc('month', current_timestamp)`. Candidate timestamps later than the warehouse's `current_timestamp` are excluded, leaving one row per elapsed second in the month. This is the foundational time field for the model: `user_id`, `event`, `page_url`, `page_title`, `device_type`, and `geo` all derive from its second-of-minute component, while `_etl_loaded_at` is calculated from it and `event_id`.
+      - name: page_url
+        description: >
+          Simulated page URL selected from a three-value Jinja list defined at the top of the model: `https://www.getdbt.com/`, `https://docs.getdbt.com/`, and `https://docs.getdbt.com/quickstarts`. The `final` CTE selects a URL using `second(event_timestamp) % 3`: remainder 0 maps to the dbt homepage, remainder 1 maps to the documentation homepage, and remainder 2 maps to the quickstarts URL. This value is generated in lockstep with `page_title`; it is illustrative page-traffic data, not a captured browser URL.
+      - name: page_title
+        description: >
+          Simulated title corresponding to `page_url`. The model uses the same `second(event_timestamp) % 3` branch used for `page_url`, selecting from the Jinja list of three titles: `dbt Labs | Transform Data in Your Warehouse`, `What is dbt? | dbt Developer Hub`, and `Quickstarts | dbt Developer Hub`. Remainders 0, 1, and 2 select the first, second, and third title respectively, so each title is paired deterministically with its matching synthetic URL. It does not originate from page metadata or an upstream web analytics platform.
+      - name: device_type
+        description: >
+          Simulated device classification derived from the same calculated user bucket used for `user_id`. After calculating `round(1 + second(event_timestamp) / 10.0)`, the model takes that value modulo 7. Values with a remainder below 4 are labeled `computer`; all other values are labeled `mobile`. The result therefore follows a deterministic repeating distribution linked to the event timestamp and synthetic user assignment. It is not sourced from a browser, device-detection service, or user profile.
+      - name: geo
+        description: >
+          Simulated country or region label derived from the calculated `user_id`, with no upstream geographic source. The model maps synthetic user IDs 1 through 6 to `US`, `Mexico`, `Canada`, `Germany`, `England`, and `France`; any other calculated user ID maps to `Ireland`. Since `user_id` itself is based on the second-of-minute component of `event_timestamp`, geography repeats on the same cadence and remains deterministically associated with the synthetic user bucket. Treat this field as example categorical data only; it is neither an IP-based location nor a customer address.
+      - name: _etl_loaded_at
+        description: >
+          Simulated warehouse-load timestamp intended to demonstrate late-arriving or batched incremental processing. It is calculated in the `final` CTE from `event_timestamp` by subtracting `((event_id % 60) % 5)` seconds. The nested modulo expression yields a delay from 0 to 4 seconds, so `_etl_loaded_at` is always equal to or up to four seconds earlier than the event's timestamp. The model's comment describes this as mimicking events being loaded every five seconds. It is a generated example of ingestion timing, not an audit timestamp recorded by an ETL system.

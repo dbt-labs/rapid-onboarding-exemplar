@@ -19,8 +19,8 @@ models:
             warn_unenforced: false
         data_tests:
           - unique
-      - name: order_date
-        data_type: date 
+      # - name: order_date
+        # data_type: date 
       - name: customer_id
         data_type: int 
       - name: order_status_code

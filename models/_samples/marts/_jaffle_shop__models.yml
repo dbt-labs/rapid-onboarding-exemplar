@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: dim_jaffle_shop_customers
+    description: One row per Jaffle Shop customer, enriched with a numeric grouping derived from the first letter of their last name for segmented analysis.
+    columns:
+      - name: customer_id
+        description: Stable identifier for the customer, carried through from the Jaffle Shop customers source.
+      - name: first_name
+        description: Customer's given name from the Jaffle Shop customers source.
+      - name: last_name
+        description: Customer's family name from the Jaffle Shop customers source; its first letter determines `letter_grouping`.
+      - name: letter_grouping
+        description: Numeric group from 1 to 10 assigned through the alphabet mapping for the first letter of the customer's last name.
